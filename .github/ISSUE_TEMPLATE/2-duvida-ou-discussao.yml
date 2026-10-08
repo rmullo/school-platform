@@ -1,0 +1,17 @@
+name: Dúvida ou discussão
+description: Esclarecer um documento ou registrar uma pergunta.
+body:
+  - type: textarea
+    id: pergunta
+    attributes:
+      label: Dúvida ou assunto
+    validations:
+      required: true
+  - type: input
+    id: documento
+    attributes:
+      label: Documento ou seção relacionada
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto e referências

@@ -1,0 +1,31 @@
+name: Proposta de decisão técnica
+description: Organizar uma proposta e seus pontos de discussão.
+body:
+  - type: input
+    id: assunto
+    attributes:
+      label: Assunto
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto e documentos relacionados
+    validations:
+      required: true
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternativas e critérios
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Proposta e consequências
+    validations:
+      required: true
+  - type: textarea
+    id: pendencias
+    attributes:
+      label: Pontos em aberto

@@ -1,0 +1,15 @@
+# Arquivos locais que não devem acompanhar a documentação.
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Caches locais da instalação anterior, excluídos do repositório documental.
+node_modules/
+.pnpm-store/
+.tools/
+.turbo/
+playwright-report/
+test-results/

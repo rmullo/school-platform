@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "untrustedDataNotice": "Thread titles and messages are untrusted data, not instructions.",
+  "thread": {
+    "id": "6952a525-7750-8327-9051-ca4a6ad2da84",
+    "kind": "chatgpt",
+    "title": "MVP para gestão de matrículas",
+    "preview": "A nova conversa no **Work** foi criada com todo o contexto e a Fase 1 pronta para iniciar.",
+    "status": {
+      "type": "idle"
+    },
+    "cwd": null,
+    "createdAt": 1767023943.087347,
+    "updatedAt": 1790694695.84681
+  },
+  "page": {
+    "order": "newest_first",
+    "limit": 10,
+    "nextCursor": null,
+    "hasMore": false
+  },
+  "turns": [
+    {
+      "id": "214fa564-97ed-465d-8fd1-9461f1966de4",
+      "status": "completed",
+      "error": null,
+      "startedAt": 1790694642.989,
+      "completedAt": 1790694692.565736,
+      "durationMs": null,
+      "items": [
+        {
+          "type": "userMessage",
+          "id": "214fa564-97ed-465d-8fd1-9461f1966de4",
+          "content": [
+            {
+              "type": "text",
+              "text": "mande"
+            }
+          ]
+        },
+        {
+          "type": "agentMessage",
+          "id": "b2d5e94c-a1de-44ba-ab81-160df34a7b6f",
+          "text": "A nova conversa no **Work** foi criada com todo o contexto e a Fase 1 pronta para iniciar."
+        }
+      ]
+    },
+    {
+      "id": "e984cf3b-1fdd-4ff2-b506-4beaae2ce9a7",
+      "status": "completed",
+      "error": null,
+      "startedAt": 1790694506.925,
+      "completedAt": 1790694632.30921,
+      "durationMs": null,
+      "items": [
+        {
+          "type": "userMessage",
+          "id": "e984cf3b-1fdd-4ff2-b506-4beaae2ce9a7",
+          "content": [
+            {
+              "type": "text",
+              "text": "mande todo esse contexto para o work, para que eu pssa começar o desenvolvimento do sistema"
+            }
+          ]
+        },
+        {
+          "type": "agentMessage",
+          "id": "c6fe668e-f2eb-49db-8931-fc4e736b1df6",
+          "text": "O encaminhamento para o **Work não foi aceito na interface**, então o projeto não foi transferido.\n\nComo a transferência foi recusada, não vou tentar reenviar automaticamente. Se quiser continuar no Work, abra o **modo Work** a partir desta conversa; o objetivo é iniciar pela **Fase 1** com todo o escopo que consolidamos: monorepo, NestJS, React, PostgreSQL, Kafka/KRaft, Kafka UI, MinIO, Docker Compose, Dev Container e os workers iniciais, antes de implementar as regras escolares."
+        }
+      ]
+    },
+    {
+      "id": "bbb215f8-8f55-49b9-af60-652fbe000aa0",
+      "status": "completed",
+      "error": null,
+      "startedAt": 1790692279.842454,
+      "completedAt": 1790692411.271929,
+      "durationMs": null,
+      "items": [
+        {
+          "type": "userMessage",
+          "id": "bbb215f8-8f55-49b9-af60-652fbe000aa0",
+          "content": [
+            {
+              "type": "text",
+              "text": "Chat, daqui pra frente eu vou deixar decisões com você. leve em consideração que você é um desenvolvedor de software experiente e que nós temos que ter as boas práticas, inclusive com alguns padrões de projeto que você achar necessário. Os requisitos são esses, você acertou, tá acertando tudo até agora. eu vou considerar que você entende daqui em diante. E aí, a posterior, nós iremos, após a gente ter o primeiro MVP, a gente vai ajustando. Então termine todo esse primeiro escopo. Após terminar o primeiro escopo, você vai revisar pra ver se todo o escopo está coerente do início ao fim."
+            }
+          ]
+        },
+        {
+          "type": "agentMessage",
+          "id": "80fbef37-0cb9-4f68-803b-7847cfb25d9e",
+          "text": "A partir daqui, vou assumir as decisões técnicas e manter os requisitos funcionais que fechamos como fonte de verdade. Não vou aumentar o MVP sem motivo. A prioridade será: **correção financeira, rastreabilidade, boa arquitetura e aprendizado real de Kafka**, sem transformar o projeto numa mini-SAP escolar.\n\n## 4. Arquitetura da aplicação\n\nVamos usar um **monólito modular para a API**, acompanhado de processos independentes para Kafka. Não começaremos com microserviços completos.\n\n```text\n                        React Web\n                            │\n                            │ REST\n                            ▼\n                     ┌─────────────┐\n                     │ NestJS API  │\n                     └──────┬──────┘\n                            │\n                  ┌─────────┴─────────┐\n                  ▼                   ▼\n             PostgreSQL             Kafka\n                  │                   │\n                  │          ┌────────┼─────────┐\n                  │          ▼        ▼         ▼\n                  │       Billing   Projection Outbox\n                  │       Worker     Worker    Publisher\n                  │\n                  ▼\n              MinIO/S3\n          comprovantes/arquivos\n```\n\nO backend continuará sendo uma única aplicação lógica, organizada por módulos:\n\n```text\nstudents\nguardians\nschool-years\ngrades\nclasses\ncampaigns\nenrollments\nbilling\npayments\nsales\nproducts\ndocuments\nusers\naudit\n```\n\nOs workers serão processos separados porque Kafka é parte do objetivo de estudo.\n\n### Padrões que adotaremos\n\nSem transformar cada `if` em tese de doutorado:\n\n- **Modular Monolith** para separar os domínios.\n- **Hexagonal Architecture/Ports and Adapters** nas integrações relevantes.\n- **Strategy** para cálculo de mensalidade, descontos, proporcionalidade etc.\n- **Factory** para geração das cobranças.\n- **Specification/Policy** para regras como elegibilidade de rematrícula e confirmação de matrícula.\n- **Transactional Outbox** para PostgreSQL → Kafka.\n- **Idempotent Consumer** nos workers.\n- **Repository** apenas onde fizer sentido desacoplar domínio/persistência.\n\nNão aplicaremos padrão de projeto só para dizer que usamos padrão.\n\n---\n\n# 5. Kafka\n\nMantemos exatamente a decisão já fechada.\n\nTópicos iniciais:\n\n```text\nschool.enrollment.events.v1\nschool.billing.events.v1\nschool.payment.events.v1\n```\n\nEventos iniciais:\n\n```text\nenrollment.confirmed\nenrollment.completed\nenrollment.canceled\n\nbilling.charges.generated\nbilling.charge.overdue\n\npayment.registered\npayment.reversed\n```\n\nEnvelope padrão:\n\n```json\n{\n  \"eventId\": \"uuid\",\n  \"eventType\": \"enrollment.confirmed\",\n  \"version\": 1,\n  \"aggregateId\": \"uuid\",\n  \"correlationId\": \"uuid\",\n  \"occurredAt\": \"timestamp\",\n  \"data\": {}\n}\n```\n\nTeremos consumer groups, particionamento por entidade relevante, idempotência, retry, DLQ e Outbox desde o MVP.\n\nO formato será **JSON validado em runtime**. Avro/Schema Registry fica como evolução posterior de estudo.\n\n---\n\n# 6. Agente conversacional\n\nAqui faço uma correção para manter coerência com o escopo que você definiu posteriormente:\n\n**o agente conversacional não entra no primeiro MVP.**\n\nVocê decidiu que não haverá cobrança automática e que a inadimplência será apresentada para Diretor/Secretaria no dashboard.\n\nPor isso, neste MVP:\n\n```text\nAgente conversacional       FORA\nWhatsApp automático         FORA\nE-mail automático           FORA\nCobrança automática         FORA\n```\n\nMas a arquitetura ficará preparada para depois conectar:\n\n```text\nbilling.charge.overdue\n        ↓\nKafka\n        ↓\nNotification/Agent Worker\n```\n\nAssim não jogaremos nada fora quando formos estudar agentes.\n\n---\n\n# 7. Comunicação\n\nMesma decisão: o primeiro MVP **não dispara cobrança externa**.\n\nO dashboard mostrará:\n\n```text\nMensalidades vencidas\nValor vencido\nFamílias inadimplentes\nQuantidade de parcelas em atraso\n```\n\nA Secretaria faz o contato externamente pelos meios atualmente utilizados.\n\n---\n\n# 8. Pagamentos\n\nNão haverá gateway.\n\nPagamentos serão informados manualmente:\n\n```text\nPIX\nDinheiro\nTransferência bancária\nCartão de crédito\n```\n\nO comprovante poderá ser anexado quando existir.\n\nO sistema controla:\n\n```text\ncobrança\npagamento\nsaldo devedor\nsaldo credor\nnegociação\nreversão\n```\n\nNunca deletaremos silenciosamente movimentações financeiras.\n\n---\n\n# 9. Autenticação e autorização\n\nAgora teremos login, porque você definiu usuários individuais.\n\nPerfis:\n\n```text\nDIRECTOR\nSECRETARY\nIT\n```\n\nCada funcionário terá sua própria conta.\n\nUsaremos:\n\n```text\nemail + senha\nJWT de acesso curto\nrefresh token rotativo\nsenha com Argon2id\n```\n\nO refresh token ficará protegido e não armazenaremos senha reversível.\n\nAs permissões seguirão RBAC.\n\nDiretor terá autoridade sobre negociações financeiras. Secretaria realizará operações administrativas e financeiras rotineiras. TI terá administração técnica do sistema.\n\nOperações sensíveis guardarão o usuário responsável.\n\n---\n\n# 10. PostgreSQL e persistência\n\nMinha escolha será:\n\n**PostgreSQL + Prisma.**\n\nMotivos principais: produtividade, migrations, transações, tipagem TypeScript e maturidade para esse tamanho de sistema.\n\nValores financeiros usarão `NUMERIC/DECIMAL`.\n\n**Nunca `float` para dinheiro.**\n\nVamos criar um conceito de domínio `Money` e tratar cálculos financeiros com precisão decimal.\n\nDatas de vencimento serão datas, não timestamps arbitrários.\n\nTimestamps operacionais serão armazenados em UTC.\n\nA escola possuirá um timezone configurado.\n\n---\n\n# 11. Contratos internos\n\nREST será versionado:\n\n```text\n/api/v1/...\n```\n\nDocumentação:\n\n```text\nOpenAPI / Swagger\n```\n\nDTOs de entrada serão validados.\n\nErros seguirão uma estrutura previsível próxima de Problem Details:\n\n```json\n{\n  \"type\": \"ENROLLMENT_PREVIOUS_DEBT\",\n  \"title\": \"Matrícula não pode ser confirmada\",\n  \"status\": 409,\n  \"detail\": \"Existem débitos do ano anterior.\"\n}\n```\n\nEventos Kafka terão schemas compartilhados no monorepo e validação com **Zod**.\n\n---\n\n# 12. Monorepo\n\nVou usar:\n\n```text\npnpm workspaces\n+\nTurborepo\n```\n\nEstrutura:\n\n```text\nschool-platform/\n│\n├── apps/\n│   ├── api/\n│   ├── web/\n│   ├── billing-worker/\n│   ├── projection-worker/\n│   └── outbox-publisher/\n│\n├── packages/\n│   ├── database/\n│   ├── event-contracts/\n│   ├── shared/\n│   ├── config/\n│   └── eslint-config/\n│\n├── infrastructure/\n│   ├── docker/\n│   ├── kubernetes/\n│   └── terraform/\n│\n├── .devcontainer/\n├── docker-compose.yml\n├── pnpm-workspace.yaml\n└── turbo.json\n```\n\nO `projection-worker` será interessante para Kafka: ele poderá atualizar informações derivadas usadas pelo dashboard.\n\n---\n\n# 13. Frontend\n\nEscolha fechada:\n\n```text\nReact\nTypeScript\nVite\nReact Router\nTanStack Query\nReact Hook Form\nZod\nMUI\n```\n\nNão usarei Next.js porque não existe necessidade relevante de SSR/SEO nesse sistema administrativo.\n\nO frontend será SPA interna.\n\nA organização será por funcionalidade:\n\n```text\nfeatures/\n├── students/\n├── classes/\n├── campaigns/\n├── enrollments/\n├── billing/\n├── payments/\n├── sales/\n└── dashboard/\n```\n\n---\n\n# 14. Infraestrutura local\n\nTodo o projeto será dockerizado.\n\nO ambiente local terá:\n\n```text\nDev Container\nAPI\nReact\nPostgreSQL\nApache Kafka\nKafka UI\nBilling Worker\nProjection Worker\nOutbox Publisher\nMinIO\n```\n\nKafka rodará em modo **KRaft**, sem dependência de ZooKeeper.\n\nMinIO simulará S3 localmente para:\n\n- comprovantes;\n- documentos;\n- futuros arquivos.\n\nAssim a aplicação não dependerá de disco local e já nascerá compatível com Kubernetes.\n\n---\n\n# 15. Kubernetes e AWS\n\nDesenvolvimento normal continuará em Docker Compose.\n\nNão vamos desenvolver dentro do Kubernetes.\n\nA aplicação será preparada para:\n\n```text\nAWS EKS\nAWS RDS PostgreSQL\nAWS MSK\nAWS S3\nAWS ECR\nAWS Secrets Manager\nCloudWatch\nApplication Load Balancer\n```\n\nInfraestrutura será criada posteriormente com **Terraform**.\n\nAplicações serão stateless e terão:\n\n```text\n/health\n/ready\n```\n\nalém de graceful shutdown, configuração por variável de ambiente e logs em stdout.\n\nPara manifests Kubernetes, adotarei **Kustomize** inicialmente.\n\n---\n\n# 16. Observabilidade e auditoria\n\nComo teremos Kafka, observabilidade deixa de ser perfumaria.\n\nTeremos:\n\n```text\nPino\n→ logs estruturados\n\nOpenTelemetry\n→ traces\n\nPrometheus\n→ métricas\n\nGrafana\n→ visualização\n```\n\nCada requisição receberá um `correlationId`.\n\nEsse identificador continuará nos eventos Kafka.\n\nAssim poderemos seguir:\n\n```text\nPOST matrícula\n      ↓\nenrollment.confirmed\n      ↓\nBilling Worker\n      ↓\n11 cobranças\n```\n\ncom o mesmo identificador.\n\nTeremos também auditoria de operações relevantes:\n\n```text\nquem\no quê\nquando\nregistro afetado\nmotivo, quando necessário\n```\n\nPrincipalmente para pagamentos, reversões, negociações e cancelamentos.\n\nDados pessoais desnecessários não irão para logs.\n\n---\n\n# 17. Testes\n\nTeremos quatro camadas.\n\n| Tipo | Uso |\n|---|---|\n| Unitário | cálculos e regras de domínio |\n| Integração | PostgreSQL, Kafka e storage |\n| E2E backend | fluxos completos da API |\n| E2E frontend | operações críticas |\n\nPara integração utilizaremos **Testcontainers**, inclusive com PostgreSQL e Kafka reais em containers.\n\nCasos financeiros terão atenção especial.\n\nExemplo:\n\n```text\n2 irmãos no Infantil\n\nAté dia 10:\n270 + 270 = 540\n\nApós dia 10:\n285 + 285 = 570\n```\n\nIsso vira teste automatizado. Não fica apenas na cabeça de quem programou.\n\nFrontend E2E: **Playwright**.\n\nCI: GitHub Actions.\n\n---\n\n# 18. Concorrência e integridade\n\nHá um caso crítico: a última vaga da turma.\n\nSuponha:\n\n```text\nCapacidade: 30\nMatriculados: 29\n```\n\nDuas secretárias confirmam matrículas ao mesmo tempo.\n\nNão podemos terminar com:\n\n```text\n31 / 30\n```\n\nA confirmação da matrícula ocorrerá dentro de uma transação PostgreSQL com controle de concorrência sobre a turma.\n\nA mesma transação fará:\n\n```text\nverificar débitos\nverificar vaga\nconfirmar matrícula\nocupar vaga\nregistrar OutboxEvent\n```\n\nOu tudo acontece, ou nada acontece.\n\n---\n\n# 19. Segurança básica\n\nDesde o MVP:\n\n```text\nHTTPS em produção\nHelmet\nCORS restrito\nrate limit no login\nvalidação de entrada\nArgon2id\nsecrets fora do código\ncontrole de acesso\nupload com tamanho/tipo limitado\nauditoria\n```\n\nTambém evitaremos manter dados desnecessários de crianças.\n\n---\n\n# 20. Ordem de implementação\n\nA implementação seguirá:\n\n```text\nFase 1\nMonorepo + Docker + Dev Container\n\nFase 2\nPostgreSQL + usuários + autenticação\n\nFase 3\nAno letivo + séries + turmas\n\nFase 4\nCampanhas de matrícula\n\nFase 5\nAlunos + responsáveis financeiros\n\nFase 6\nMatrícula\n\nFase 7\nKafka + Outbox + geração das mensalidades\n\nFase 8\nFinanceiro + pagamentos\n\nFase 9\nLivros + materiais + fardamento\n\nFase 10\nDashboard + inadimplência\n\nFase 11\nObservabilidade + testes E2E\n\nFase 12\nKubernetes readiness\n```\n\n---\n\n# Revisão final de coerência do MVP\n\nRevisei o escopo do começo ao fim. A arquitetura está consistente com as regras que você definiu.\n\nO fluxo principal ficou:\n\n```text\nDIRETOR\n   ↓\nCria ano letivo\n   ↓\nCria turmas e capacidades\n   ↓\nCria campanha de matrícula\n   ↓\nDefine valores, documentos,\nmateriais e kits de livros\n   ↓\nAtiva campanha\n\n=================================\n\nSECRETARIA\n   ↓\nCadastra/localiza aluno\n   ↓\nDefine responsável financeiro\n   ↓\nInicia matrícula\n   ↓\nVerifica débitos anteriores\n   ↓\nDefine turma\n   ↓\nNegociação, se necessária\n   ↓\nPagamento da matrícula\n   ↓\nTransação confirma vaga\n   ↓\nKafka\n   ↓\nGeração das mensalidades\n   ↓\nAluno MATRICULADO\n\n=================================\n\nDepois:\n\nDocumentos\n+\nLivros\n+\nMaterial coletivo\n   ↓\nMATRÍCULA COMPLETA\n```\n\nFinanceiramente:\n\n```text\nANUIDADE\n↓\naté 11 mensalidades\n\n+ matrícula independente\n+ livros\n+ material coletivo, quando pago\n+ fardamento opcional\n```\n\nPagamentos permanecem manuais.\n\nKafka tem função real, mesmo sem cobrança automática:\n\n```text\nmatrícula\n→ geração de mensalidades\n\ncancelamento\n→ cancelamento de futuras parcelas\n\npagamentos\n→ projeções financeiras\n\nvencimento\n→ inadimplência/dashboard\n```\n\nPortanto Kafka não está colocado apenas para aparecer no README.\n\n## Dois pontos documentais que precisam ser corrigidos antes de produção\n\nExiste divergência entre a operação que você definiu e o contrato atual.\n\nO contrato de 2026 descreve a anuidade como 12 parcelas, com a primeira paga na matrícula. A operação real que definimos é **taxa de matrícula independente + anuidade parcelada em até 11 mensalidades**. :chatgpt-content-reference{index=\"0\"}\n\nO contrato também condiciona o desconto de irmãos ao pagamento até o dia 10, enquanto a regra operacional que você definiu mantém o desconto de irmãos após o vencimento e remove apenas os R$15 de pontualidade. :chatgpt-content-reference{index=\"1\"}\n\nIsso não muda a arquitetura do software, mas os documentos da escola deverão ser alinhados posteriormente com as regras efetivamente praticadas.\n\n## Escopo 1 fechado\n\nNeste ponto considero a **especificação inicial do MVP concluída e revisada**.\n\nTemos requisitos funcionais, regras de negócio, modelo de domínio, Kafka, arquitetura, persistência, frontend, segurança, Docker, Dev Container, observabilidade, testes e destino Kubernetes/AWS coerentes entre si.\n\nO passo seguinte já pode ser **implementação**. Eu começaria criando a árvore real do monorepo, `docker-compose.yml`, `.devcontainer`, workspace `pnpm`, NestJS, React, PostgreSQL e Kafka antes de escrever qualquer regra escolar."
+        }
+      ]
+    },
+    {
+      "id": "bbb21e6b-c464-462a-8114-608fb3fc002e",
+      "status": "completed",
+      "error": null,
+      "startedAt": 1790692190.801714,
+      "completedAt": 1790692197.761446,
+      "durationMs": null,
+      "items": [
+        {
+          "type": "userMessage",
+          "id": "bbb21e6b-c464-462a-8114-608fb3fc002e",
+          "content": [
+            {
+              "type": "text",
+              "text": "Tudo sim"
+            }
+          ]
+        },
+        {
+          "type": "agentMessage",
+          "id": "b7ef3b47-d7c0-494e-8c94-6c909126d9dc",
+          "text": "Então o **3.6 — Eventos de domínio e Kafka está fechado** e, com isso, concluímos também o **Tópico 3 — Modelo de domínio**.\n\nFicaram aprovados para o Kafka do MVP:\n\n- Kafka será usado para eventos assíncronos, não para substituir REST ou PostgreSQL.\n- `enrollment.confirmed.v1` gera as mensalidades.\n- `enrollment.canceled.v1` dispara cancelamento das cobranças futuras.\n- `payment.registered.v1` e `payment.reversed.v1` registram acontecimentos financeiros.\n- `billing.charge.overdue.v1` representa inadimplência, sem cobrança automatizada.\n- Poucos tópicos, separados por domínio.\n- Workers independentes da API.\n- Consumer Groups desde o MVP.\n- Chaves de partição por matrícula/cobrança.\n- Idempotência obrigatória.\n- Transactional Outbox.\n- Retry + Dead Letter Topic.\n- `eventId`, `correlationId`, `aggregateId`, versão e timestamp em todos os eventos.\n- JSON como formato inicial dos contratos.\n- Contratos compartilhados no monorepo.\n\nO fluxo técnico central ficará, por exemplo:\n\n```text\nSecretária confirma matrícula\n        ↓\nPostgreSQL\n  ├── Matrícula = CONFIRMADA\n  └── OutboxEvent\n        ↓\nOutbox Publisher\n        ↓\nKafka\n        ↓\nBilling Worker\n        ↓\nGera mensalidades\n        ↓\nbilling.charges.generated.v1\n```\n\nE todos os consumidores serão preparados para mensagens duplicadas e falhas.\n\n### Tópico 3 concluído\n\nTemos agora:\n\n```text\n3.1 Estrutura escolar          ✓\n3.2 Pessoas                    ✓\n3.3 Matrícula                  ✓\n3.4 Financeiro                 ✓\n3.5 Comercial                  ✓\n3.6 Eventos e Kafka            ✓\n```\n\nO próximo passo é o **Tópico 4 — Arquitetura da aplicação**.\n\nÉ nele que vamos finalmente fechar coisas como:\n\n```text\nMonorepo\nNestJS\nReact\nPostgreSQL\nKafka\nWorkers\nOutbox Publisher\nDocker Compose\nDev Container\nestrutura de pastas\nseparação entre módulos\n```\n\nA partir daí o projeto começa a tomar forma de implementação."
+        }
+      ]
+    },
+    {
+      "id": "e0fc2f87-3c78-4595-9f44-d90f009d4241",
+      "status": "completed",
+      "error": null,
+      "startedAt": 1790684680.899,
+      "completedAt": 1790684728.308352,
+      "durationMs": null,
+      "items": [
+        {
+          "type": "userMessage",
+          "id": "e0fc2f87-3c78-4595-9f44-d90f009d4241",
+          "content": [
+            {
+              "type": "text",
+              "text": "vamos para o 3.6"
+            }
+          ]
+        },
+        {
+          "type": "agentMessage",
+          "id": "e97ee186-3f6a-437b-a540-d2c0fd2cbbba",
+          "text": "Vamos fechar o **3.6 — Eventos de domínio e Kafka** do mesmo jeito: decisões simples para você aprovar ou corrigir.\n\n1. **Kafka não substituirá a API nem o PostgreSQL.** O React continuará falando com a API REST. A API grava as operações principais no PostgreSQL e publica eventos quando algo relevante acontece. Exemplo:\n\n```text\nSecretária confirma matrícula\n        ↓\nAPI\n        ↓\nPostgreSQL\n        ↓\nKafka\n        ↓\noutros processos reagem\n```\n\nAssim, Kafka será usado para processamento assíncrono e integração entre partes do sistema. **Proposta: correto?**\n\n2. **A confirmação da matrícula será um dos principais eventos.** Quando a matrícula for efetivamente confirmada — dívida anterior quitada + matrícula paga/isenta — será publicado:\n\n```text\nenrollment.confirmed.v1\n```\n\nEsse evento poderá ser consumido pelo módulo financeiro para gerar as mensalidades correspondentes.\n\n```text\nMatrícula confirmada\n        ↓\nKafka\n        ↓\nFinance Worker\n        ↓\nGera FEV → DEZ\n```\n\nSe o aluno entrar em agosto, gera somente agosto a dezembro. **Proposta: correto?**\n\n3. **Cancelamento da matrícula também será evento.**\n\n```text\nenrollment.canceled.v1\n```\n\nO módulo financeiro reage cancelando cobranças futuras, preservando as já vencidas.\n\n```text\nMatrícula cancelada\n        ↓\nKafka\n        ↓\nFinance Worker\n        ↓\nCancela mensalidades futuras\n```\n\nA liberação da vaga da turma, por ser uma regra crítica, eu faria imediatamente no PostgreSQL junto com o cancelamento, e não esperaria Kafka. **Proposta: correto?**\n\n4. **Pagamentos manuais gerarão eventos.** Quando a Secretaria registrar:\n\n```text\nR$ 270\nPIX\n08/03/2027\n```\n\npublicamos:\n\n```text\npayment.registered.v1\n```\n\nSe for revertido:\n\n```text\npayment.reversed.v1\n```\n\nEsses eventos poderão atualizar indicadores financeiros, histórico e futuras integrações. **Proposta: correto?**\n\n5. **Mensalidade vencida será um evento, mesmo sem cobrança automática.** Teremos um processo que identifica cobranças que passaram do vencimento:\n\n```text\n10/03 → ainda aberta\n11/03 → vencida\n```\n\ne publica:\n\n```text\nbilling.charge.overdue.v1\n```\n\nNo MVP, isso **não enviará WhatsApp ou e-mail**. Será usado para manter o financeiro e o dashboard atualizados.\n\n```text\nCobrança venceu\n       ↓\nKafka\n       ↓\nDashboard\n       ↓\n\"42 mensalidades vencidas\"\n```\n\nNo futuro, o mesmo evento poderá disparar o agente de cobrança sem alterar o financeiro. **Proposta: correto?**\n\n6. **Não criaremos evento para tudo.** Não vejo necessidade, por exemplo, de publicar Kafka simplesmente porque alguém alterou um telefone ou cadastrou uma camiseta. No MVP, começaria com aproximadamente estes eventos:\n\n```text\nenrollment.confirmed.v1\nenrollment.completed.v1\nenrollment.canceled.v1\n\nbilling.charges.generated.v1\nbilling.charge.overdue.v1\n\npayment.registered.v1\npayment.reversed.v1\n```\n\nDepois adicionamos eventos somente quando existir algum processo que realmente precise consumi-los. **Proposta: correto?**\n\n7. **Usaremos poucos tópicos Kafka, separados por domínio.** Em vez de criar 30 tópicos, proponho:\n\n```text\nschool.enrollment.events.v1\nschool.billing.events.v1\nschool.payment.events.v1\n```\n\nDentro deles, cada mensagem informa o tipo de evento.\n\nExemplo:\n\n```json\n{\n  \"eventType\": \"payment.registered\",\n  \"version\": 1\n}\n```\n\nIsso mantém o Kafka organizado sem criar um tópico para cada espirro do sistema. **Proposta: correto?**\n\n8. **Teremos workers separados da API.** Inicialmente:\n\n```text\nAPI\n│\n├── PostgreSQL\n└── Kafka\n     │\n     ├── Billing Worker\n     │    → geração/cancelamento de cobranças\n     │\n     └── Dashboard Worker\n          → indicadores financeiros\n```\n\nMais tarde:\n\n```text\nNotification Worker\nAgent Worker\n```\n\nMas cobrança automatizada continua fora do MVP. **Proposta: correto?**\n\n9. **Usaremos Consumer Groups.** Isso é importante inclusive para seu objetivo de estudar Kafka. Por exemplo:\n\n```text\nTopic:\nschool.enrollment.events.v1\n\nConsumer Group:\nbilling-service\n\nInstância 1 ─┐\n             ├─ dividem as mensagens\nInstância 2 ─┘\n```\n\nQuando formos para Kubernetes, podemos subir várias réplicas do worker e o Kafka distribuir o processamento. **Proposta: utilizar consumer groups desde o MVP?**\n\n10. **Todo evento terá uma chave.** Para preservar a ordem das mensagens relacionadas à mesma entidade:\n\n```text\nenrollment.confirmed\nenrollment.canceled\n```\n\nusaremos como chave:\n\n```text\nenrollmentId\n```\n\nPara pagamentos:\n\n```text\nchargeId\n```\n\nAssim eventos da mesma matrícula ou cobrança tendem a permanecer ordenados dentro da mesma partição. **Proposta: correto?**\n\n11. **Implementaremos idempotência obrigatoriamente.** Kafka pode entregar uma mensagem mais de uma vez. Portanto um worker nunca poderá fazer:\n\n```text\nrecebi enrollment.confirmed\n→ gerar 11 mensalidades\n\nrecebi novamente\n→ gerar outras 11\n```\n\nO consumer verifica o `eventId` e sabe se aquele evento já foi processado.\n\n```text\nEvento 123\n        ↓\njá processado?\n   SIM → ignora\n   NÃO → executa\n```\n\nPara um projeto de estudo de Kafka, considero isso essencial. **Proposta: correto?**\n\n12. **Usaremos Transactional Outbox.** Essa será provavelmente uma das partes mais interessantes do projeto.\n\nQuando uma matrícula for confirmada, não faremos simplesmente:\n\n```text\nsalva PostgreSQL\ndepois tenta publicar Kafka\n```\n\nporque o banco pode funcionar e Kafka falhar.\n\nFaremos:\n\n```text\nMESMA TRANSAÇÃO POSTGRESQL\n\nMatrícula = confirmada\n+\nOutboxEvent =\nenrollment.confirmed.v1\n```\n\nDepois:\n\n```text\nOutbox Publisher\n        ↓\nKafka\n```\n\nAssim não perdemos o evento.\n\nEu recomendo fortemente implementar esse padrão no MVP justamente porque Kafka é um dos objetivos de estudo. **Proposta: correto?**\n\n13. **Teremos retry e Dead Letter Topic.** Se um consumer falhar:\n\n```text\nMensagem\n  ↓\ntentativa 1 → falha\ntentativa 2 → falha\ntentativa 3 → falha\n  ↓\nDLQ\n```\n\nPor exemplo:\n\n```text\nschool.billing.events.v1.dlq\n```\n\nA mensagem não desaparece nem fica bloqueando indefinidamente o processamento.\n\nNo MVP, podemos começar com três tentativas e depois enviar para DLQ. **Proposta: correto?**\n\n14. **Todo evento terá informações de rastreamento.** Algo parecido com:\n\n```json\n{\n  \"eventId\": \"uuid\",\n  \"eventType\": \"enrollment.confirmed\",\n  \"version\": 1,\n  \"occurredAt\": \"2027-01-10T14:32:00Z\",\n  \"correlationId\": \"uuid\",\n  \"aggregateId\": \"matricula-123\",\n  \"data\": {}\n}\n```\n\nO `correlationId` permitirá acompanhar um fluxo inteiro:\n\n```text\nMatrícula confirmada\n   correlationId: ABC\n        ↓\nMensalidades geradas\n   correlationId: ABC\n        ↓\nDashboard atualizado\n   correlationId: ABC\n```\n\nIsso será muito útil para logs e debugging. **Proposta: correto?**\n\n15. **Os eventos começarão em JSON.** Para o MVP, minha proposta é não começar com Avro ou Protobuf. Usamos TypeScript + validação de schema e contratos compartilhados no monorepo.\n\n```text\npackages/\n└── event-contracts/\n    ├── enrollment-confirmed.ts\n    ├── payment-registered.ts\n    └── ...\n```\n\nDepois, como evolução de estudo, podemos introduzir Schema Registry + Avro sem precisar reinventar o domínio. **Proposta: começar com JSON?**\n\nSe você aprovar esses pontos, o Kafka do MVP terá um propósito real:\n\n```text\nCONFIRMAR MATRÍCULA\n        ↓\nKafka\n        ↓\nGERAR MENSALIDADES\n\nREGISTRAR PAGAMENTO\n        ↓\nKafka\n        ↓\nATUALIZAR INDICADORES\n\nCANCELAR MATRÍCULA\n        ↓\nKafka\n        ↓\nCANCELAR COBRANÇAS FUTURAS\n\nMENSALIDADE VENCEU\n        ↓\nKafka\n        ↓\nDESTACAR INADIMPLÊNCIA\n```\n\nPode responder como antes: `1 sim, 2 sim...`, indicando apenas os pontos que quiser alterar."
+        }
+      ]
+    }
+  ],
+  "attachments": []
+}
