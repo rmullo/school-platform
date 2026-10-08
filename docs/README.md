@@ -12,9 +12,12 @@
 | [cadastros.md](cadastros.md) | Dicionário dos dados e relacionamentos | Parcial: conceitos e restrições; campos ainda a detalhar |
 | [compliance.md](compliance.md) | Fontes normativas e documentos da escola | Fontes, correções incorporadas e enquadramentos pendentes |
 | [conformidade.md](conformidade.md) | Matriz de exigências, requisitos e evidências | Requisitos documentados; evidências contratuais e operacionais pendentes |
-| [decisions/README.md](decisions/README.md) | Índice de decisões técnicas individuais | Decisões 0001 e 0002 registradas; modelo disponível |
+| [decisions/README.md](decisions/README.md) | Índice de decisões individuais | Decisões 0001 a 0003 registradas; modelo disponível |
 | [reunioes/README.md](reunioes/README.md) | Registros de reuniões e conversas | Índice e modelo preparados |
-| [roadmap.md](roadmap.md) | Etapa atual e organização futura das etapas | Orientação atual registrada |
+| [roadmap.md](roadmap.md) | Caminho de desenvolvimento e testes do usuário | MD-00 em validação documental; MD-01 a MD-15 planejadas |
+| [MD-00](microentregas/MD-00/README.md) | Fluxo, estados, cálculos, cenários e esboços de telas | Em validação; composição de ingresso tardio confirmada |
+| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 e TASK-0002 em validação |
+| [CHANGELOG](../CHANGELOG.md) | Resumo das alterações e referências de versão | Atualização a cada entrega |
 | [licensing.md](licensing.md) | Decisão de licenciamento | AGPL 3.0 aprovada em 07/10/2026 |
 | [assets/README.md](assets/README.md) | Recursos visuais da documentação | Pasta reservada |
 

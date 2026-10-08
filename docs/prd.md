@@ -14,7 +14,7 @@ Diretor: campanhas, contratos e negociações; Secretaria: cadastros, matrícula
 
 | ID | Requisito vigente | Critério de aceite documental e futuro comportamento | Origem |
 | --- | --- | --- | --- |
-| RF-01 | Parcela inicial dentro do total contratado | Plano identifica total nominal, parcela inicial e restantes; soma conciliada e sem duplicação na confirmação. Entrada tardia não cobra período anterior nem parcela externa ao total | LEG-01 |
+| RF-01 | Parcela inicial dentro do total contratado | Plano identifica total nominal, parcela inicial e restantes; soma conciliada e sem duplicação na confirmação. Entrada tardia: inicial mais mensalidades dos meses restantes, sem abatimento automático da inicial, período anterior ou parcela externa ao total. Exemplos na [MD-00](microentregas/MD-00/financeiro.md) | LEG-01 |
 | RF-02 | Remover cobrança obrigatória de material coletivo | Nenhuma taxa/entrega coletiva bloqueia matrícula, conclusão ou atendimento; lista distingue material individual de custo institucional | LEG-02 |
 | RF-03 | Ajustes, restituições e crédito rastreáveis | Devolução vincula recebimento, motivo, valor e comprovante; não apaga histórico, não duplica restituição/crédito nem reabre dívida cancelada. Desistência antes das aulas devolve integralmente parcela inicial; demais hipóteses seguem política validada | LEG-03 |
 | RF-04 | Campanhas com condições transparentes | Contrato, tabela, vagas e calendário têm versão e evidência de divulgação no prazo aplicável; mudança não reescreve condições já aceitas. Desconto de irmãos e pontualidade estão distintos | LEG-04 |
@@ -55,7 +55,7 @@ São critérios futuros de verificação, não testes executados nesta revisão.
 
 ## Requisitos a esclarecer
 
-Contrato e listas reais; total anual e plano de entrada tardia; política de cancelamento após as aulas; documentos exigíveis por etapa; autorizações e capacidades locais; bases/retenção por categoria; responsáveis e canais; contratos de nuvem; procedimento fiscal. Essas pendências precisam ser resolvidas antes da operação afetada, sem declarar o produto já conforme.
+Contrato e listas reais; conciliação contratual do total anual e do plano de entrada tardia (inicial mais meses restantes, fórmula comercial confirmada); tratamento do ingresso após dia 10; política de cancelamento após as aulas; documentos exigíveis por etapa; autorizações e capacidades locais; bases/retenção por categoria; responsáveis e canais; contratos de nuvem; procedimento fiscal. Essas pendências precisam ser resolvidas antes da operação afetada, sem declarar o produto já conforme. A [MD-00](microentregas/MD-00/README.md#pendências-delimitadas) delimita os pontos ainda abertos.
 
 ## Fora de escopo
 

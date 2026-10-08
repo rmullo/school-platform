@@ -12,6 +12,7 @@ A adequação legal e a simplificação arquitetural autorizadas em 07/10/2026 t
 | --- | --- | --- | --- |
 | 0001 | [Adequação documental aos requisitos legais](0001-adequacao-legal.md) | Aceita para o planejamento; validações operacionais pendentes | Solicitação explícita do usuário em 07/10/2026 |
 | 0002 | [MVP com transações PostgreSQL, sem Kafka](0002-mvp-sem-kafka.md) | Aceita; substitui a obrigatoriedade anterior de mensageria | Solicitação explícita do usuário em 07/10/2026 |
+| 0003 | [Ingresso durante o ano: inicial mais meses restantes](0003-ingresso-durante-o-ano.md) | Regra comercial aceita; revisão contratual pendente | Confirmação explícita do usuário em 08/10/2026 |
 
 O [modelo](TEMPLATE.md) não é uma decisão e não ocupa número.
 

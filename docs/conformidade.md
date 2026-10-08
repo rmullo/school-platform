@@ -10,7 +10,7 @@ As fontes de LEG-01 a LEG-13 estão no [mapa normativo](compliance.md). Cada LEG
 
 | ID | Tema e fonte detalhada | Relação com o escopo | Situação | Evidência necessária para encerrar |
 | --- | --- | --- | --- | --- |
-| LEG-01 | [Matrícula/anuidade](compliance.md#leg-01--matrícula-e-anuidade) | Parcela inicial incluída no total | Documentado; validar contrato/valores | Contrato revisado, total anual e plano conciliados |
+| LEG-01 | [Matrícula/anuidade](compliance.md#leg-01--matrícula-e-anuidade) | Parcela inicial incluída no total; entrada tardia = inicial + meses restantes | [Exemplos documentados na MD-00](microentregas/MD-00/financeiro.md); validar contrato/valores | Contrato revisado, total anual e plano conciliados; exemplos não substituem evidência contratual |
 | LEG-02 | [Material coletivo](compliance.md#leg-02--material-coletivo-obrigatório) | Cobrança e condição coletivas removidas | Documentado; validar lista real | Lista classificada e revisão aprovada da condição |
 | LEG-03 | [Cancelamento](compliance.md#leg-03--cancelamento-devolução-e-crédito) | Histórico, créditos e restituições | Documentado; completar política após as aulas | Política de restituição e ajustes rastreáveis |
 | LEG-04 | [Campanhas/descontos](compliance.md#leg-04--campanhas-descontos-e-transparência) | Campanhas e negociações versionadas | Documentado; conciliar contrato antigo | Contrato/tabela versionados, divulgação e regras coerentes |

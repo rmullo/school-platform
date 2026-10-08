@@ -14,6 +14,12 @@ Descrever o motivo da alteração, citar a origem das informações e conferir o
 
 Para registrar uma decisão ou conversa, usar os modelos em [decisions/](docs/decisions/README.md) e [reunioes/](docs/reunioes/README.md).
 
+## Registro de trabalho e validação
+
+Antes de alterar código ou documentação, abrir ou atualizar a tarefa correspondente no [registro de tarefas](docs/tasks/README.md), usando seu modelo. Informar a microentrega, o escopo e os critérios de aceite. Ao entregar, registrar arquivos/motivos, verificações com resultados reais, limitações e passos de teste para o usuário; atualizar o [CHANGELOG](CHANGELOG.md) e documentos afetados.
+
+Correção necessária para cumprir o aceite permanece vinculada à tarefa; ampliação de escopo gera tarefa relacionada. Preservar feedback e histórico, sem declarar aceite pelo silêncio. Commits e publicações são referenciados apenas após sua realização. O [roadmap](docs/roadmap.md) define o ciclo de microentregas.
+
 ## Licença das contribuições
 
 As contribuições originais enviadas para incorporação ao SmartSchool devem ser disponibilizadas sob a mesma [GNU AGPL 3.0](LICENSE) do projeto. Envie apenas material que você tenha direito de licenciar nesses termos e preserve os avisos de terceiros aplicáveis.

@@ -30,7 +30,9 @@ Kafka, Kafka UI, workers separados e Outbox foram adiados, conforme a [decisão 
 | [Conformidade](docs/conformidade.md) | Rastreabilidade entre exigências e evidências |
 | [Decisões técnicas](docs/decisions/README.md) | Registros individuais de decisões |
 | [Reuniões e conversas](docs/reunioes/README.md) | Discussões, decisões e pendências |
-| [Roadmap](docs/roadmap.md) | Organização das etapas |
+| [Roadmap](docs/roadmap.md) | Microentregas, dependências e testes do usuário |
+| [Tarefas](docs/tasks/README.md) | Trabalho realizado, verificações, feedback e ajustes |
+| [Histórico de alterações](CHANGELOG.md) | Mudanças por entrega e versão |
 | [Governança](GOVERNANCE.md) | Como o trabalho é conduzido |
 | [Contribuição](CONTRIBUTING.md) | Como organizar alterações |
 | [Segurança](SECURITY.md) | Requisitos de acesso, privacidade e incidentes; operação pendente |

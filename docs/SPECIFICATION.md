@@ -89,7 +89,7 @@ Fardamento: venda opcional, sem impedir conclusão.
 ## Financeiro
 Matrícula é o ato de ingresso/renovação. Sua cobrança inicial é uma parcela integrante da anuidade, nunca taxa adicional ao total anual anunciado e contratado.
 O plano operacional pretendido é uma parcela inicial mais até 11 parcelas restantes, normalmente fevereiro–dezembro, vencimento dia 10, como plano alternativo admitido na legislação. Documentar o total nominal, parcelas e condições de desconto; não duplicar a parcela inicial ao gerar cobranças após a confirmação. A soma das parcelas educacionais nominais deve corresponder ao total contratado para o período, sem acréscimo externo de matrícula.
-Entrada durante o ano: cobrar apenas competências restantes, como política comercial aprovada, e declarar o total contratado para esse período. Qualquer parcela inicial integra esse total e não duplica a primeira mensalidade; fórmula e redistribuição dependem da revisão contratual, sem cobrança de competências anteriores ao ingresso.
+Entrada durante o ano: conforme confirmação do usuário em 08/10/2026, o total do período é a parcela inicial mais as mensalidades dos meses restantes até dezembro, incluindo o mês de ingresso. Não cobrar competências anteriores nem abater automaticamente a inicial da primeira mensalidade. A inicial integra o total anunciado/contratado, sem taxa externa a esse total. A composição comercial está definida; a conciliação com contrato e tabela reais permanece pendente. Ingresso após o dia 10 e eventual proporcionalidade por dias ainda exigem definição. Ver [decisão 0003](decisions/0003-ingresso-durante-o-ano.md) e [exemplos da MD-00](microentregas/MD-00/financeiro.md).
 Diretor pode negociar parcela inicial, primeira mensalidade restante, antecipação de seis meses ou do saldo anual, sempre com reflexo no plano e no total devido. Negociação não autoriza cobrança proibida, renúncia a direito obrigatório ou alteração retroativa de condições aceitas.
 Guardar valor original, valor negociado, diferença, motivo, autorizador e data.
 Multa e juros previstos em configuração, padrão zero.
@@ -153,17 +153,10 @@ As adequações autorizadas orientam o produto; nenhuma decisão operacional afa
 
 ## Sequência aprovada
 
-1. Monorepo + Docker + Dev Container.
-2. PostgreSQL + usuários + autenticação.
-3. Ano letivo + séries + turmas.
-4. Campanhas.
-5. Alunos + responsáveis financeiros.
-6. Matrícula, plano financeiro, registro da parcela inicial e confirmação com geração transacional das parcelas restantes.
-7. Consolidação dos fluxos financeiros transacionais e relatórios no PostgreSQL.
-8. Financeiro + pagamentos.
-9. Livros + materiais + fardamento.
-10. Dashboard + inadimplência.
-11. Observabilidade + E2E.
-12. Preparação para implantação e piloto; Kubernetes/AWS somente em etapa posterior autorizada.
+As capacidades e a arquitetura aprovadas serão desenvolvidas por microentregas. O [roteiro MD-00 a MD-15](roadmap.md#caminho-de-desenvolvimento), proposto em 08/10/2026 para revisão do usuário, detalha ordem, dependências e aceite; sua elaboração não autoriza iniciar todas as etapas.
+
+Começar pelas regras necessárias e fundação, seguir por acesso/cadastros e pelo fluxo completo de matrícula/financeiro, depois documentos, renovação/transferência, compras, relatórios e piloto. Segurança, auditoria, testes e documentação acompanham cada incremento; validações finais de operação não substituem essas verificações contínuas. Kubernetes/AWS permanecem posteriores.
+
+Cada tarefa realizada e alteração deve ser registrada em [tasks/](tasks/README.md) e resumida no [CHANGELOG](../CHANGELOG.md), com verificações e feedback reais. Entrega implementada aguarda teste do usuário; somente aceite explícito encerra a tarefa. Ajustes que ampliem escopo terão tarefa vinculada.
 
 Não iniciar regras completas antes de a fundação estar executável, limpa, documentada e validada.

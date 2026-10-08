@@ -18,6 +18,8 @@ A especificação anterior tratava matrícula como taxa independente da anuidade
 
 **Diretriz incorporada:** distinguir matrícula operacional de parcela financeira inicial. Onze mensalidades mais uma parcela inicial não são, por si, o problema; o conflito é cobrar matrícula além da anuidade anunciada. O contrato deve declarar o total anual e suas parcelas. Não recalcular valores aprovados antes de revisar contrato e descontos.
 
+**Detalhamento de 08/10/2026:** a [decisão 0003](decisions/0003-ingresso-durante-o-ano.md) registra a regra comercial confirmada para ingresso tardio: inicial mais meses restantes. A [MD-00](microentregas/MD-00/financeiro.md) calcula exemplos usando os valores de referência existentes, sem alterar tabela ou contrato. Essa composição deve estar incluída no total informado; sua confirmação comercial não substitui a revisão contratual pendente.
+
 ### LEG-02 — Material coletivo obrigatório
 
 A antiga exigência de material coletivo ou taxa substitutiva como condição de conclusão conflita com o art. 1º, § 7º, da Lei nº 9.870/1999: material coletivo necessário ao serviço deve integrar a anuidade. A opção entre itens e taxa não elimina a obrigatoriedade. Fontes: [lei federal](https://www.planalto.gov.br/ccivil_03/leis/l9870.htm) e [Decon sobre material e matrícula](https://mpce.mp.br/decon-orienta-consumidores-para-evitar-abusos-em-escolas-particulares/).
