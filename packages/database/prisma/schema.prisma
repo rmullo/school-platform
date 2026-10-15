@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client"
+  output = "../src/generated"
+  moduleFormat = "esm"
+}
+datasource db {
+  provider = "postgresql"
+}
+// Technical fixture only. No school or financial domain is implemented in MD-01.
+model FoundationState {
+  key       String   @id
+  token     String   @unique @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+}

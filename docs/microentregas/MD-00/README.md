@@ -1,6 +1,6 @@
-# MD-00 — Regras e exemplos para validação
+# MD-00 — Regras e exemplos aprovados
 
-> Entrega documental de 08/10/2026. Estado: **Em validação**. Sem aplicação, contrato emitido ou uso de dados reais. Registro de trabalho: [TASK-0002](../../tasks/TASK-0002-md00-regras-e-exemplos.md).
+> Entrega documental de 08/10/2026. Estado: **Concluída**, com aceite do usuário em 13/10/2026: “tudo ok no md-00”. As pendências P-01 a P-07 permanecem abertas. Sem aplicação, contrato emitido ou uso de dados reais. Registro de trabalho: [TASK-0002](../../tasks/TASK-0002-md00-regras-e-exemplos.md).
 
 ## Como revisar
 
@@ -13,7 +13,7 @@
 
 **Confirmado:** decisões do usuário e adequações legais incorporadas na [especificação](../../SPECIFICATION.md). Em 08/10/2026 o usuário confirmou ingresso tardio com meses restantes mais parcela inicial. Esta regra comercial integra o total contratado do período; não há parcela inicial externa a esse total.
 
-**Proposto para validação:** nomes de estados, disposição das telas e tratamento de detalhes ainda não decididos, identificados abaixo. Não são exigências legais presumidas.
+**Validado documentalmente em 13/10/2026:** fluxo, modelo conceitual de estados, exemplos, cenários e esboços de telas. Esse aceite orienta o desenvolvimento; detalhes explicitamente pendentes abaixo continuam em aberto. Os esboços não são layout final nem exigências legais presumidas.
 
 **Pendente externo:** contrato/lista reais, atos da escola e enquadramentos que ainda não foram inspecionados. O [mapa normativo](../../compliance.md) mantém as fontes. Este material não valida cobrança real ou substitui o contrato.
 
@@ -29,9 +29,9 @@
 
 ## Estados independentes
 
-Os rótulos abaixo são modelo conceitual para validação, não enumeração de banco já implementada.
+Os rótulos abaixo compõem o modelo conceitual validado; não são enumeração de banco já implementada.
 
-| Dimensão | Estados propostos | Significado |
+| Dimensão | Estados do modelo | Significado |
 | --- | --- | --- |
 | Matrícula | EM_ANDAMENTO, MATRICULADA, CANCELADA, TRANSFERIDA | Só MATRICULADA ocupa vaga; encerramento tem data, motivo e autor |
 | Conclusão administrativa | PENDENTE, COMPLETA | Documentos legitimamente exigíveis conferidos ou exceção fundamentada; não significa quitação |

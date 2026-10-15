@@ -28,8 +28,10 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 
 | ID | Microentrega | Tarefa | Estado | Referência de versão |
 | --- | --- | --- | --- | --- |
-| TASK-0001 | Planejamento transversal | [Plano de microentregas e registro de trabalho](TASK-0001-plano-de-microentregas.md) | Em validação | Revisão de 08/10/2026; consultar histórico Git |
-| TASK-0002 | MD-00 | [Regras, exemplos e fluxo de matrícula](TASK-0002-md00-regras-e-exemplos.md) | Em validação | Revisão de 08/10/2026; consultar histórico Git |
+| TASK-0001 | Planejamento transversal | [Plano de microentregas e registro de trabalho](TASK-0001-plano-de-microentregas.md) | Concluída | Aceite em 15/10/2026; consultar histórico Git |
+| TASK-0002 | MD-00 | [Regras, exemplos e fluxo de matrícula](TASK-0002-md00-regras-e-exemplos.md) | Concluída | Aceite documental em 13/10/2026; consultar histórico Git |
+| TASK-0003 | MD-01 | [Fundação executável](TASK-0003-md01-fundacao.md) | Concluída | Aceite em 15/10/2026; consultar histórico Git |
+| TASK-0004 | Qualidade transversal | [Skill e diretrizes de desenvolvimento](TASK-0004-skill-e-diretrizes-de-desenvolvimento.md) | Concluída | Aceite em 15/10/2026; consultar histórico Git |
 
 ## Procedimento de encerramento
 

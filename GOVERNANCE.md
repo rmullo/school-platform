@@ -2,7 +2,7 @@
 
 ## Forma de trabalho atual
 
-O usuário orienta a documentação passo a passo. Em 07/10/2026 autorizou a adequação aos achados legais; a implementação permanece pausada até nova orientação.
+O usuário orienta o trabalho passo a passo. Em 07/10/2026 autorizou a adequação aos achados legais; em 13/10/2026 aprovou a MD-00 e solicitou implementar a MD-01. A autorização abrange somente a fundação executável; as demais microentregas aguardam orientação.
 
 ## Registro das decisões
 

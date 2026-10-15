@@ -1,0 +1,41 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/Dockerfile
+      target: dev
+    volumes:
+      - .:/workspace:cached
+      - dev-node-modules:/workspace/node_modules
+      - dev-api-modules:/workspace/apps/api/node_modules
+      - dev-web-modules:/workspace/apps/web/node_modules
+      - dev-contracts-modules:/workspace/packages/contracts/node_modules
+      - dev-database-modules:/workspace/packages/database/node_modules
+      - dev-storage-modules:/workspace/packages/storage/node_modules
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      S3_ENDPOINT: http://minio:9000
+      S3_REGION: ${S3_REGION}
+      S3_BUCKET: ${S3_BUCKET}
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY}
+      S3_SECRET_KEY: ${S3_SECRET_KEY}
+      API_PORT: 3333
+      WEB_ORIGIN: http://localhost:5173
+      API_PROXY_TARGET: http://localhost:3333
+      LOG_LEVEL: info
+    depends_on:
+      postgres: { condition: service_healthy }
+      minio: { condition: service_healthy }
+  api:
+    profiles: [full-stack]
+  web:
+    profiles: [full-stack]
+  init:
+    profiles: [full-stack]
+volumes:
+  dev-node-modules:
+  dev-api-modules:
+  dev-web-modules:
+  dev-contracts-modules:
+  dev-database-modules:
+  dev-storage-modules:

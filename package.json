@@ -1,0 +1,39 @@
+{
+  "name": "smartschool",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24.19.0 <25",
+    "pnpm": "11.25.0"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "generate": "pnpm --filter @smartschool/database generate",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "dev": "pnpm build && turbo run dev",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:e2e": "playwright test",
+    "db:migrate": "pnpm --filter @smartschool/database migrate",
+    "infra:init": "node --env-file=.env scripts/init.mjs",
+    "infra:up": "docker compose up -d --build --wait",
+    "infra:down": "docker compose down",
+    "smoke": "node --env-file=.env scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@testcontainers/postgresql": "12.2.1",
+    "@types/node": "24.10.0",
+    "@smartschool/database": "workspace:*",
+    "@smartschool/storage": "workspace:*",
+    "@smartschool/contracts": "workspace:*",
+    "dotenv": "18.0.7",
+    "turbo": "2.11.8",
+    "typescript": "5.9.3",
+    "vitest": "5.0.4"
+  }
+}

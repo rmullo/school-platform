@@ -1,6 +1,6 @@
 # Documentação do SmartSchool
 
-**Etapa atual:** documentação por etapas, com adequação legal e simplificação do MVP sem Kafka incorporadas em 07/10/2026. Nenhuma implementação ou conformidade operacional está certificada.
+**Etapa atual:** MD-00 aprovada em 13/10/2026; MD-01 aprovada pelo usuário em 15/10/2026. Adequação legal e simplificação sem Kafka preservadas. Nenhuma conformidade operacional está certificada.
 
 ## Documentos
 
@@ -14,14 +14,17 @@
 | [conformidade.md](conformidade.md) | Matriz de exigências, requisitos e evidências | Requisitos documentados; evidências contratuais e operacionais pendentes |
 | [decisions/README.md](decisions/README.md) | Índice de decisões individuais | Decisões 0001 a 0003 registradas; modelo disponível |
 | [reunioes/README.md](reunioes/README.md) | Registros de reuniões e conversas | Índice e modelo preparados |
-| [roadmap.md](roadmap.md) | Caminho de desenvolvimento e testes do usuário | MD-00 em validação documental; MD-01 a MD-15 planejadas |
-| [MD-00](microentregas/MD-00/README.md) | Fluxo, estados, cálculos, cenários e esboços de telas | Em validação; composição de ingresso tardio confirmada |
-| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 e TASK-0002 em validação |
+| [roadmap.md](roadmap.md) | Caminho de desenvolvimento e testes do usuário | MD-00 e MD-01 concluídas; MD-02 a MD-15 planejadas |
+| [MD-00](microentregas/MD-00/README.md) | Fluxo, estados, cálculos, cenários e esboços de telas | Aprovada em 13/10/2026; P-01 a P-07 permanecem abertas |
+| [MD-01](microentregas/MD-01/README.md) | Fundação executável, setup e testes | Aprovada em 15/10/2026; TASK-0003 concluída |
+| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 a TASK-0004 concluídas com aceite registrado |
 | [CHANGELOG](../CHANGELOG.md) | Resumo das alterações e referências de versão | Atualização a cada entrega |
 | [licensing.md](licensing.md) | Decisão de licenciamento | AGPL 3.0 aprovada em 07/10/2026 |
 | [assets/README.md](assets/README.md) | Recursos visuais da documentação | Pasta reservada |
 
 ## Colaboração
+
+Para desenvolvimento, consultar [AGENTS.md](../AGENTS.md) e a [skill do projeto](../.agents/skills/smartschool-development/SKILL.md), com guias específicos de UI, código e testes. Trabalho registrado na [TASK-0004](tasks/TASK-0004-skill-e-diretrizes-de-desenvolvimento.md).
 
 [Governança](../GOVERNANCE.md) · [Contribuição](../CONTRIBUTING.md) · [Segurança](../SECURITY.md) · [Conduta](../CODE_OF_CONDUCT.md)
 
@@ -33,7 +36,7 @@
 
 Histórico e conversa recuperada permanecem como fontes. As revisões autorizadas prevalecem sobre regras antigas, conforme as decisões [0001](decisions/0001-adequacao-legal.md) e [0002](decisions/0002-mvp-sem-kafka.md). Nenhum registro substitui os anexos originais ausentes.
 
-O código, os testes executáveis, os manifestos de dependências e as configurações de infraestrutura foram removidos em 07/10/2026. Os documentos históricos não são instruções executáveis para o estado atual do repositório. Caches locais da instalação anterior são ignorados pelo Git e não fazem parte do conteúdo preparado para publicação.
+O código, os testes executáveis, os manifestos de dependências e as configurações de infraestrutura foram removidos em 07/10/2026. A fundação foi retomada somente na MD-01, autorizada em 13/10/2026. Os documentos históricos não são instruções executáveis para o estado atual do repositório; usar o guia da MD-01. Caches locais da instalação anterior são ignorados pelo Git e não fazem parte do conteúdo preparado para publicação.
 
 ## Modelo de organização utilizado
 

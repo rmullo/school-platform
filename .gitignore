@@ -1,6 +1,7 @@
-# Arquivos locais que não devem acompanhar a documentação.
+# Segredos e arquivos locais.
 .env
 .env.*
+!.env.example
 *.log
 .DS_Store
 Thumbs.db
@@ -13,3 +14,7 @@ node_modules/
 .turbo/
 playwright-report/
 test-results/
+dist/
+coverage/
+*.tsbuildinfo
+packages/database/src/generated/

@@ -1,0 +1,28 @@
+{
+  "name": "@smartschool/database",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "build": "prisma generate && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "migrate": "prisma migrate deploy"
+  },
+  "dependencies": {
+    "@prisma/client": "7.10.0",
+    "@prisma/adapter-pg": "7.10.0",
+    "pg": "8.23.1",
+    "dotenv": "18.0.7"
+  },
+  "devDependencies": {
+    "prisma": "7.10.0",
+    "@types/pg": "8.23.1"
+  }
+}

@@ -1,0 +1,8 @@
+body { margin: 0; }
+.brand-dot { color: #4a9474; }
+.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.service-card { padding: 22px; border: 1px solid #e0e5de; border-radius: 12px; background: #fafbf8; }
+.status-dot { display: block; width: 10px; height: 10px; border-radius: 50%; }
+.status-dot.on { background: #2e7d32; box-shadow: 0 0 0 5px #e8f2e7; }
+.status-dot.off { background: #a66b17; box-shadow: 0 0 0 5px #fcf0df; }
+@media (max-width: 600px) { .service-grid { grid-template-columns: 1fr; } .service-card { padding: 20px; } }

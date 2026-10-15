@@ -2,11 +2,17 @@
 
 ## Foco atual
 
-Organizar e elaborar a documentação do SmartSchool, um assunto por vez, conforme orientação do usuário.
+Implementar somente a microentrega autorizada e manter a documentação correspondente. A MD-01 foi solicitada em 13/10/2026; seguir seu [guia de desenvolvimento e testes](docs/microentregas/MD-01/README.md), sem avançar automaticamente para outra etapa.
 
 ## Documentos de entrada
 
 Começar pelo [índice de documentação](docs/README.md) e pelo documento da etapa solicitada. Consultar os registros anteriores quando o assunto já tiver uma decisão.
+
+## UI, código e testes
+
+As orientações de trabalho estão no [AGENTS.md](AGENTS.md) e na [skill smartschool-development](.agents/skills/smartschool-development/SKILL.md), mantida em .agents/skills dentro do repositório. A skill encaminha para guias de UI, código e testes conforme a mudança. Pode ser solicitada pelo nome `$smartschool-development`; o AGENTS.md também indica sua leitura nas tarefas pertinentes.
+
+Os guias usam os comandos existentes e distinguem unitários Vitest, integração PostgreSQL/Testcontainers e jornadas Playwright. Dependências de testes de componente, lint e cobertura devem ser configuradas e verificadas quando necessárias; a documentação não as instala.
 
 ## Alterações documentais
 

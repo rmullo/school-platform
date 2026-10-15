@@ -2,6 +2,31 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## Aceite geral e envio autorizado — 15/10/2026
+
+- Usuário aprovou o estado atual do projeto e solicitou envio ao remoto: “tudo ok no projeto. envie para o repositório remoto”. TASK-0001, TASK-0003 e TASK-0004 concluídas; MD-00 já aprovada.
+- README, roadmap, guia da MD-01 e índices alinhados ao aceite. MD-02 a MD-15 continuam planejadas; pendências externas da MD-00 preservadas.
+- Escopo do envio: fundação MD-01, documentação, testes, skill e AGENTS.md. Versão e publicação verificáveis no histórico Git após a operação.
+
+## Diretrizes de UI, código e testes — 13/10/2026
+
+- Em 15/10/2026, finalizado o registro das verificações: estrutura da skill válida, links conferidos e quatro testes unitários aprovados em 13/10/2026. Tarefa em validação; alterações ainda locais.
+
+- Criada a [skill smartschool-development](.agents/skills/smartschool-development/SKILL.md) no repositório, com referências para UI acessível e consistente, organização do código e testes proporcionais ao comportamento.
+- Atualizado o [AGENTS.md](AGENTS.md) existente como ponto de entrada, preservando decisões e limites das microentregas. Guias distinguem ferramentas presentes de configurações futuras.
+- Registro: [TASK-0004](docs/tasks/TASK-0004-skill-e-diretrizes-de-desenvolvimento.md). Sem mudança na aplicação ou nas dependências; sem novo commit/publicação.
+
+## MD-01 entregue para validação — 13/10/2026
+
+- Iniciada a fundação executável por solicitação do usuário: [TASK-0003](docs/tasks/TASK-0003-md01-fundacao.md). Monorepo, API, painel de estado, PostgreSQL/Prisma, MinIO, Compose e Dev Container.
+- Configuração local com segredos gerados, logs estruturados, contratos de estado e erros padronizados. Build, tipos, quatro testes unitários, dois de integração, quatro de navegador, smoke e persistência após reinício verificados. Compose e inicialização do Dev Container executados.
+- Guia em [MD-01](docs/microentregas/MD-01/README.md). Sem regras escolares, mensageria, novo commit ou publicação.
+
+## Aceite da MD-00 — 13/10/2026
+
+- Registrada a aprovação explícita do usuário: “tudo ok no md-00”. [TASK-0002](docs/tasks/TASK-0002-md00-regras-e-exemplos.md) concluída; índices, guia e roadmap alinhados.
+- Pendências P-01 a P-07 preservadas; MD-01 permanece planejada. Registro de aceite local, ainda sem novo commit/publicação.
+
 ## Roadmap e MD-00 — 08/10/2026
 
 - Preparada a [MD-00](docs/microentregas/MD-00/README.md): fluxo e estados da matrícula, composição financeira, cancelamento, representação, documentos, 19 cenários e cinco esboços de telas. Registro: [TASK-0002](docs/tasks/TASK-0002-md00-regras-e-exemplos.md), em validação pelo usuário.

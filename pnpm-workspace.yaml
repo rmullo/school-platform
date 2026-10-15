@@ -1,0 +1,30 @@
+packages:
+  - apps/api
+  - apps/web
+  - packages/contracts
+  - packages/database
+  - packages/storage
+allowBuilds:
+  "@prisma/engines": true
+  prisma: true
+  "@nestjs/core": false
+  "@scarf/scarf": false
+  esbuild: true
+  cpu-features: false
+  protobufjs: false
+  ssh2: false
+minimumReleaseAgeExclude:
+  - '@aws-sdk/client-s3@3.1151.0'
+  - '@testcontainers/postgresql@12.2.1'
+  - '@turbo/darwin-64@2.11.8'
+  - '@turbo/darwin-arm64@2.11.8'
+  - '@turbo/linux-64@2.11.8'
+  - '@turbo/linux-arm64@2.11.8'
+  - '@turbo/windows-64@2.11.8'
+  - '@turbo/windows-arm64@2.11.8'
+  - testcontainers@12.2.1
+  - turbo@2.11.8
+saveExact: true
+engineStrict: true
+verifyDepsBeforeRun: error
+enableGlobalVirtualStore: false

@@ -3,7 +3,7 @@
 ## Identificação
 
 - Microentrega: planejamento transversal.
-- Estado: Em validação.
+- Estado: Concluída.
 - Data de criação: 08/10/2026.
 - Origem: solicitação do usuário de um caminho com microentregas testáveis, ajustes e documentação de tarefas/alterações.
 - Execução: assistente neste projeto; revisão pelo usuário.
@@ -19,7 +19,7 @@ Organizar a implementação futura em incrementos verificáveis pelo usuário, c
 - [x] Roteiro com ordem, dependências, tarefas a detalhar, teste manual e aceite por entrega.
 - [x] Modelo de registro com alterações, verificações, feedback e aceite.
 - [x] Documentos de orientação alinhados ao roteiro, preservando arquitetura sem Kafka e pendências legais.
-- [ ] Validação explícita do usuário sobre o roteiro proposto.
+- [x] Validação explícita do usuário sobre o roteiro proposto. Aprovação geral em 15/10/2026: “tudo ok no projeto. envie para o repositório remoto”.
 
 ## Trabalho realizado
 
@@ -57,6 +57,6 @@ Em 08/10/2026, o usuário solicitou “faça o MD-00”. A execução dessa micr
 
 ## Aceite e referências
 
-- Aceite: pendente.
+- Aceite: confirmado em 15/10/2026 pela aprovação geral do projeto. A execução das próximas microentregas permanece dependente de orientação.
 - Commit e envio ao GitHub solicitados pelo usuário em 08/10/2026, junto à MD-00. Conferir versão e publicação no histórico Git; pedido de publicação não equivale ao aceite funcional.
-- Próxima ação: revisar a MD-00 entregue na TASK-0002 e ajustar o roteiro conforme retorno do usuário.
+- Próxima ação: aguardar orientação sobre a próxima microentrega; o aceite geral não autoriza executar todas as etapas.

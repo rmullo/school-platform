@@ -1,0 +1,6 @@
+interface:
+  display_name: "SmartSchool: UI, código e testes"
+  short_description: "Boas práticas para microentregas do SmartSchool"
+  default_prompt: "Use $smartschool-development para implementar a tarefa autorizada do SmartSchool com UI consistente, código testável e verificações proporcionais."
+policy:
+  allow_implicit_invocation: true

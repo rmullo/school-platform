@@ -2,7 +2,18 @@
 
 Sistema interno de gestão escolar, com foco em matrículas e organização administrativa e financeira.
 
-**Momento atual: documentação, construída passo a passo com o usuário.**
+**Momento atual: MD-00 aprovada; MD-01 aprovada pelo usuário em 15/10/2026.**
+
+## Executar a fundação local
+
+Com Node.js 24 e Docker Desktop ativo, na raiz do projeto:
+
+```sh
+node scripts/setup.mjs
+docker compose up -d --build --wait
+```
+
+Abra http://localhost:5173. A primeira compilação do MinIO pode demorar alguns minutos. O [guia da MD-01](docs/microentregas/MD-01/README.md) reúne instalação, Dev Container, testes e recuperação. A fundação foi validada pelo usuário; as operações escolares serão desenvolvidas nas próximas microentregas.
 
 ## Objetivo do projeto
 
@@ -10,13 +21,13 @@ A [visão](docs/vision.md) registra contexto, princípios e limites iniciais. A 
 
 ## Como vamos trabalhar
 
-O usuário indicará o assunto de cada etapa. Os detalhes de produto, regras e decisões serão organizados conforme essa orientação. Em 07/10/2026, a implementação anterior foi removida a pedido do usuário; este repositório contém somente documentação e modelos de colaboração.
+O usuário indicará o assunto de cada etapa. Os detalhes de produto, regras e decisões serão organizados conforme essa orientação. Em 07/10/2026, a implementação anterior foi removida a pedido do usuário; a documentação foi preservada. Em 13/10/2026, o usuário autorizou retomar código apenas para a MD-01.
 
 ## Arquitetura do MVP
 
 O planejamento vigente mantém React, uma API NestJS modular e PostgreSQL, com MinIO para arquivos locais. Operações centrais usam transações no banco; relatórios consultam os dados diretamente. Auditoria, segurança e prevenção de duplicidade permanecem requisitos.
 
-Kafka, Kafka UI, workers separados e Outbox foram adiados, conforme a [decisão 0002](docs/decisions/0002-mvp-sem-kafka.md). Kubernetes e AWS ficam para etapa posterior. Esta revisão altera apenas a documentação.
+Kafka, Kafka UI, workers separados e Outbox foram adiados, conforme a [decisão 0002](docs/decisions/0002-mvp-sem-kafka.md). Kubernetes e AWS ficam para etapa posterior. A MD-01 implementa somente a fundação desse desenho.
 
 ## Documentação
 

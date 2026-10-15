@@ -1,0 +1,30 @@
+{
+  "name": "SmartSchool MD-01",
+  "dockerComposeFile": [
+    "../compose.yaml",
+    "compose.dev.yaml"
+  ],
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "node",
+  "overrideCommand": false,
+  "initializeCommand": "node scripts/setup.mjs",
+  "postCreateCommand": "git config --global --add safe.directory /workspace && pnpm install --frozen-lockfile && pnpm build && pnpm db:migrate && node scripts/init.mjs",
+  "forwardPorts": [
+    5173,
+    3333
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Prisma.prisma"
+      ]
+    }
+  },
+  "runServices": [
+    "postgres",
+    "minio",
+    "dev"
+  ]
+}

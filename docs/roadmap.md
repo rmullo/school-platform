@@ -2,11 +2,11 @@
 
 > Plano elaborado em 08/10/2026. Planejar não autoriza implementar todas as etapas. Cada microentrega passa por demonstração, teste do usuário e ajustes antes de avançar. Usar dados fictícios até cumprir as condições de uso real.
 
-## Etapa atual — revisão da documentação
+## Etapa atual — MD-01: fundação executável
 
-Em 06/10/2026, o usuário orientou priorizar a documentação e conduzir o trabalho passo a passo. A implementação está pausada por essa orientação.
+Em 06/10/2026, o usuário orientou priorizar a documentação e conduzir o trabalho passo a passo. A implementação permaneceu pausada até a autorização da MD-01 em 13/10/2026.
 
-Em 07/10/2026, o usuário solicitou remover a implementação existente e preparar um repositório apenas documental para o GitHub. O trabalho atual segue restrito à documentação.
+Em 07/10/2026, o usuário solicitou remover a implementação existente e preparar um repositório apenas documental para o GitHub. Esse marco foi preservado no histórico. Após aprovar a MD-00, o usuário solicitou “quero md-01” em 13/10/2026, autorizando somente a fundação.
 
 Em 07/10/2026, o usuário autorizou adequar a documentação aos achados legais. Especificação, PRD, dados, módulos e segurança receberam essa revisão; o [índice](README.md) distingue documentos parciais e pendências. O modelo de organização continua baseado no OpenClinic.
 
@@ -24,13 +24,13 @@ Esses pontos são condições de prontidão, não declaração de que a escola e
 
 A [decisão 0002](decisions/0002-mvp-sem-kafka.md) adia Kafka, Kafka UI, os três workers, Outbox e o processamento por mensagens. Planejar uma API NestJS modular, frontend React, PostgreSQL e MinIO; manter os demais requisitos de desenvolvimento e observabilidade aprovados. Relatórios consultam o banco e operações centrais são transacionais.
 
-A fundação futura deve iniciar do zero conforme o README, sem dependências de mensageria. A primeira matrícula completa inclui plano financeiro, pagamento inicial, confirmação e parcelas restantes; não adiar consistência financeira para uma etapa de eventos. A verificação cobre rollback, disputa de vaga e repetição de operações, além de permissões e interface.
+A fundação deve iniciar do zero conforme o README, sem dependências de mensageria. A primeira matrícula completa inclui plano financeiro, pagamento inicial, confirmação e parcelas restantes; não adiar consistência financeira para uma etapa de eventos. A verificação cobre rollback, disputa de vaga e repetição de operações, além de permissões e interface.
 
-Kubernetes/AWS permanecem posteriores. Retomar mensageria exige benefício concreto e nova decisão; não existe compromisso de introduzi-la ao final do MVP. A elaboração segue sob orientação do usuário, sem iniciar implementação nesta revisão.
+Kubernetes/AWS permanecem posteriores. Retomar mensageria exige benefício concreto e nova decisão; não existe compromisso de introduzi-la ao final do MVP. A elaboração segue sob orientação do usuário, com implementação restrita à MD-01 atualmente autorizada.
 
 ## Próximas etapas
 
-A MD-00 foi solicitada pelo usuário em 08/10/2026 e está em validação documental. As demais dependem de orientação do usuário, na ordem abaixo. Uma microentrega deve caber em uma demonstração curta e verificável; se o detalhamento revelar vários fluxos independentes, dividi-la em partes antes de implementar. Não há estimativas de calendário sem detalhar as tarefas e a disponibilidade para teste.
+A MD-00 foi solicitada pelo usuário em 08/10/2026 e aprovada documentalmente em 13/10/2026. As demais dependem de orientação do usuário, na ordem abaixo. Uma microentrega deve caber em uma demonstração curta e verificável; se o detalhamento revelar vários fluxos independentes, dividi-la em partes antes de implementar. Não há estimativas de calendário sem detalhar as tarefas e a disponibilidade para teste.
 
 ## Caminho de desenvolvimento
 
@@ -79,7 +79,7 @@ Não é necessário criar todos os arquivos de tarefas futuras agora. O roteiro 
 
 ## Situação das microentregas
 
-A [MD-00](microentregas/MD-00/README.md) está **em validação**, com execução documental solicitada pelo usuário e registrada na [TASK-0002](tasks/TASK-0002-md00-regras-e-exemplos.md). A composição de ingresso tardio foi confirmada; o aceite dos demais artefatos permanece pendente. MD-01 a MD-15 seguem planejadas, sem início automático. O roteiro geral e o fluxo documental estão registrados na [TASK-0001](tasks/TASK-0001-plano-de-microentregas.md).
+A [MD-00](microentregas/MD-00/README.md) está **concluída documentalmente**, com aceite do usuário em 13/10/2026: “tudo ok no md-00”, registrado na [TASK-0002](tasks/TASK-0002-md00-regras-e-exemplos.md). As pendências P-01 a P-07 continuam abertas para resolução antes dos fluxos afetados. A [MD-01](microentregas/MD-01/README.md) está concluída com aceite em 15/10/2026 na [TASK-0003](tasks/TASK-0003-md01-fundacao.md), autorizada em 13/10/2026. MD-02 a MD-15 seguem planejadas, sem início automático. O roteiro geral e o fluxo documental estão registrados na [TASK-0001](tasks/TASK-0001-plano-de-microentregas.md).
 
 ## Sequência técnica vigente
 

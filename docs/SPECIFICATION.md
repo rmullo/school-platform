@@ -1,13 +1,13 @@
 # SmartSchool — especificação principal do MVP
 
-> Especificação vigente de planejamento, revisada em 07/10/2026 por solicitação do usuário para incorporar a adequação legal e simplificar o MVP sem Kafka. A implementação permanece pausada; o projeto é documental.
+> Especificação vigente de planejamento, revisada em 07/10/2026 por solicitação do usuário para incorporar a adequação legal e simplificar o MVP sem Kafka. Em 13/10/2026, após aprovar a MD-00, o usuário autorizou a MD-01: somente a fundação executável.
 
-> Atualização de 07/10/2026: o código e a infraestrutura da implementação anterior foram excluídos por solicitação do usuário. Os requisitos abaixo continuam como referência de planejamento; descrições da antiga Fase 1 não indicam funcionalidades presentes neste repositório, que agora é documental.
+> Atualização de 07/10/2026: o código e a infraestrutura da implementação anterior foram excluídos por solicitação do usuário. Os requisitos abaixo continuam como referência de planejamento; descrições da antiga Fase 1 não indicam funcionalidades presentes neste repositório, que foi mantido documental até a autorização da MD-01 em 13/10/2026.
 
 ## Autoridade e referências
 > Contexto confirmado: escola privada em Assaré/CE, educação infantil e fundamental; ensino médio como expansão futura. As adequações documentais estão registradas na [decisão 0001](decisions/0001-adequacao-legal.md), com fundamentos no [mapa normativo](compliance.md). Elas não certificam a operação escolar; contratos, listas, atos locais e controles ainda precisam das evidências da [matriz](conformidade.md).
 
-A solicitação de 29/09/2026 e as decisões posteriores do usuário são a fonte do planejamento. A autorização de 07/10/2026 para adequar a documentação substitui as regras incompatíveis identificadas na decisão 0001. A [decisão 0002](decisions/0002-mvp-sem-kafka.md) também substitui a obrigatoriedade de Kafka e processamento assíncrono no MVP. Referências históricas não prevalecem sobre esta revisão. O detalhamento continua por etapas, sem iniciar implementação.
+A solicitação de 29/09/2026 e as decisões posteriores do usuário são a fonte do planejamento. A autorização de 07/10/2026 para adequar a documentação substitui as regras incompatíveis identificadas na decisão 0001. A [decisão 0002](decisions/0002-mvp-sem-kafka.md) também substitui a obrigatoriedade de Kafka e processamento assíncrono no MVP. Referências históricas não prevalecem sobre esta revisão. O detalhamento continua por etapas; a autorização atual abrange somente a MD-01.
 Conversa: chatgpt-conversation://6952a525-7750-8327-9051-ca4a6ad2da84.
 O retorno integral disponível está em reference-conversation.json: cinco turnos, sem cursor para trechos anteriores, sem anexos. Não foi possível recuperar os tópicos 3.1–3.5 ou validar os documentos originais. A pasta sources do projeto estava vazia. Nenhum arquivo sincronizado foi alterado.
 
@@ -22,7 +22,7 @@ Anexos citados, **não disponíveis nesta execução**:
 Não inferir outros valores a partir dos nomes dos arquivos. Antes de implementar seus detalhes, recuperar e conferir os anexos.
 
 ## Limite desta entrega
-Revisão documental dos requisitos de produto, dados, segurança e conformidade. Não existem aplicações disponíveis neste repositório. A arquitetura e a sequência técnica abaixo são planejamento futuro; dependem de nova orientação do usuário para implementação.
+MD-01: fundação com API, interface de estado, banco, arquivos, Compose/Dev Container e verificações. Guia em [MD-01](microentregas/MD-01/README.md). Os requisitos escolares e controles das etapas posteriores permanecem planejamento; não há autorização para implementar o sistema inteiro.
 
 ## Arquitetura aprovada
 - Monorepo pnpm workspaces + Turborepo; TypeScript.
