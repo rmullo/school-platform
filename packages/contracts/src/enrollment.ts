@@ -18,6 +18,18 @@ export const enrollmentEditSchema = z.object({
   data: enrollmentInputSchema,
 }).strict();
 
+export const enrollmentConfirmationSchema = z.object({
+  draftVersion: z.number().int().positive(),
+  operationKey: uuid,
+  settlement: z.enum(['PAYMENT', 'WAIVER', 'NEGOTIATION']),
+  amountCents: z.number().int().nonnegative(),
+  method: z.enum(['MANUAL']).optional(),
+  reason: z.string().trim().min(5).max(500).optional(),
+}).strict().superRefine((value, context) => {
+  if (value.settlement === 'PAYMENT' && value.method !== 'MANUAL') context.addIssue({ code: 'custom', path: ['method'], message: 'Informe o recebimento manual.' });
+  if (value.settlement !== 'PAYMENT' && !value.reason) context.addIssue({ code: 'custom', path: ['reason'], message: 'Informe o motivo da dispensa ou negociação.' });
+});
+
 const studentOption = z.object({ id: uuid, person: z.object({ id: uuid, name }) });
 const classroomOption = z.object({ id: uuid, name, capacity: z.number().int().positive(), occupied: z.number().int().nonnegative(), active: z.boolean(), schoolYearId: uuid });
 
@@ -35,6 +47,7 @@ export const enrollmentSchema = enrollmentInputSchema.extend({
 
 export const enrollmentOverviewSchema = z.object({
   enrollments: z.array(enrollmentSchema),
+  confirmed: z.array(z.object({ id: uuid, student: studentOption, classroom: z.object({ id: uuid, name, schoolYearId: uuid }), initialSettlement: z.object({ settlement: z.enum(['PAYMENT', 'WAIVER', 'NEGOTIATION']), amountCents: z.number().int().nonnegative() }), remainingInstallments: z.number().int().nonnegative() })),
   students: z.array(studentOption.extend({ financialResponsible: z.object({ id: uuid, name }).nullable() })),
   classrooms: z.array(classroomOption),
   campaigns: z.array(z.object({ id: uuid, name, schoolYearId: uuid })),

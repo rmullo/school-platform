@@ -2,6 +2,13 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-07 — recebimento inicial e confirmação — 22/10/2026
+
+- Execução autorizada pelo usuário e registrada na [TASK-0010](docs/tasks/TASK-0010-md07-recebimento-e-confirmacao.md) e no [guia da MD-07](docs/microentregas/MD-07/README.md). Aceite explícito registrado em 22/10/2026: “valide o md 07”; TASK-0010 concluída.
+- Implementados liquidação manual integral da parcela inicial, dispensa/negociação formal autorizada pela Direção, matrícula confirmada, ocupação concorrente segura e geração das parcelas restantes em transação PostgreSQL.
+- Criados `Enrollment`, `InitialSettlement` e `FinancialObligation`, com idempotência por chave de operação e auditoria. Pagamento parcial/a maior, crédito, reversão, restituição, cancelamento, gateway e dados reais permanecem fora.
+- `pnpm generate`, `pnpm typecheck`, `pnpm build`, unitários, integração PostgreSQL, Playwright da confirmação, Compose recriado, `pnpm smoke` e `git diff --check` passaram.
+
 ## MD-06 — matrícula em andamento — 22/10/2026
 
 - Execução autorizada pelo usuário e registrada na [TASK-0009](docs/tasks/TASK-0009-md06-matricula-em-andamento.md) e no [guia da MD-06](docs/microentregas/MD-06/README.md). Aceite explícito registrado em 22/10/2026: “md 06 validado”; TASK-0009 concluída.

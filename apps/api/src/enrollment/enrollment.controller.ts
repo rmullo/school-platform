@@ -16,4 +16,5 @@ export class EnrollmentController {
   @Get() overview(@Req() req: AuthRequest, @Res({ passthrough: true }) res: Response) { this.staff(req); res.setHeader('Cache-Control', 'no-store'); return this.enrollment.overview(); }
   @Post() create(@Body() body: unknown, @Req() req: AuthRequest) { this.staff(req, true); return this.enrollment.save(req.principal, parse(enrollmentInputSchema, body)); }
   @Put(':id') update(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest) { this.staff(req, true); const edit = parse(enrollmentEditSchema, body); return this.enrollment.save(req.principal, edit.data, { id: parse(z.uuid(), id), version: edit.version, reason: edit.reason }); }
+  @Post(':id/confirm') confirm(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.confirm(req.principal, parse(z.uuid(), id), body); }
 }

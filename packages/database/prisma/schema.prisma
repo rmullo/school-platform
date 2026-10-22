@@ -102,6 +102,7 @@ model Classroom {
   version Int @default(1)
   campaignOffers CampaignOffer[]
   enrollmentDrafts EnrollmentDraft[]
+  enrollments Enrollment[]
   @@unique([schoolYearId, gradeId, name])
 }
 
@@ -129,6 +130,7 @@ model Person {
   representationsFor StudentRepresentation[]     @relation("RepresentationPerson")
   financialFor       StudentFinancialResponsible[] @relation("FinancialPerson")
   enrollmentFinancialResponsibleFor EnrollmentDraft[] @relation("EnrollmentFinancialResponsible")
+  enrollmentFinancialResponsibleForConfirmed Enrollment[] @relation("EnrollmentConfirmedFinancialResponsible")
   pickupFor          PickupAuthorization[]       @relation("PickupPerson")
   @@index([name])
 }
@@ -144,6 +146,7 @@ model StudentProfile {
   financial      StudentFinancialResponsible?  @relation("FinancialStudent")
   pickup         PickupAuthorization[]         @relation("PickupStudent")
   enrollmentDrafts EnrollmentDraft[]
+  enrollments Enrollment[]
 }
 
 model StudentParentage {
@@ -225,6 +228,7 @@ model Campaign {
   contracts         ContractVersion[]
   offers            CampaignOffer[]
   enrollmentDrafts  EnrollmentDraft[]
+  enrollments        Enrollment[]
   @@unique([schoolYearId, name])
   @@index([schoolYearId, status])
 }
@@ -247,6 +251,7 @@ model ContractVersion {
   validUntil                 String   @db.VarChar(10)
   createdAt                  DateTime @default(now()) @db.Timestamptz(3)
   enrollmentDrafts           EnrollmentDraft[]
+  enrollments                Enrollment[]
   @@unique([campaignId, version])
   @@index([campaignId, validFrom])
 }
@@ -284,8 +289,76 @@ model EnrollmentDraft {
   version                Int              @default(1)
   createdAt              DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt              DateTime         @updatedAt @db.Timestamptz(3)
+  enrollment             Enrollment?
   @@unique([studentId, classroomId, campaignId, contractId])
   @@index([studentId])
   @@index([classroomId])
   @@index([campaignId])
+}
+
+enum SettlementKind {
+  PAYMENT
+  WAIVER
+  NEGOTIATION
+}
+
+enum EnrollmentConfirmationStatus {
+  CONFIRMED
+}
+
+enum ObligationStatus {
+  SETTLED
+  OPEN
+  WAIVED
+}
+
+model Enrollment {
+  id                     String                        @id @default(uuid()) @db.Uuid
+  draftId                String                        @unique @db.Uuid
+  draft                  EnrollmentDraft               @relation(fields: [draftId], references: [id])
+  studentId              String                        @db.Uuid
+  student                StudentProfile                @relation(fields: [studentId], references: [id])
+  classroomId            String                        @db.Uuid
+  classroom              Classroom                     @relation(fields: [classroomId], references: [id])
+  campaignId             String                        @db.Uuid
+  campaign               Campaign                      @relation(fields: [campaignId], references: [id])
+  contractId             String                        @db.Uuid
+  contract               ContractVersion               @relation(fields: [contractId], references: [id])
+  financialResponsibleId String                        @db.Uuid
+  financialResponsible   Person                        @relation("EnrollmentConfirmedFinancialResponsible", fields: [financialResponsibleId], references: [id])
+  status                 EnrollmentConfirmationStatus  @default(CONFIRMED)
+  confirmedAt            DateTime                      @default(now()) @db.Timestamptz(3)
+  version                Int                           @default(1)
+  settlement             InitialSettlement?
+  obligations            FinancialObligation[]
+  @@unique([studentId, classroomId, campaignId])
+  @@index([studentId])
+  @@index([classroomId])
+}
+
+model InitialSettlement {
+  id            String         @id @default(uuid()) @db.Uuid
+  enrollmentId  String         @unique @db.Uuid
+  enrollment    Enrollment     @relation(fields: [enrollmentId], references: [id])
+  operationKey  String         @unique @db.Uuid
+  kind          SettlementKind
+  amountCents   Int
+  method        String?
+  reason        String
+  actorId       String         @db.Uuid
+  createdAt     DateTime       @default(now()) @db.Timestamptz(3)
+  @@index([actorId, createdAt])
+}
+
+model FinancialObligation {
+  id            String           @id @default(uuid()) @db.Uuid
+  enrollmentId  String           @db.Uuid
+  enrollment    Enrollment       @relation(fields: [enrollmentId], references: [id])
+  installment   Int
+  dueDate       String           @db.VarChar(10)
+  amountCents   Int
+  status        ObligationStatus
+  createdAt     DateTime         @default(now()) @db.Timestamptz(3)
+  @@unique([enrollmentId, installment])
+  @@index([dueDate, status])
 }

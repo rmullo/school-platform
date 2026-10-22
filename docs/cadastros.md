@@ -36,6 +36,10 @@ Implementados `Campaign`, `ContractVersion` e `CampaignOffer`. A campanha guarda
 
 Implementado `EnrollmentDraft`, com aluno, turma, campanha, versão de plano, responsável financeiro vinculado, estado `DRAFT`, snapshot de `initialAmountCents`, pendências e versão. A combinação aluno/turma/campanha/plano é única; o rascunho é auditável, pode ser retomado e não ocupa a capacidade da turma nem cria mensalidades restantes.
 
+### Confirmação e obrigações — MD-07
+
+Implementados `Enrollment`, `InitialSettlement` e `FinancialObligation`. A confirmação preserva o rascunho, registra pagamento manual integral ou dispensa/negociação formal, ocupa a turma com controle concorrente e cria a obrigação inicial liquidada/dispensada mais as parcelas restantes abertas. A chave de operação evita duplicidade; pagamentos parciais, créditos, reversões e restituições ainda não fazem parte deste cadastro.
+
 ### Contas e sessões — MD-02
 
 Esquema técnico inicial implementado na [MD-02](microentregas/MD-02/README.md): conta com UUID, nome, e-mail normalizado único, hash Argon2id, perfil, situação e criação; sessão com usuário, hash do refresh, família, criação, expiração, consumo e revogação; evento de auditoria com responsável, ação, conta afetada, motivo e instante. Senha e refresh em texto não são persistidos. Listas públicas de contas não incluem hashes. Retenção operacional e políticas de recuperação continuam pendentes; não presumir guarda ilimitada.

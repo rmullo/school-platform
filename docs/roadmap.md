@@ -2,9 +2,9 @@
 
 > Plano elaborado em 08/10/2026. Planejar não autoriza implementar todas as etapas. Cada microentrega passa por demonstração, teste do usuário e ajustes antes de avançar. Usar dados fictícios até cumprir as condições de uso real.
 
-## Etapa atual — MD-06: matrícula em andamento concluída
+## Etapa atual — MD-07: recebimento inicial e confirmação concluída
 
-Em 21/10/2026, o usuário aprovou a MD-02 e solicitou avançar para a MD-03. A MD-03 foi concluída com aceite explícito em 22/10/2026. A MD-04 foi implementada e aceita explicitamente pelo usuário em 22/10/2026 (“4 aceita”). A MD-05 foi implementada, verificada e aceita explicitamente em 22/10/2026 (“md 5 aceito”), encerrando a [TASK-0008](tasks/TASK-0008-md05-contrato-plano-campanha.md). Em 22/10/2026, o usuário autorizou a MD-06 (“faca o md 06 agora”), registrada na [TASK-0009](tasks/TASK-0009-md06-matricula-em-andamento.md), e confirmou “md 06 validado”, encerrando a etapa. MD-07 não autorizada.
+Em 21/10/2026, o usuário aprovou a MD-02 e solicitou avançar para a MD-03. A MD-03 foi concluída com aceite explícito em 22/10/2026. A MD-04 foi implementada e aceita explicitamente pelo usuário em 22/10/2026 (“4 aceita”). A MD-05 foi implementada, verificada e aceita explicitamente em 22/10/2026 (“md 5 aceito”), encerrando a [TASK-0008](tasks/TASK-0008-md05-contrato-plano-campanha.md). Em 22/10/2026, o usuário autorizou a MD-06 (“faca o md 06 agora”), registrada na [TASK-0009](tasks/TASK-0009-md06-matricula-em-andamento.md), e confirmou “md 06 validado”, encerrando a etapa. Em seguida autorizou a MD-07 (“faca md 07 agora”), registrada na [TASK-0010](tasks/TASK-0010-md07-recebimento-e-confirmacao.md), e confirmou “valide o md 07”, encerrando a etapa. MD-08 não autorizada.
 
 Em 06/10/2026, o usuário orientou priorizar a documentação e conduzir o trabalho passo a passo. A implementação permaneceu pausada até a autorização da MD-01 em 13/10/2026.
 
@@ -28,7 +28,7 @@ A [decisão 0002](decisions/0002-mvp-sem-kafka.md) adia Kafka, Kafka UI, os trê
 
 A fundação deve iniciar do zero conforme o README, sem dependências de mensageria. A primeira matrícula completa inclui plano financeiro, pagamento inicial, confirmação e parcelas restantes; não adiar consistência financeira para uma etapa de eventos. A verificação cobre rollback, disputa de vaga e repetição de operações, além de permissões e interface.
 
-Kubernetes/AWS permanecem posteriores. Retomar mensageria exige benefício concreto e nova decisão; não existe compromisso de introduzi-la ao final do MVP. A elaboração segue sob orientação do usuário; MD-01 a MD-06 aceitas, sem avanço automático para MD-07.
+Kubernetes/AWS permanecem posteriores. Retomar mensageria exige benefício concreto e nova decisão; não existe compromisso de introduzi-la ao final do MVP. A elaboração segue sob orientação do usuário; MD-01 a MD-07 aceitas, sem avanço automático para MD-08.
 
 ## Próximas etapas
 
@@ -81,7 +81,7 @@ Não é necessário criar todos os arquivos de tarefas futuras agora. O roteiro 
 
 ## Situação das microentregas
 
-A [MD-00](microentregas/MD-00/README.md) está **concluída documentalmente**, com aceite do usuário em 13/10/2026: “tudo ok no md-00”, registrado na [TASK-0002](tasks/TASK-0002-md00-regras-e-exemplos.md). As pendências P-01 a P-07 continuam abertas para resolução antes dos fluxos afetados. A [MD-01](microentregas/MD-01/README.md) está concluída com aceite em 15/10/2026 na [TASK-0003](tasks/TASK-0003-md01-fundacao.md), autorizada em 13/10/2026. A [MD-02](microentregas/MD-02/README.md) foi aprovada em 21/10/2026 na [TASK-0005](tasks/TASK-0005-md02-acesso-e-auditoria.md). A [MD-03](microentregas/MD-03/README.md) foi concluída com aceite explícito em 22/10/2026 na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md). A [MD-04](microentregas/MD-04/README.md) foi aceita explicitamente em 22/10/2026 na [TASK-0007](tasks/TASK-0007-md04-pessoas-e-vinculos.md). A [MD-05](microentregas/MD-05/README.md) foi aceita explicitamente em 22/10/2026 na [TASK-0008](tasks/TASK-0008-md05-contrato-plano-campanha.md). A [MD-06](microentregas/MD-06/README.md) foi concluída com aceite explícito em 22/10/2026 na [TASK-0009](tasks/TASK-0009-md06-matricula-em-andamento.md). MD-07 a MD-15 seguem planejadas, sem início automático. O roteiro geral e o fluxo documental estão registrados na [TASK-0001](tasks/TASK-0001-plano-de-microentregas.md).
+A [MD-00](microentregas/MD-00/README.md) está **concluída documentalmente**, com aceite do usuário em 13/10/2026: “tudo ok no md-00”, registrado na [TASK-0002](tasks/TASK-0002-md00-regras-e-exemplos.md). As pendências P-01 a P-07 continuam abertas para resolução antes dos fluxos afetados. A [MD-01](microentregas/MD-01/README.md) está concluída com aceite em 15/10/2026 na [TASK-0003](tasks/TASK-0003-md01-fundacao.md), autorizada em 13/10/2026. A [MD-02](microentregas/MD-02/README.md) foi aprovada em 21/10/2026 na [TASK-0005](tasks/TASK-0005-md02-acesso-e-auditoria.md). A [MD-03](microentregas/MD-03/README.md) foi concluída com aceite explícito em 22/10/2026 na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md). A [MD-04](microentregas/MD-04/README.md) foi aceita explicitamente em 22/10/2026 na [TASK-0007](tasks/TASK-0007-md04-pessoas-e-vinculos.md). A [MD-05](microentregas/MD-05/README.md) foi aceita explicitamente em 22/10/2026 na [TASK-0008](tasks/TASK-0008-md05-contrato-plano-campanha.md). A [MD-06](microentregas/MD-06/README.md) foi concluída com aceite explícito em 22/10/2026 na [TASK-0009](tasks/TASK-0009-md06-matricula-em-andamento.md). A [MD-07](microentregas/MD-07/README.md) foi concluída com aceite explícito em 22/10/2026 na [TASK-0010](tasks/TASK-0010-md07-recebimento-e-confirmacao.md). MD-08 a MD-15 seguem planejadas, sem início automático. O roteiro geral e o fluxo documental estão registrados na [TASK-0001](tasks/TASK-0001-plano-de-microentregas.md).
 
 ## Sequência técnica vigente
 
