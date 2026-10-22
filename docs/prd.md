@@ -59,6 +59,6 @@ Contrato e listas reais; conciliação contratual do total anual e do plano de e
 
 ## Fora de escopo
 
-Incremento MD-03: estrutura escolar implementada e em validação na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md), com verificação de capacidade, vínculos, referência administrativa e controle da oferta. Esses testes não encerram o RF-11 completo: atos reais, critérios etários, renovação e operação escolar continuam pendentes nas etapas correspondentes.
+Incremento MD-03: estrutura escolar implementada e aprovada pelo usuário na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md), com verificação de capacidade, vínculos, referência administrativa e controle da oferta. Esse aceite não encerra o RF-11 completo: atos reais, critérios etários, renovação e operação escolar continuam pendentes nas etapas correspondentes.
 
 Mantidas as exclusões da [especificação](SPECIFICATION.md#fora-do-mvp): cobrança externa automatizada, mensageria automática, agente conversacional, gateway e Serasa. Kafka, Kafka UI, workers separados, Outbox, consumidores e retry/DLQ de mensagens ficam fora do MVP. Ensino médio, portal de alunos e integrações fiscais dependem de etapas futuras; processos manuais necessários às obrigações da escola devem existir antes do uso real.

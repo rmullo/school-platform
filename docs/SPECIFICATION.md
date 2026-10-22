@@ -61,7 +61,7 @@ Formalizar papéis da escola e dos fornecedores, procedimento de incidentes e av
 
 ## Estrutura escolar e campanhas
 
-MD-03 implementada por solicitação de 22/10/2026, com escopo na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md) e [guia de validação](microentregas/MD-03/README.md). O incremento cobre somente estrutura/referência administrativa/oferta, não campanhas ou validação de atos reais.
+MD-03 implementada e aprovada pelo usuário em 22/10/2026, com escopo na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md) e [guia da entrega](microentregas/MD-03/README.md). O incremento cobre somente estrutura/referência administrativa/oferta, não campanhas ou validação de atos reais.
 Ano letivo, série, turma e capacidade máxima por turma.
 Ativar oferta apenas para etapas autorizadas, registrando órgão, ato, validade e evidência. Conferir capacidade, critérios etários e escrituração conforme a etapa e o sistema de ensino competente; não adotar limites locais presumidos. Ensino médio permanece futuro, condicionado a revisão regulatória e autorização própria.
 Diretor cria campanhas; pode liberar todas as turmas de um ano de uma vez.

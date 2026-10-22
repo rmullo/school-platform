@@ -9,7 +9,7 @@ Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões.
 - Incluída exclusão confirmada em anos, etapas, séries e turmas, com motivo, controle de versão, auditoria e bloqueio de dependências, ocupação e ofertas ativas.
 - Página Estrutura escolar com formulários, estados recuperáveis, layout desktop/móvel e integração com auditoria. Sem novas dependências.
 - Build/tipos aprovados; 14 unitários, 20 de integração, 11 E2E e smoke aprovados; imagens Docker e migração verificadas. CI remota/Dev Container não executados nesta tarefa.
-- [TASK-0006](docs/tasks/TASK-0006-md03-estrutura-escolar.md) e [guia MD-03](docs/microentregas/MD-03/README.md) atualizados. Em validação, sem aceite, commit, publicação ou avanço para MD-04.
+- [TASK-0006](docs/tasks/TASK-0006-md03-estrutura-escolar.md) e [guia MD-03](docs/microentregas/MD-03/README.md) atualizados. Aceite explícito registrado em 22/10/2026; sem commit, publicação ou avanço para MD-04.
 
 ## Transição para MD-03 — estrutura escolar — 21/10/2026
 

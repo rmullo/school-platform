@@ -1,6 +1,6 @@
 # MD-02 — Acesso e auditoria básica
 
-Estado: **Aprovada**, com aceite explícito do usuário em 21/10/2026. Implementação e verificações na [TASK-0005](../../tasks/TASK-0005-md02-acesso-e-auditoria.md). A MD-03 foi autorizada para planejamento; sua implementação ainda não iniciou.
+Estado: **Aprovada**, com aceite explícito do usuário em 21/10/2026. Implementação e verificações na [TASK-0005](../../tasks/TASK-0005-md02-acesso-e-auditoria.md). A MD-03 foi posteriormente implementada e aprovada em 22/10/2026; a MD-04 permanece sem autorização.
 
 ## Escopo
 

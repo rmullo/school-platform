@@ -1,6 +1,6 @@
 # MD-03 — Estrutura escolar
 
-Estado: **Em validação**. Planejamento autorizado em 21/10/2026 após o aceite da MD-02; implementação solicitada e verificada em 22/10/2026. Execução na [TASK-0006](../../tasks/TASK-0006-md03-estrutura-escolar.md), com aceite pendente. MD-04 não iniciada.
+Estado: **Concluída**. Planejamento autorizado em 21/10/2026 após o aceite da MD-02; implementação solicitada, verificada e aprovada pelo usuário em 22/10/2026. Execução na [TASK-0006](../../tasks/TASK-0006-md03-estrutura-escolar.md). MD-04 não iniciada.
 
 ## Escopo
 

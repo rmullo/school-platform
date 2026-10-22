@@ -3,7 +3,7 @@
 ## Identificação
 
 - Microentrega: MD-03.
-- Estado: Em validação.
+- Estado: Concluída.
 - Data de criação: 21/10/2026.
 - Origem da solicitação: usuário aprovou a MD-02 e solicitou avançar para a MD-03.
 - Requisitos/decisões relacionados: RF-09, RF-11 e critérios de estrutura escolar da especificação vigente.
@@ -28,7 +28,7 @@ Ficam fora desta tarefa: alunos e responsáveis (MD-04), campanhas/contratos (MD
 - [x] API valida e autoriza as operações independentemente da interface.
 - [x] Banco, API, contratos e interface têm testes proporcionais; a jornada principal é verificável por navegador.
 - [x] Documentação afetada, roteiro manual, limitações e resultados reais são atualizados.
-- [ ] Aceite explícito do usuário é registrado antes de encerrar a tarefa.
+- [x] Aceite explícito do usuário é registrado antes de encerrar a tarefa.
 
 ## Decisões e pendências
 
@@ -77,8 +77,9 @@ Durante a primeira compilação foi corrigida a tipagem da seleção dinâmica d
 | Data | Retorno do usuário | Ação tomada ou tarefa vinculada | Situação |
 | --- | --- | --- | --- |
 | 21/10/2026 | Usuário aprovou MD-02 e solicitou avançar para MD-03 | Tarefa aberta | Em planejamento |
-| 22/10/2026 | “faca md 03 agora” | Implementação executada e verificada | Em validação; aceite pendente |
-| 22/10/2026 | Usuário informou que não havia opção de apagar os cadastros | Exclusão confirmada adicionada às quatro abas, com API, auditoria e testes de dependências | Em validação; aceite pendente |
+| 22/10/2026 | “faca md 03 agora” | Implementação executada e verificada | Entrega apresentada para validação |
+| 22/10/2026 | Usuário informou que não havia opção de apagar os cadastros | Exclusão confirmada adicionada às quatro abas, com API, auditoria e testes de dependências | Ajuste validado |
+| 22/10/2026 | “md 03 está ok. documente a finalização” | Usuário aprovou explicitamente a MD-03; tarefa encerrada documentalmente | Concluída |
 
 ## Registro de alterações
 
@@ -88,7 +89,7 @@ Durante a primeira compilação foi corrigida a tipagem da seleção dinâmica d
 
 ## Aceite e referências
 
-- Aceite do usuário: pendente para a entrega da MD-03.
+- Aceite do usuário: registrado em 22/10/2026 — “md 03 está ok. documente a finalização”.
 - Commit/PR: não criado nesta tarefa até confirmação.
 - Publicação: não realizada.
-- Pendências: teste/aceite do usuário; comprovações operacionais e critérios legais reais não são substituídos pela demonstração. MD-04 não iniciada.
+- Pendências: comprovações operacionais e critérios legais reais não são substituídos pela demonstração. MD-04 não iniciada.
