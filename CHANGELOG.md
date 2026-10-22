@@ -2,6 +2,16 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-02 — acesso e auditoria básica — 21/10/2026
+
+- A pedido do usuário, criado um Diretor fictício no banco local de desenvolvimento, com senha aleatória fora do repositório; login/perfil e encerramento da sessão de verificação confirmados. Conta disponível para validação manual, sem aceite presumido da MD-02.
+
+- Implementados login Argon2id/JWT, refresh rotativo protegido, logout, contas individuais DIRECTOR/SECRETARY/IT, autorização na API e revogação/desativação de acessos.
+- Auditoria transacional, proteção concorrente do último Diretor ativo e bootstrap interativo sem senha padrão. Migração adicional PostgreSQL; sem regras escolares ou mensageria.
+- Interface de login, contas/auditoria e navegação por perfil, com painel técnico protegido. React Hook Form/Zod e divisão por páginas; revisão desktop/móvel e teclado.
+- Build/typecheck aprovados, 7 unitários, 11 de integração e 9 E2E aprovados; smoke aprovado. Imagens Docker de API, web e inicializador compiladas. CI remota não executada nesta tarefa.
+- Setup, Compose/Dev Container e documentação atualizados. [TASK-0005](docs/tasks/TASK-0005-md02-acesso-e-auditoria.md) e [guia MD-02](docs/microentregas/MD-02/README.md). Estado **Em validação**, sem aceite, commit, publicação ou avanço para MD-03.
+
 ## Aceite geral e envio autorizado — 15/10/2026
 
 - Usuário aprovou o estado atual do projeto e solicitou envio ao remoto: “tudo ok no projeto. envie para o repositório remoto”. TASK-0001, TASK-0003 e TASK-0004 concluídas; MD-00 já aprovada.

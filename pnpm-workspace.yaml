@@ -5,6 +5,7 @@ packages:
   - packages/database
   - packages/storage
 allowBuilds:
+  argon2: true
   "@prisma/engines": true
   prisma: true
   "@nestjs/core": false

@@ -1,4 +1,6 @@
-import { Controller, Get, Module, Res } from '@nestjs/common';
+import { Controller, Get, Module, Res, Req, UseGuards, ForbiddenException } from '@nestjs/common';
+import { AccessService, type Principal } from './access/access.service.js';
+import { AccessGuard, AuthController, UsersController } from './access/access.controller.js';
 import type { Response } from 'express';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoggerModule } from 'nestjs-pino';
@@ -18,11 +20,13 @@ class HealthController {
   async ready(@Res({ passthrough: true }) response: Response) {
     const status = await this.foundation.status();
     response.status(status.status === 'ready' ? 200 : 503);
-    return status;
+    return { status: status.status, checkedAt: status.checkedAt, services: status.services };
   }
   @Get('api/v1/status')
+  @UseGuards(AccessGuard)
   @ApiOperation({ summary: 'Estado da fundação local, sem dados escolares' })
-  async status(@Res({ passthrough: true }) response: Response) {
+  async status(@Res({ passthrough: true }) response: Response, @Req() request: { principal: Principal }) {
+    if (!['DIRECTOR', 'IT'].includes(request.principal.user.role)) throw new ForbiddenException('Acesso técnico restrito.');
     response.setHeader('Cache-Control', 'no-store');
     return this.foundation.status();
   }
@@ -44,7 +48,7 @@ class HealthController {
       },
     },
   })],
-  controllers: [HealthController],
-  providers: [{ provide: APP_CONFIG, useValue: config }, FoundationService],
+  controllers: [HealthController, AuthController, UsersController],
+  providers: [{ provide: APP_CONFIG, useValue: config }, FoundationService, AccessService, AccessGuard],
 })
 export class AppModule {}

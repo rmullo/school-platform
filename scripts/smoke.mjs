@@ -8,11 +8,11 @@ assert.equal(health.status, 200);
 const ready = await fetch(api + '/ready', { headers: { 'x-correlation-id': 'md01-smoke' }, signal: AbortSignal.timeout(10000) });
 assert.equal(ready.status, 200);
 assert.equal(ready.headers.get('x-correlation-id'), 'md01-smoke');
-const state = environmentStatusSchema.parse(await ready.json());
+const state = environmentStatusSchema.omit({ installation: true }).parse(await ready.json());
 assert.equal(state.status, 'ready');
 const proxied = await fetch(web + '/api/v1/status', { signal: AbortSignal.timeout(10000) });
-assert.equal(proxied.status, 200);
-assert.equal(environmentStatusSchema.parse(await proxied.json()).installation?.id, state.installation?.id);
+assert.equal(proxied.status, 401);
+assert.equal((await fetch(api + '/api/v1/users')).status, 401);
 assert.equal((await fetch(api + '/api/docs-json')).status, 200);
 const storage = new FileStorage(storageConfigFromEnv(process.env));
 try {
@@ -20,5 +20,4 @@ try {
   const anonymous = await fetch(process.env.S3_ENDPOINT + '/' + process.env.S3_BUCKET + '/foundation/example.txt');
   assert.equal(anonymous.status, 403);
 } finally { storage.close(); }
-console.log('Smoke aprovado: API, prontidão, proxy, Swagger, correlationId e arquivo privado.');
-console.log('Identificador persistente: ' + state.installation?.id);
+console.log('Smoke aprovado: API, prontidão, proxy protegido, Swagger, correlationId e arquivo privado.');

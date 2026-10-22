@@ -1,68 +1,32 @@
-import React from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router';
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
-import { Alert, Box, Button, Chip, Container, CssBaseline, Paper, Stack, ThemeProvider, Typography, createTheme } from '@mui/material';
-import { environmentStatusSchema } from '@smartschool/contracts';
+import { BrowserRouter, Link as RouterLink, Route, Routes, Navigate } from 'react-router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Alert, Box, Button, Chip, CircularProgress, Container, CssBaseline, Stack, ThemeProvider, Typography, createTheme } from '@mui/material';
+import { SessionProvider, useSession } from './auth/session.js';
+import { LoginPage } from './auth/LoginPage.js';
 import './style.css';
-
-const theme = createTheme({
-  palette: { primary: { main: '#18574d' }, background: { default: '#f5f6f2' } },
-  typography: { fontFamily: '"Segoe UI", system-ui, sans-serif', h3: { fontWeight: 650 }, h5: { fontWeight: 600 } },
-  shape: { borderRadius: 16 },
-});
-const client = new QueryClient();
-function EnvironmentPage() {
-  const query = useQuery({
-    queryKey: ['environment'],
-    queryFn: async ({ signal }) => {
-      const response = await fetch('/api/v1/status', { signal: AbortSignal.any([signal, AbortSignal.timeout(7000)]) });
-      if (!response.ok) throw new Error('API indisponível');
-      return environmentStatusSchema.parse(await response.json());
-    },
-    retry: false, refetchInterval: 10000,
-  });
-  const info = query.data;
-  const failed = query.isError;
-  const ready = !failed && info?.status === 'ready';
-  const pending = query.isPending;
-  const services = [
-    { name: 'Aplicação', description: 'Comunicação com a API', ok: !failed && !!info },
-    { name: 'Banco de dados', description: 'Conexão e inicialização', ok: !failed && info?.services.database === 'available' },
-    { name: 'Arquivos', description: 'Armazenamento privado', ok: !failed && info?.services.storage === 'available' },
-  ];
-  return <Container maxWidth="md" sx={{ py: { xs: 3, sm: 6 } }}>
-    <Stack direction="row" sx={{ mb: 7, justifyContent: "space-between", alignItems: "center" }}>
-      <Typography sx={{ fontWeight: 750, fontSize: 22 }}>SmartSchool<span className="brand-dot">.</span></Typography>
-      <Chip label="Ambiente local" variant="outlined" size="small"/>
-    </Stack>
-    <Typography variant="overline" color="primary">MD-01 · Fundação</Typography>
-    <Typography variant="h3" component="h1" sx={{ mt: 1, mb: 2, fontSize: { xs: 32, sm: 44 } }}>Um começo bem organizado.</Typography>
-    <Typography color="text.secondary" sx={{ maxWidth: 620, mb: 4 }}>Este painel verifica os serviços que vão sustentar o sistema da escola. A primeira etapa é deixar o ambiente pronto e preservar os dados entre reinícios.</Typography>
-    <Paper variant="outlined" sx={{ p: { xs: 2.5, sm: 4 }, mb: 3 }}>
-      <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ mb: 3, justifyContent: "space-between", gap: 2 }}>
-        <Box role="status" aria-live="polite">
-          <Typography variant="h5" component="h2">{pending ? 'Verificando o ambiente' : ready ? 'Ambiente pronto' : 'Ambiente precisa de atenção'}</Typography>
-          <Typography color="text.secondary" sx={{ mt: 1 }}>{pending ? 'Consultando os serviços…' : ready ? 'Os serviços da fundação estão disponíveis.' : 'Confira os serviços abaixo e tente atualizar.'}</Typography>
-        </Box>
-        <Button variant="outlined" onClick={() => void query.refetch()} disabled={query.isFetching} sx={{ alignSelf: 'flex-start', whiteSpace: 'nowrap' }}>{query.isFetching ? 'Verificando…' : 'Atualizar estado'}</Button>
-      </Stack>
-      <Box className="service-grid">
-        {services.map(service => <Box className="service-card" key={service.name}>
-          <span aria-hidden="true" className={'status-dot ' + (!pending && service.ok ? 'on' : 'off')}/>
-          <Typography component="h3" sx={{ mt: 2, fontWeight: 650 }}>{service.name}</Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ my: 1 }}>{service.description}</Typography>
-          <Chip size="small" label={pending ? 'Verificando' : service.ok ? 'Disponível' : 'Indisponível'} color={pending ? 'default' : service.ok ? 'success' : 'warning'} variant="outlined"/>
-        </Box>)}
-      </Box>
-      {failed && <Alert severity="warning" sx={{ mt: 3 }}>Não foi possível consultar a aplicação. Verifique se o ambiente está iniciado e use “Atualizar estado”.</Alert>}
-      {!failed && info?.status === 'degraded' && <Alert severity="warning" sx={{ mt: 3 }}>Um serviço não respondeu ou ainda não foi inicializado. Consulte o guia da MD-01 para recuperar o ambiente.</Alert>}
-      {!failed && info?.installation && <Box sx={{ mt: 3 }}><Typography variant="body2" color="text.secondary">Identificador do ambiente</Typography><Typography variant="body2" sx={{ overflowWrap: 'anywhere', fontFamily: 'monospace' }} data-testid="installation-id">{info.installation.id}</Typography><Typography variant="caption" color="text.secondary">Este identificador deve permanecer igual após reiniciar.</Typography></Box>}
-      {!failed && info && <Typography variant="caption" color="text.secondary" sx={{ mt: 2, display: "block" }}>Última consulta: {new Date(info.checkedAt).toLocaleTimeString('pt-BR')}</Typography>}
-    </Paper>
-    <Alert severity="info" variant="outlined">Esta entrega valida apenas a fundação. Matrículas, pagamentos e acesso por usuário serão desenvolvidos nas próximas etapas. Use somente exemplos fictícios.</Alert>
-    <Typography variant="body2" color="text.secondary" sx={{ mt: 4 }}>Próxima etapa prevista: acesso e auditoria básica, após validação desta entrega.</Typography>
-  </Container>;
+const AccountsPage = lazy(() => import('./users/AccountsPage.js'));
+const EnvironmentPage = lazy(() => import('./EnvironmentPage.js').then(m => ({ default: m.EnvironmentPage })));
+const theme = createTheme({ palette: { primary: { main: '#18574d' }, background: { default: '#f5f6f2' } }, typography: { fontFamily: '"Segoe UI", system-ui, sans-serif', h3: { fontWeight: 650 }, h5: { fontWeight: 600 } }, shape: { borderRadius: 16 }, components: { MuiButton: { styleOverrides: { root: { textTransform: 'none', fontWeight: 650 } } } } });
+const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+function App() {
+  const { user, loading, error, retry, logout } = useSession();
+  const [logoutError, setLogoutError] = useState(''); const [leaving, setLeaving] = useState(false);
+  if (loading) return <Container sx={{ py: 8 }}><CircularProgress aria-label="Recuperando sessão"/></Container>;
+  if (error) return <Container sx={{ py: 8 }}><Alert severity="warning">{error}</Alert><Button onClick={retry}>Tentar novamente</Button></Container>;
+  if (!user) return <LoginPage/>;
+  const technical = user.role === 'DIRECTOR' || user.role === 'IT';
+  return <><Box component="header" sx={{ bgcolor: 'background.paper', borderBottom: '1px solid', borderColor: 'divider' }}><Container maxWidth="lg"><Stack direction={{ xs: 'column', sm: 'row' }} sx={{ py: 2, gap: 2, justifyContent: 'space-between', alignItems: { sm: 'center' } }}>
+    <Typography component={RouterLink} to="/" sx={{ fontSize: 22, fontWeight: 800, color: 'primary.main', textDecoration: 'none' }}>SmartSchool.</Typography>
+    <Stack direction="row" sx={{ gap: 1, alignItems: 'center', flexWrap: 'wrap' }}><Typography sx={{ overflowWrap: 'anywhere' }}>{user.name}</Typography><Chip size="small" label={{ DIRECTOR: 'Direção', SECRETARY: 'Secretaria', IT: 'TI' }[user.role]}/><Button disabled={leaving} onClick={() => { setLeaving(true); setLogoutError(''); void logout().then(() => client.clear()).catch(() => setLogoutError('Não foi possível confirmar a saída. Tente novamente.')).finally(() => setLeaving(false)); }}>{leaving ? 'Saindo…' : 'Sair'}</Button></Stack>
+  </Stack></Container></Box>
+  <Container maxWidth="lg" sx={{ py: 2 }}><Stack component="nav" aria-label="Navegação principal" direction="row" sx={{ gap: 1, flexWrap: 'wrap' }}><Button component={RouterLink} to="/">Início</Button>{user.role === 'DIRECTOR' && <Button component={RouterLink} to="/contas">Contas e auditoria</Button>}{technical && <Button component={RouterLink} to="/ambiente">Ambiente técnico</Button>}</Stack>{logoutError && <Alert severity="error">{logoutError}</Alert>}</Container>
+  <Box component="main"><Suspense fallback={<Container sx={{ py: 4 }}><CircularProgress aria-label="Carregando página"/></Container>}><Routes>
+    <Route path="/" element={<Container maxWidth="lg" sx={{ py: 5 }}><Typography variant="overline" color="primary">SEU ESPAÇO DE TRABALHO</Typography><Typography variant="h3" component="h1" sx={{ mt: 1, mb: 2, fontSize: { xs: 34, md: 46 } }}>Bom ter você por aqui.</Typography><Typography color="text.secondary" sx={{ mb: 4 }}>Acesso individual, responsabilidades claras e um começo bem organizado.</Typography><Alert severity="info" variant="outlined">Acesso e auditoria básica estão disponíveis para validação. As funcionalidades escolares serão adicionadas nas próximas etapas.</Alert></Container>}/>
+    <Route path="/contas" element={user.role === 'DIRECTOR' ? <AccountsPage/> : <Navigate to="/" replace/>}/>
+    <Route path="/ambiente" element={technical ? <EnvironmentPage/> : <Navigate to="/" replace/>}/>
+    <Route path="*" element={<Container sx={{ py: 5 }}><Typography component="h1" variant="h4">Página não encontrada</Typography><Button component={RouterLink} to="/">Voltar ao início</Button></Container>}/>
+  </Routes></Suspense></Box></>;
 }
-function App() { return <ThemeProvider theme={theme}><CssBaseline/><QueryClientProvider client={client}><BrowserRouter><Routes><Route path="/" element={<EnvironmentPage/>}/><Route path="*" element={<Container sx={{ py: 6 }}><Typography variant="h4" component="h1">Página não encontrada</Typography><Button component={RouterLink} to="/">Voltar ao ambiente</Button></Container>}/></Routes></BrowserRouter></QueryClientProvider></ThemeProvider>; }
-ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><ThemeProvider theme={theme}><CssBaseline/><QueryClientProvider client={client}><SessionProvider><BrowserRouter><App/></BrowserRouter></SessionProvider></QueryClientProvider></ThemeProvider></React.StrictMode>);

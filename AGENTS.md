@@ -16,6 +16,7 @@
 - Nunca modificar referências sincronizadas em sources/ do projeto que contém este repositório, quando essa pasta estiver presente.
 
 - Em 13/10/2026, após aprovar a MD-00, o usuário solicitou a MD-01. Está autorizada a implementação da fundação descrita no roadmap e em docs/tasks/TASK-0003-md01-fundacao.md. A restrição documental anterior permanece como histórico; não impede esta etapa explicitamente solicitada. Não avançar para MD-02 ou regras escolares sem nova orientação.
+- Em 21/10/2026, o usuário solicitou executar a MD-02. Autorizados acesso, sessões, contas individuais, RBAC e auditoria básica conforme docs/tasks/TASK-0005-md02-acesso-e-auditoria.md. A autorização não abrange MD-03, publicação ou uso de dados reais.
 
 ## Skill de desenvolvimento do projeto
 

@@ -23,6 +23,8 @@ services:
       WEB_ORIGIN: http://localhost:5173
       API_PROXY_TARGET: http://localhost:3333
       LOG_LEVEL: info
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:?Run setup for MD-02}
+      AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
     depends_on:
       postgres: { condition: service_healthy }
       minio: { condition: service_healthy }

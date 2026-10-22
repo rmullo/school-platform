@@ -1,5 +1,7 @@
 import { z } from 'zod';
 const schema = z.object({
+  AUTH_JWT_SECRET: z.string().min(64).refine(v => v !== 'generated-by-setup'),
+  AUTH_COOKIE_SECURE: z.enum(['true', 'false']).default('false').transform(v => v === 'true'),
   DATABASE_URL: z.url().refine(v => v.startsWith('postgresql://') || v.startsWith('postgres://')),
   S3_ENDPOINT: z.url(), S3_REGION: z.string().min(1), S3_BUCKET: z.string().min(3),
   S3_ACCESS_KEY: z.string().min(1), S3_SECRET_KEY: z.string().min(8),

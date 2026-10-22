@@ -1,6 +1,6 @@
 # Organização dos módulos
 
-> Revisão parcial de 07/10/2026: adequação legal e simplificação do MVP sem Kafka. Demais detalhes seguem por etapas; nenhum módulo está implementado.
+> Revisão parcial de 07/10/2026: adequação legal e simplificação do MVP sem Kafka. MD-02 implementada e em validação em 21/10/2026: users/audit e acesso básico; os demais módulos escolares permanecem planejamento.
 
 ## Como ler este documento
 
@@ -19,6 +19,8 @@ Os módulos seguem a [especificação vigente](SPECIFICATION.md). A [decisão 00
 | sales / products | Livros e uniformes opcionais, compra externa, pagamento/entrega separados; sem taxa obrigatória de material coletivo |
 | documents | Documentos necessários, versões, permissão e retenção; emissão/liberação escolar sem bloqueio por dívida |
 | users / audit | Menor privilégio e rastreabilidade, incluindo acessos excepcionais e desligamentos |
+
+Na [MD-02](microentregas/MD-02/README.md), o módulo de acesso coordena contas, sessões, perfis e auditoria de alterações de conta na mesma transação. Diretor administra contas; Secretaria não administra acessos; TI consulta o painel técnico sem acesso à administração de pessoas/auditoria. Acessos excepcionais a documentos e auditoria de operações escolares serão detalhados nos módulos correspondentes.
 
 ## Responsabilidades e fronteiras
 

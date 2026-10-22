@@ -2,7 +2,7 @@
 
 Sistema interno de gestão escolar, com foco em matrículas e organização administrativa e financeira.
 
-**Momento atual: MD-00 aprovada; MD-01 aprovada pelo usuário em 15/10/2026.**
+**Momento atual: MD-00 e MD-01 aprovadas; MD-02 implementada e em validação, com aceite pendente.**
 
 ## Executar a fundação local
 
@@ -14,6 +14,8 @@ docker compose up -d --build --wait
 ```
 
 Abra http://localhost:5173. A primeira compilação do MinIO pode demorar alguns minutos. O [guia da MD-01](docs/microentregas/MD-01/README.md) reúne instalação, Dev Container, testes e recuperação. A fundação foi validada pelo usuário; as operações escolares serão desenvolvidas nas próximas microentregas.
+
+A MD-02 acrescenta login e exige criar o primeiro Diretor pelo procedimento interativo do [guia de acesso](docs/microentregas/MD-02/README.md). Não há senha padrão. Execute novamente o setup para acrescentar a configuração de autenticação a ambientes anteriores.
 
 ## Objetivo do projeto
 

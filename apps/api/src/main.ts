@@ -12,10 +12,10 @@ async function bootstrap() {
   app.useLogger(app.get(Logger));
   app.use(helmet());
   app.useGlobalFilters(new ProblemFilter());
-  app.enableCors({ origin: config.WEB_ORIGIN });
+  app.enableCors({ origin: config.WEB_ORIGIN, credentials: true });
   app.enableShutdownHooks();
   SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app,
-    new DocumentBuilder().setTitle('SmartSchool — MD-01').setDescription('Fundação local. Sem autenticação ou operações escolares.').setVersion('0.1.0').build()));
+    new DocumentBuilder().setTitle('SmartSchool — MD-02').setDescription('Acesso e auditoria básica. Sem operações escolares.').addBearerAuth().setVersion('0.2.0').build()));
   await app.listen(config.API_PORT, '0.0.0.0');
 }
 bootstrap().catch(() => { console.error('API não iniciou. Verifique a configuração e os logs locais.'); process.exitCode = 1; });

@@ -1,0 +1,62 @@
+import { test, expect, signIn } from './fixtures.js';
+test('login rejeitado não expõe conta e mantém formulário recuperável', async ({ page, accounts }) => {
+  await page.goto('/');
+  await page.getByRole('textbox', { name: 'E-mail', exact: true }).fill(accounts.director);
+  await page.getByLabel('Senha', { exact: true }).fill('incorrect');
+  await page.getByRole('button', { name: 'Entrar', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('E-mail ou senha inválidos');
+  await page.getByLabel('Senha', { exact: true }).fill(accounts.password);
+  await page.getByRole('button', { name: 'Entrar', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Bom ter você por aqui.' })).toBeVisible();
+});
+test('Diretor consulta contas e auditoria, recarrega sessão e sai', async ({ page, accounts }) => {
+  await signIn(page, accounts.director, accounts.password);
+  await page.getByRole('link', { name: 'Contas e auditoria' }).click();
+  await expect(page.getByRole('heading', { name: 'Pessoas da equipe' })).toBeVisible();
+  await expect(page.getByText(accounts.director, { exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Histórico de acesso e alterações' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Contas e auditoria', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => localStorage.length)).toBe(0);
+  await page.getByRole('button', { name: 'Sair', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Bem-vindo de volta' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Bem-vindo de volta' })).toBeVisible();
+});
+test('Secretaria não recebe navegação administrativa ou painel técnico', async ({ page, accounts }) => {
+  await signIn(page, accounts.secretary, accounts.password);
+  await expect(page.getByRole('link', { name: 'Contas e auditoria' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Ambiente técnico' })).toHaveCount(0);
+  await page.goto('/contas');
+  await expect(page.getByRole('heading', { name: 'Bom ter você por aqui.' })).toBeVisible();
+});
+test('Diretor cria conta e desativa com motivo rastreável', async ({ page, accounts }) => {
+  await signIn(page, accounts.director, accounts.password);
+  await page.getByRole('link', { name: 'Contas e auditoria' }).click();
+  const email = `new-${Date.now()}@example.test`;
+  await page.getByRole('textbox', { name: 'Nome', exact: true }).fill('Pessoa Temporária');
+  await page.getByRole('textbox', { name: 'E-mail', exact: true }).fill(email);
+  await page.getByLabel('Senha inicial', { exact: true }).fill(accounts.password);
+  const [response] = await Promise.all([page.waitForResponse(response => response.url().endsWith('/api/v1/users') && response.request().method() === 'POST'), page.getByRole('button', { name: 'Criar conta' }).click()]);
+  expect(response.status()).toBe(201); accounts.ids.push((await response.json()).id);
+  await expect(page.getByText(email, { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Gerenciar Pessoa Temporária', exact: true }).click();
+  await page.getByRole('combobox', { name: 'Situação' }).click();
+  await page.getByRole('option', { name: 'Desativada', exact: true }).click();
+  await page.getByLabel('Motivo', { exact: true }).fill('Fim do teste fictício');
+  await page.getByRole('button', { name: 'Salvar alterações' }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByText('Fim do teste fictício', { exact: true })).toBeVisible();
+});
+test('login utilizável por teclado e em largura móvel', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const email = page.getByRole('textbox', { name: 'E-mail', exact: true });
+  await email.focus(); await page.keyboard.press('Tab');
+  await expect(page.getByLabel('Senha', { exact: true })).toBeFocused();
+  await page.keyboard.press('Tab'); await expect(page.getByRole('button', { name: 'Entrar', exact: true })).toBeFocused();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: 'test-results/md02-login-mobile.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.screenshot({ path: 'test-results/md02-login-desktop.png', fullPage: true });
+});

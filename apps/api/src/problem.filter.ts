@@ -10,7 +10,7 @@ export class ProblemFilter implements ExceptionFilter {
       type: 'about:blank',
       title: status === 404 ? 'Recurso não encontrado' : 'Não foi possível concluir a solicitação',
       status,
-      detail: status < 500 ? 'Verifique o endereço e os dados da solicitação.' : 'Tente novamente ou consulte os logs locais com o identificador da solicitação.',
+      detail: status < 500 && error instanceof HttpException ? error.message : 'Tente novamente ou consulte os logs locais com o identificador da solicitação.',
       correlationId: response.getHeader('x-correlation-id'),
     });
   }

@@ -9,6 +9,8 @@ x-app-environment: &app-environment
   API_PORT: 3333
   WEB_ORIGIN: ${WEB_ORIGIN}
   LOG_LEVEL: ${LOG_LEVEL:-info}
+  AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:?Run setup for MD-02}
+  AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
 services:
   postgres:
     image: postgres:17.9-bookworm
