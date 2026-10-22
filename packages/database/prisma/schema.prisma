@@ -62,6 +62,7 @@ model SchoolYear {
   endDate String @db.VarChar(10)
   version Int @default(1)
   classrooms Classroom[]
+  campaigns Campaign[]
 }
 
 enum SchoolSegment {
@@ -99,6 +100,7 @@ model Classroom {
   occupied Int @default(0)
   active Boolean @default(false)
   version Int @default(1)
+  campaignOffers CampaignOffer[]
   @@unique([schoolYearId, gradeId, name])
 }
 
@@ -196,4 +198,61 @@ model PickupAuthorization {
   version      Int            @default(1)
   @@unique([studentId, personId, validFrom])
   @@index([personId])
+}
+
+enum CampaignStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Campaign {
+  id                String             @id @default(uuid()) @db.Uuid
+  schoolYearId      String             @db.Uuid
+  schoolYear        SchoolYear         @relation(fields: [schoolYearId], references: [id])
+  name              String
+  status            CampaignStatus     @default(DRAFT)
+  enrollmentStart   String             @db.VarChar(10)
+  enrollmentEnd     String             @db.VarChar(10)
+  disclosure        String
+  calendar          String
+  vacancyPolicy     String
+  version           Int                @default(1)
+  createdAt         DateTime           @default(now()) @db.Timestamptz(3)
+  contracts         ContractVersion[]
+  offers            CampaignOffer[]
+  @@unique([schoolYearId, name])
+  @@index([schoolYearId, status])
+}
+
+model ContractVersion {
+  id                         String   @id @default(uuid()) @db.Uuid
+  campaignId                 String   @db.Uuid
+  campaign                   Campaign @relation(fields: [campaignId], references: [id])
+  version                    Int
+  title                      String
+  totalAnnualCents           Int
+  initialInstallmentCents    Int
+  remainingInstallmentCents  Int
+  remainingInstallmentCount  Int
+  siblingDiscountBps         Int      @default(0)
+  punctualityDiscountCents   Int      @default(0)
+  materialCollectiveRequired Boolean  @default(false)
+  terms                      String
+  validFrom                  String   @db.VarChar(10)
+  validUntil                 String   @db.VarChar(10)
+  createdAt                  DateTime @default(now()) @db.Timestamptz(3)
+  @@unique([campaignId, version])
+  @@index([campaignId, validFrom])
+}
+
+model CampaignOffer {
+  id         String    @id @default(uuid()) @db.Uuid
+  campaignId String    @db.Uuid
+  campaign   Campaign  @relation(fields: [campaignId], references: [id])
+  classroomId String   @db.Uuid
+  classroom  Classroom @relation(fields: [classroomId], references: [id])
+  version    Int       @default(1)
+  @@unique([campaignId, classroomId])
+  @@index([classroomId])
 }

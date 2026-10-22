@@ -34,7 +34,8 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0004 | Qualidade transversal | [Skill e diretrizes de desenvolvimento](TASK-0004-skill-e-diretrizes-de-desenvolvimento.md) | Concluída | Aceite em 15/10/2026; consultar histórico Git |
 | TASK-0005 | MD-02 | [Acesso e auditoria básica](TASK-0005-md02-acesso-e-auditoria.md) | Concluída | Aceite explícito em 21/10/2026 |
 | TASK-0006 | MD-03 | [Estrutura escolar](TASK-0006-md03-estrutura-escolar.md) | Concluída | Aceite explícito em 22/10/2026 |
-| TASK-0007 | MD-04 | [Pessoas e vínculos](TASK-0007-md04-pessoas-e-vinculos.md) | Em validação | Implementada e verificada em 22/10/2026; aceite pendente |
+| TASK-0007 | MD-04 | [Pessoas e vínculos](TASK-0007-md04-pessoas-e-vinculos.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
+| TASK-0008 | MD-05 | [Contrato, plano e campanha](TASK-0008-md05-contrato-plano-campanha.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
 
 ## Procedimento de encerramento
 

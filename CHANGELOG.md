@@ -2,10 +2,18 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-05 — contrato, plano e campanha — 22/10/2026
+
+- Execução autorizada pelo usuário e registrada na [TASK-0008](docs/tasks/TASK-0008-md05-contrato-plano-campanha.md) e no [guia da MD-05](docs/microentregas/MD-05/README.md). Aceite explícito “md 5 aceito” registrado em 22/10/2026; TASK-0008 concluída.
+- Implementados campanha por ano letivo, divulgação/calendário/vagas, versões de plano e composição exata em centavos; parcela inicial permanece dentro do total anual.
+- Descontos de irmãos e pontualidade são distintos e não aplicados automaticamente; material coletivo obrigatório é recusado pelo contrato e pelo banco.
+- Implementados ofertas de turmas sem ocupar vagas, API exclusiva da Direção, controle de versão, auditoria, tela MUI e validação móvel. Sem matrícula, aceite contratual, cobrança, pagamento, publicação ou dados reais.
+- Build, typecheck, 17 unitários, 27 testes na execução de integração e 1 jornada E2E da MD-05 aprovados; Compose recriado com migração e volumes preservados.
+
 ## MD-04 — pessoas e vínculos — 22/10/2026
 
 - Execução iniciada por solicitação do usuário; escopo e critérios registrados na [TASK-0007](docs/tasks/TASK-0007-md04-pessoas-e-vinculos.md) e no [guia da MD-04](docs/microentregas/MD-04/README.md).
-- Implementados modelos de pessoas e vínculos, API protegida, tela para Direção/Secretaria e auditoria; 14 unitários, 25 de integração e 13 E2E aprovados em execução serial. Estado **Em validação**, aceite pendente. MD-05 não iniciada.
+- Implementados modelos de pessoas e vínculos, API protegida, tela para Direção/Secretaria e auditoria; 14 unitários, 25 de integração e 13 E2E aprovados em execução serial. Aceite explícito do usuário registrado: “4 aceita”. TASK-0007 concluída; MD-05 segue em tarefa própria.
 
 ## MD-03 — estrutura escolar — 22/10/2026
 

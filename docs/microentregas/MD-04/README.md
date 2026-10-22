@@ -1,6 +1,6 @@
 # MD-04 — Pessoas e vínculos
 
-Estado: **Em validação**. Implementação autorizada pelo usuário em 22/10/2026 e registrada na [TASK-0007](../../tasks/TASK-0007-md04-pessoas-e-vinculos.md). Verificações locais passaram; aceite do usuário pendente. MD-05 não iniciada.
+Estado: **Concluída**. Implementação autorizada pelo usuário em 22/10/2026 e aceita explicitamente com “4 aceita”, registrada na [TASK-0007](../../tasks/TASK-0007-md04-pessoas-e-vinculos.md). MD-05 segue em tarefa própria.
 
 ## Escopo
 
@@ -49,4 +49,4 @@ Todas as escritas exigem sessão de Direção/Secretaria, identificação do cli
 
 ## Estado
 
-Critérios, alterações, verificações e aceite serão registrados na [TASK-0007](../../tasks/TASK-0007-md04-pessoas-e-vinculos.md). Não avançar para MD-05 sem orientação e novo aceite.
+Critérios, alterações, verificações e aceite estão registrados na [TASK-0007](../../tasks/TASK-0007-md04-pessoas-e-vinculos.md). A MD-05 foi autorizada em tarefa própria; não avançar para MD-06 sem nova orientação e aceite.

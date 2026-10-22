@@ -3,7 +3,7 @@
 ## Identificação
 
 - Microentrega: MD-04.
-- Estado: Em validação.
+- Estado: Concluída.
 - Data de criação: 22/10/2026.
 - Origem da solicitação: usuário solicitou “desenvolva o md 04”.
 - Requisitos/decisões relacionados: RF-06, RF-08, RF-09 e seção Pessoas da especificação vigente.
@@ -27,7 +27,7 @@ Inclui busca/listagem limitada, correção rastreável, validação de vigência
 - [x] Dados sensíveis não aparecem em listagens amplas; auditoria não registra dados desnecessários.
 - [x] Banco, API, contratos, interface e testes proporcionais estão documentados.
 - [x] Documentação, limitações, roteiro manual e resultados reais são atualizados.
-- [ ] Aceite explícito do usuário é registrado antes de encerrar a tarefa.
+- [x] Aceite explícito do usuário é registrado antes de encerrar a tarefa.
 
 ## Decisões e pendências
 
@@ -65,6 +65,7 @@ Em 22/10/2026 foram implementados os modelos Prisma e migração adicional, cont
 | --- | --- | --- | --- |
 | 22/10/2026 | “desenvolva o md 04” | Tarefa aberta e execução autorizada | Em andamento |
 | 22/10/2026 | Jornada MD-04 executada | Ajuste de serialização pública e validação E2E concluídos | Em validação |
+| 22/10/2026 | “4 aceita” | Usuário confirmou o aceite da MD-04 | Concluída |
 
 ## Registro de alterações
 
@@ -74,7 +75,7 @@ Em 22/10/2026 foram implementados os modelos Prisma e migração adicional, cont
 
 ## Aceite e referências
 
-- Aceite do usuário: pendente.
+- Aceite do usuário: confirmado em 22/10/2026 — “4 aceita”.
 - Commit/PR: não criado nesta tarefa até confirmação.
 - Publicação: não realizada.
-- Pendências: implementação, verificações e validação do usuário.
+- Pendências: nenhuma dentro do escopo da MD-04; MD-05 segue em tarefa própria.
