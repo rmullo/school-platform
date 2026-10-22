@@ -1,6 +1,6 @@
 # TASK-0005 — MD-02: acesso e auditoria básica
 
-- Estado: Em validação.
+- Estado: Concluída.
 - Criação: 21/10/2026.
 - Origem: usuário solicitou executar a MD-02.
 - Dependência: MD-01 aceita. Requisitos: RF-09 e RF-12; seção de acesso da especificação.
@@ -56,9 +56,12 @@ Listagens limitadas a 100 registros; limitador de login por processo/IP (compart
 
 ## Feedback e aceite
 
+- 21/10/2026: usuário aprovou a MD-02 e solicitou avançar para a MD-03.
+- Aceite explícito registrado nesta mensagem; a tarefa foi encerrada sem ampliar o escopo da MD-02.
+
 - 21/10/2026: usuário solicitou criar um Diretor de teste no desenvolvimento. Escopo adicional: uma conta fictícia local, senha aleatória não versionada, verificação de login/perfil e encerramento da sessão de verificação. Não alterar contas existentes ou criar dados reais; MD-02 continua em validação.
 - Executado: primeiro Diretor fictício criado pelo serviço de acesso com auditoria de bootstrap. Login via interface/proxy retornou 200, perfil DIRECTOR confirmado, consulta de identidade retornou 200 e logout de verificação retornou 204. A conta permanece ativa para teste do usuário; senha entregue apenas na conversa, sem registro em arquivos. Não houve alteração de código, commit ou publicação.
 
 - 21/10/2026: usuário solicitou executar a MD-02; implementação autorizada.
-- Entrega em validação; aceite explícito pendente.
-- Nenhum commit, push, publicação ou avanço para MD-03 realizado.
+- Entrega aprovada pelo usuário em 21/10/2026.
+- Nenhum commit, push ou publicação realizado nesta tarefa.

@@ -2,6 +2,12 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## Transição para MD-03 — estrutura escolar — 21/10/2026
+
+- Registrado o aceite explícito da MD-02 pelo usuário e encerrada a [TASK-0005](docs/tasks/TASK-0005-md02-acesso-e-auditoria.md).
+- Aberta a [TASK-0006](docs/tasks/TASK-0006-md03-estrutura-escolar.md) e criado o guia da [MD-03](docs/microentregas/MD-03/README.md), com escopo, critérios, dependências e limitações.
+- Nenhum código da MD-03, commit ou publicação foi realizado nesta transição.
+
 ## MD-02 — acesso e auditoria básica — 21/10/2026
 
 - A pedido do usuário, criado um Diretor fictício no banco local de desenvolvimento, com senha aleatória fora do repositório; login/perfil e encerramento da sessão de verificação confirmados. Conta disponível para validação manual, sem aceite presumido da MD-02.

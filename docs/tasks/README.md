@@ -32,7 +32,8 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0002 | MD-00 | [Regras, exemplos e fluxo de matrícula](TASK-0002-md00-regras-e-exemplos.md) | Concluída | Aceite documental em 13/10/2026; consultar histórico Git |
 | TASK-0003 | MD-01 | [Fundação executável](TASK-0003-md01-fundacao.md) | Concluída | Aceite em 15/10/2026; consultar histórico Git |
 | TASK-0004 | Qualidade transversal | [Skill e diretrizes de desenvolvimento](TASK-0004-skill-e-diretrizes-de-desenvolvimento.md) | Concluída | Aceite em 15/10/2026; consultar histórico Git |
-| TASK-0005 | MD-02 | [Acesso e auditoria básica](TASK-0005-md02-acesso-e-auditoria.md) | Em validação | Autorizada em 21/10/2026; aceite pendente |
+| TASK-0005 | MD-02 | [Acesso e auditoria básica](TASK-0005-md02-acesso-e-auditoria.md) | Concluída | Aceite explícito em 21/10/2026 |
+| TASK-0006 | MD-03 | [Estrutura escolar](TASK-0006-md03-estrutura-escolar.md) | Planejada | Autorizada em 21/10/2026; implementação não iniciada |
 
 ## Procedimento de encerramento
 
