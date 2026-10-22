@@ -36,6 +36,7 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0006 | MD-03 | [Estrutura escolar](TASK-0006-md03-estrutura-escolar.md) | Concluída | Aceite explícito em 22/10/2026 |
 | TASK-0007 | MD-04 | [Pessoas e vínculos](TASK-0007-md04-pessoas-e-vinculos.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
 | TASK-0008 | MD-05 | [Contrato, plano e campanha](TASK-0008-md05-contrato-plano-campanha.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
+| TASK-0009 | MD-06 | [Matrícula em andamento](TASK-0009-md06-matricula-em-andamento.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
 
 ## Procedimento de encerramento
 

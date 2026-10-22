@@ -32,6 +32,10 @@ Implementados `Person` e `StudentProfile`, com vínculos separados para `Student
 
 Implementados `Campaign`, `ContractVersion` e `CampaignOffer`. A campanha guarda ano letivo, período de inscrições, divulgação, calendário, condição de vagas e estado. O plano usa centavos inteiros e impõe `total = parcela inicial + (parcela restante × quantidade)`, mantendo descontos de irmãos e pontualidade separados. Material coletivo obrigatório é proibido; a oferta de turma não modifica ocupação.
 
+### Matrícula em andamento — MD-06
+
+Implementado `EnrollmentDraft`, com aluno, turma, campanha, versão de plano, responsável financeiro vinculado, estado `DRAFT`, snapshot de `initialAmountCents`, pendências e versão. A combinação aluno/turma/campanha/plano é única; o rascunho é auditável, pode ser retomado e não ocupa a capacidade da turma nem cria mensalidades restantes.
+
 ### Contas e sessões — MD-02
 
 Esquema técnico inicial implementado na [MD-02](microentregas/MD-02/README.md): conta com UUID, nome, e-mail normalizado único, hash Argon2id, perfil, situação e criação; sessão com usuário, hash do refresh, família, criação, expiração, consumo e revogação; evento de auditoria com responsável, ação, conta afetada, motivo e instante. Senha e refresh em texto não são persistidos. Listas públicas de contas não incluem hashes. Retenção operacional e políticas de recuperação continuam pendentes; não presumir guarda ilimitada.

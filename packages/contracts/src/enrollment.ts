@@ -1,0 +1,46 @@
+import { z } from 'zod';
+
+const uuid = z.uuid();
+const name = z.string().trim().min(2).max(300);
+
+export const enrollmentInputSchema = z.object({
+  studentId: uuid,
+  classroomId: uuid,
+  campaignId: uuid,
+  contractId: uuid,
+  financialResponsibleId: uuid,
+  pendingItems: z.array(z.string().trim().min(2).max(160)).max(20),
+}).strict();
+
+export const enrollmentEditSchema = z.object({
+  version: z.number().int().positive(),
+  reason: z.string().trim().min(5).max(300),
+  data: enrollmentInputSchema,
+}).strict();
+
+const studentOption = z.object({ id: uuid, person: z.object({ id: uuid, name }) });
+const classroomOption = z.object({ id: uuid, name, capacity: z.number().int().positive(), occupied: z.number().int().nonnegative(), active: z.boolean(), schoolYearId: uuid });
+
+export const enrollmentSchema = enrollmentInputSchema.extend({
+  id: uuid,
+  status: z.literal('DRAFT'),
+  initialAmountCents: z.number().int().nonnegative(),
+  version: z.number().int().positive(),
+  student: studentOption,
+  classroom: classroomOption,
+  campaign: z.object({ id: uuid, name, schoolYearId: uuid }),
+  contract: z.object({ id: uuid, campaignId: uuid, title: name, version: z.number().int().positive(), initialInstallmentCents: z.number().int().nonnegative(), totalAnnualCents: z.number().int().nonnegative() }),
+  financialResponsible: z.object({ id: uuid, name }),
+});
+
+export const enrollmentOverviewSchema = z.object({
+  enrollments: z.array(enrollmentSchema),
+  students: z.array(studentOption.extend({ financialResponsible: z.object({ id: uuid, name }).nullable() })),
+  classrooms: z.array(classroomOption),
+  campaigns: z.array(z.object({ id: uuid, name, schoolYearId: uuid })),
+  contracts: z.array(z.object({ id: uuid, campaignId: uuid, title: name, version: z.number().int().positive(), initialInstallmentCents: z.number().int().nonnegative(), totalAnnualCents: z.number().int().nonnegative() })),
+});
+
+export type EnrollmentInput = z.infer<typeof enrollmentInputSchema>;
+export type Enrollment = z.infer<typeof enrollmentSchema>;
+export type EnrollmentOverview = z.infer<typeof enrollmentOverviewSchema>;

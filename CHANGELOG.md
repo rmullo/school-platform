@@ -2,6 +2,13 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-06 — matrícula em andamento — 22/10/2026
+
+- Execução autorizada pelo usuário e registrada na [TASK-0009](docs/tasks/TASK-0009-md06-matricula-em-andamento.md) e no [guia da MD-06](docs/microentregas/MD-06/README.md). Aceite explícito registrado em 22/10/2026: “md 06 validado”; TASK-0009 concluída.
+- Implementados rascunho persistente, pendências, responsável financeiro vinculado, campanha/turma/plano compatíveis, snapshot da parcela inicial, auditoria, controle de versão e bloqueio de duplicidade.
+- Interface para Direção/Secretaria salvar e retomar matrícula. Rascunho não ocupa vaga, não confirma matrícula, não registra pagamento e não gera mensalidades restantes.
+- `pnpm generate`, `pnpm typecheck`, `pnpm build`, unitários e integração da MD-06 passaram. E2E específico e smoke da MD-06 não foram executados.
+
 ## MD-05 — contrato, plano e campanha — 22/10/2026
 
 - Execução autorizada pelo usuário e registrada na [TASK-0008](docs/tasks/TASK-0008-md05-contrato-plano-campanha.md) e no [guia da MD-05](docs/microentregas/MD-05/README.md). Aceite explícito “md 5 aceito” registrado em 22/10/2026; TASK-0008 concluída.

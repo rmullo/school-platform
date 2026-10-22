@@ -30,6 +30,8 @@ Na [MD-04](microentregas/MD-04/README.md), o módulo `people` cadastra pessoas e
 
 Na [MD-05](microentregas/MD-05/README.md), o módulo `commercial` registra campanhas por ano letivo, versões de plano com composição exata em centavos e ofertas de turmas sem ocupar vagas. Direção administra a entrega; não há aceite de contrato, matrícula, cobrança, aplicação automática de descontos ou publicação externa.
 
+Na [MD-06](microentregas/MD-06/README.md), o módulo `enrollment` salva e retoma rascunhos com aluno, responsável financeiro vinculado, campanha, turma ofertada, plano, pendências e snapshot da parcela inicial. Direção e Secretaria administram a entrega; o rascunho não ocupa vaga, não confirma matrícula e não gera cobrança.
+
 Dados de saúde e restrições judiciais não devem aparecer em telas financeiras ou logs gerais. O financeiro não decide acesso pedagógico; produtos não condicionam matrícula. Suporte técnico não implica autorização irrestrita sobre documentos.
 
 ## Dependências e integrações

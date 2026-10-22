@@ -13,6 +13,8 @@ import { PeopleController } from './people/people.controller.js';
 import { PeopleService } from './people/people.service.js';
 import { CommercialController } from './commercial/commercial.controller.js';
 import { CommercialService } from './commercial/commercial.service.js';
+import { EnrollmentController } from './enrollment/enrollment.controller.js';
+import { EnrollmentService } from './enrollment/enrollment.service.js';
 const config = readConfig(process.env);
 @ApiTags('Ambiente')
 @Controller()
@@ -54,7 +56,7 @@ class HealthController {
       },
     },
   })],
-  controllers: [HealthController, AuthController, UsersController, SchoolController, PeopleController, CommercialController],
-  providers: [{ provide: APP_CONFIG, useValue: config }, FoundationService, AccessService, AccessGuard, SchoolService, PeopleService, CommercialService],
+  controllers: [HealthController, AuthController, UsersController, SchoolController, PeopleController, CommercialController, EnrollmentController],
+  providers: [{ provide: APP_CONFIG, useValue: config }, FoundationService, AccessService, AccessGuard, SchoolService, PeopleService, CommercialService, EnrollmentService],
 })
 export class AppModule {}

@@ -101,6 +101,7 @@ model Classroom {
   active Boolean @default(false)
   version Int @default(1)
   campaignOffers CampaignOffer[]
+  enrollmentDrafts EnrollmentDraft[]
   @@unique([schoolYearId, gradeId, name])
 }
 
@@ -127,6 +128,7 @@ model Person {
   parentageFor       StudentParentage[]           @relation("ParentagePerson")
   representationsFor StudentRepresentation[]     @relation("RepresentationPerson")
   financialFor       StudentFinancialResponsible[] @relation("FinancialPerson")
+  enrollmentFinancialResponsibleFor EnrollmentDraft[] @relation("EnrollmentFinancialResponsible")
   pickupFor          PickupAuthorization[]       @relation("PickupPerson")
   @@index([name])
 }
@@ -141,6 +143,7 @@ model StudentProfile {
   representations StudentRepresentation[]      @relation("RepresentationStudent")
   financial      StudentFinancialResponsible?  @relation("FinancialStudent")
   pickup         PickupAuthorization[]         @relation("PickupStudent")
+  enrollmentDrafts EnrollmentDraft[]
 }
 
 model StudentParentage {
@@ -221,6 +224,7 @@ model Campaign {
   createdAt         DateTime           @default(now()) @db.Timestamptz(3)
   contracts         ContractVersion[]
   offers            CampaignOffer[]
+  enrollmentDrafts  EnrollmentDraft[]
   @@unique([schoolYearId, name])
   @@index([schoolYearId, status])
 }
@@ -242,6 +246,7 @@ model ContractVersion {
   validFrom                  String   @db.VarChar(10)
   validUntil                 String   @db.VarChar(10)
   createdAt                  DateTime @default(now()) @db.Timestamptz(3)
+  enrollmentDrafts           EnrollmentDraft[]
   @@unique([campaignId, version])
   @@index([campaignId, validFrom])
 }
@@ -255,4 +260,32 @@ model CampaignOffer {
   version    Int       @default(1)
   @@unique([campaignId, classroomId])
   @@index([classroomId])
+}
+
+enum EnrollmentStatus {
+  DRAFT
+}
+
+model EnrollmentDraft {
+  id                     String           @id @default(uuid()) @db.Uuid
+  studentId              String           @db.Uuid
+  student                StudentProfile   @relation(fields: [studentId], references: [id])
+  classroomId            String           @db.Uuid
+  classroom              Classroom        @relation(fields: [classroomId], references: [id])
+  campaignId             String           @db.Uuid
+  campaign               Campaign         @relation(fields: [campaignId], references: [id])
+  contractId             String           @db.Uuid
+  contract               ContractVersion  @relation(fields: [contractId], references: [id])
+  financialResponsibleId String           @db.Uuid
+  financialResponsible   Person           @relation("EnrollmentFinancialResponsible", fields: [financialResponsibleId], references: [id])
+  status                 EnrollmentStatus @default(DRAFT)
+  initialAmountCents     Int
+  pendingItems           String[]         @default([])
+  version                Int              @default(1)
+  createdAt              DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt              DateTime         @updatedAt @db.Timestamptz(3)
+  @@unique([studentId, classroomId, campaignId, contractId])
+  @@index([studentId])
+  @@index([classroomId])
+  @@index([campaignId])
 }
