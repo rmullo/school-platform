@@ -308,8 +308,20 @@ enum EnrollmentConfirmationStatus {
 
 enum ObligationStatus {
   SETTLED
+  PARTIAL
   OPEN
   WAIVED
+}
+
+enum PaymentStatus {
+  POSTED
+  REVERSED
+}
+
+enum CreditStatus {
+  AVAILABLE
+  CONSUMED
+  REVERSED
 }
 
 model Enrollment {
@@ -331,6 +343,8 @@ model Enrollment {
   version                Int                           @default(1)
   settlement             InitialSettlement?
   obligations            FinancialObligation[]
+  payments               PaymentReceipt[]
+  credits                FinancialCredit[]
   @@unique([studentId, classroomId, campaignId])
   @@index([studentId])
   @@index([classroomId])
@@ -350,6 +364,65 @@ model InitialSettlement {
   @@index([actorId, createdAt])
 }
 
+model PaymentReceipt {
+  id            String          @id @default(uuid()) @db.Uuid
+  enrollmentId  String          @db.Uuid
+  enrollment    Enrollment      @relation(fields: [enrollmentId], references: [id])
+  operationKey  String          @unique @db.Uuid
+  receiptNumber String          @unique
+  amountCents   Int
+  method        String
+  status        PaymentStatus   @default(POSTED)
+  reason        String?
+  actorId       String          @db.Uuid
+  receivedAt    DateTime        @default(now()) @db.Timestamptz(3)
+  reversedAt    DateTime?       @db.Timestamptz(3)
+  reverseReason String?
+  reverseOperationKey String? @unique @db.Uuid
+  allocations   PaymentAllocation[]
+  credit        FinancialCredit?
+  @@index([enrollmentId, receivedAt])
+  @@index([actorId, receivedAt])
+}
+
+model PaymentAllocation {
+  id            String             @id @default(uuid()) @db.Uuid
+  paymentId     String             @db.Uuid
+  payment       PaymentReceipt     @relation(fields: [paymentId], references: [id])
+  obligationId  String             @db.Uuid
+  obligation    FinancialObligation @relation(fields: [obligationId], references: [id])
+  amountCents   Int
+  createdAt     DateTime           @default(now()) @db.Timestamptz(3)
+  @@unique([paymentId, obligationId])
+  @@index([obligationId])
+}
+
+model FinancialCredit {
+  id              String             @id @default(uuid()) @db.Uuid
+  enrollmentId    String             @db.Uuid
+  enrollment      Enrollment         @relation(fields: [enrollmentId], references: [id])
+  sourcePaymentId String             @unique @db.Uuid
+  sourcePayment   PaymentReceipt    @relation(fields: [sourcePaymentId], references: [id])
+  originalAmountCents Int
+  balanceCents    Int
+  status          CreditStatus      @default(AVAILABLE)
+  allocations     CreditAllocation[]
+  createdAt       DateTime           @default(now()) @db.Timestamptz(3)
+  @@index([enrollmentId, status])
+}
+
+model CreditAllocation {
+  id            String             @id @default(uuid()) @db.Uuid
+  creditId      String             @db.Uuid
+  credit        FinancialCredit    @relation(fields: [creditId], references: [id])
+  obligationId  String             @db.Uuid
+  obligation    FinancialObligation @relation(fields: [obligationId], references: [id])
+  operationKey  String             @unique @db.Uuid
+  amountCents   Int
+  createdAt     DateTime           @default(now()) @db.Timestamptz(3)
+  @@index([obligationId])
+}
+
 model FinancialObligation {
   id            String           @id @default(uuid()) @db.Uuid
   enrollmentId  String           @db.Uuid
@@ -357,8 +430,11 @@ model FinancialObligation {
   installment   Int
   dueDate       String           @db.VarChar(10)
   amountCents   Int
+  settledAmountCents Int            @default(0)
   status        ObligationStatus
   createdAt     DateTime         @default(now()) @db.Timestamptz(3)
   @@unique([enrollmentId, installment])
   @@index([dueDate, status])
+  allocations   PaymentAllocation[]
+  creditAllocations CreditAllocation[]
 }

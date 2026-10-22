@@ -1,6 +1,6 @@
 # Organização dos módulos
 
-> Revisão parcial de 07/10/2026: adequação legal e simplificação do MVP sem Kafka. MD-05 foi concluída com aceite em 22/10/2026: campanhas e planos contratuais preparatórios; matrícula e financeiro transacional permanecem planejamento.
+> Revisão parcial de 07/10/2026: adequação legal e simplificação do MVP sem Kafka. MD-08 foi concluída com aceite: recebimentos, créditos e reversões internas são transacionais; gateway, restituição efetiva e nota fiscal permanecem fora.
 
 ## Como ler este documento
 
@@ -32,7 +32,7 @@ Na [MD-05](microentregas/MD-05/README.md), o módulo `commercial` registra campa
 
 Na [MD-06](microentregas/MD-06/README.md), o módulo `enrollment` salva e retoma rascunhos com aluno, responsável financeiro vinculado, campanha, turma ofertada, plano, pendências e snapshot da parcela inicial. Direção e Secretaria administram a entrega; o rascunho não ocupa vaga, não confirma matrícula e não gera cobrança.
 
-Na [MD-07](microentregas/MD-07/README.md), o módulo `enrollment` registra a liquidação inicial manual ou a dispensa/negociação formal, confirma a matrícula, ocupa a vaga e gera as obrigações restantes na mesma transação. Pagamento parcial, crédito, reversão, restituição e cancelamento permanecem em etapas posteriores.
+Na [MD-07](microentregas/MD-07/README.md), o módulo `enrollment` registra a liquidação inicial manual ou a dispensa/negociação formal, confirma a matrícula, ocupa a vaga e gera as obrigações restantes na mesma transação. Na [MD-08](microentregas/MD-08/README.md), registra recebimentos manuais, alocações, créditos e reversões com auditoria e idempotência. Gateway, restituição efetiva, nota fiscal e cancelamento permanecem fora.
 
 Dados de saúde e restrições judiciais não devem aparecer em telas financeiras ou logs gerais. O financeiro não decide acesso pedagógico; produtos não condicionam matrícula. Suporte técnico não implica autorização irrestrita sobre documentos.
 

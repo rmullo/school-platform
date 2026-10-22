@@ -2,6 +2,13 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-08 — recebimentos e correções — 22/10/2026
+
+- Execução autorizada pelo usuário e registrada na [TASK-0011](docs/tasks/TASK-0011-md08-recebimentos-e-correcoes.md) e no [guia da MD-08](docs/microentregas/MD-08/README.md). Aceite explícito registrado em 22/10/2026: “md 08 validado”; TASK-0011 concluída.
+- Implementados recebimento manual integral/parcial/a maior, alocação em obrigações, crédito excedente, destinação de crédito, recibo interno, reversão com motivo, idempotência e auditoria.
+- Banco protegido por valores em centavos, saldos/status parciais, restrições, índices e transações PostgreSQL. Gateway, nota fiscal, restituição efetiva, cancelamento e dados reais permanecem fora.
+- `pnpm generate`, `pnpm typecheck`, `pnpm build`, 24 unitários, 29 testes de integração PostgreSQL e 15 E2E passaram. A execução registrou apenas o aviso de depreciação do cliente `pg` em consultas concorrentes; não bloqueou os testes.
+
 ## MD-07 — recebimento inicial e confirmação — 22/10/2026
 
 - Execução autorizada pelo usuário e registrada na [TASK-0010](docs/tasks/TASK-0010-md07-recebimento-e-confirmacao.md) e no [guia da MD-07](docs/microentregas/MD-07/README.md). Aceite explícito registrado em 22/10/2026: “valide o md 07”; TASK-0010 concluída.

@@ -38,7 +38,7 @@ Implementado `EnrollmentDraft`, com aluno, turma, campanha, versão de plano, re
 
 ### Confirmação e obrigações — MD-07
 
-Implementados `Enrollment`, `InitialSettlement` e `FinancialObligation`. A confirmação preserva o rascunho, registra pagamento manual integral ou dispensa/negociação formal, ocupa a turma com controle concorrente e cria a obrigação inicial liquidada/dispensada mais as parcelas restantes abertas. A chave de operação evita duplicidade; pagamentos parciais, créditos, reversões e restituições ainda não fazem parte deste cadastro.
+Implementados `Enrollment`, `InitialSettlement` e `FinancialObligation`. A confirmação preserva o rascunho, registra pagamento manual integral ou dispensa/negociação formal, ocupa a turma com controle concorrente e cria a obrigação inicial liquidada/dispensada mais as parcelas restantes abertas. A MD-08 acrescenta `PaymentReceipt`, `PaymentAllocation`, `FinancialCredit` e `CreditAllocation`: valores em centavos, saldo liquidado/status parcial, recibo interno, crédito excedente, destinação idempotente e reversão preservando o histórico. Gateway, nota fiscal e restituição efetiva não são simulados.
 
 ### Contas e sessões — MD-02
 

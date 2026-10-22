@@ -1,6 +1,6 @@
 # Documentação do SmartSchool
 
-**Etapa atual:** MD-00 a MD-07 concluídas com aceite explícito; MD-08 permanece planejada. Adequação legal e simplificação sem Kafka preservadas. Nenhuma conformidade operacional está certificada.
+**Etapa atual:** MD-00 a MD-08 concluídas com aceite explícito; MD-09 permanece planejada e não autorizada. Adequação legal e simplificação sem Kafka preservadas. Nenhuma conformidade operacional está certificada.
 
 ## Documentos
 
@@ -14,7 +14,7 @@
 | [conformidade.md](conformidade.md) | Matriz de exigências, requisitos e evidências | Requisitos documentados; evidências contratuais e operacionais pendentes |
 | [decisions/README.md](decisions/README.md) | Índice de decisões individuais | Decisões 0001 a 0003 registradas; modelo disponível |
 | [reunioes/README.md](reunioes/README.md) | Registros de reuniões e conversas | Índice e modelo preparados |
-| [roadmap.md](roadmap.md) | Caminho de desenvolvimento e testes do usuário | MD-00 a MD-07 concluídas; MD-08 a MD-15 planejadas |
+| [roadmap.md](roadmap.md) | Caminho de desenvolvimento e testes do usuário | MD-00 a MD-08 concluídas; MD-09 a MD-15 planejadas |
 | [MD-00](microentregas/MD-00/README.md) | Fluxo, estados, cálculos, cenários e esboços de telas | Aprovada em 13/10/2026; P-01 a P-07 permanecem abertas |
 | [MD-01](microentregas/MD-01/README.md) | Fundação executável, setup e testes | Aprovada em 15/10/2026; TASK-0003 concluída |
 | [MD-02](microentregas/MD-02/README.md) | Acesso, perfis, sessões e auditoria básica | Aprovada em 21/10/2026; TASK-0005 |
@@ -23,7 +23,8 @@
 | [MD-05](microentregas/MD-05/README.md) | Contrato, plano e campanha | Concluída em 22/10/2026; TASK-0008 |
 | [MD-06](microentregas/MD-06/README.md) | Matrícula em andamento | Concluída em 22/10/2026; TASK-0009 |
 | [MD-07](microentregas/MD-07/README.md) | Recebimento inicial e confirmação | Concluída em 22/10/2026; TASK-0010 |
-| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 a TASK-0010 concluídas |
+| [MD-08](microentregas/MD-08/README.md) | Recebimentos e correções | Concluída em 22/10/2026; TASK-0011 |
+| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 a TASK-0011 concluídas |
 | [CHANGELOG](../CHANGELOG.md) | Resumo das alterações e referências de versão | Atualização a cada entrega |
 | [licensing.md](licensing.md) | Decisão de licenciamento | AGPL 3.0 aprovada em 07/10/2026 |
 | [assets/README.md](assets/README.md) | Recursos visuais da documentação | Pasta reservada |
