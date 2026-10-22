@@ -20,7 +20,7 @@
 
 ## Skill de desenvolvimento do projeto
 
-Em 22/10/2026, o usuário solicitou executar a MD-03, cujo planejamento está na TASK-0006. Autorizados estrutura escolar, referência administrativa de autorização, capacidade, oferta, auditoria e testes correspondentes. Em 22/10/2026, o usuário registrou “md 03 está ok. documente a finalização”, encerrando a MD-03 com aceite explícito. Não avançar para MD-04, publicar ou usar dados reais sem nova orientação.
+Em 22/10/2026, o usuário solicitou executar a MD-03, cujo planejamento está na TASK-0006. Autorizados estrutura escolar, referência administrativa de autorização, capacidade, oferta, auditoria e testes correspondentes. Em 22/10/2026, o usuário registrou “md 03 está ok. documente a finalização”, encerrando a MD-03 com aceite explícito. Depois, solicitou “desenvolva o md 04”, autorizando a TASK-0007 para pessoas e vínculos. Não avançar para MD-05, publicar ou usar dados reais sem nova orientação.
 
 Para implementar ou revisar UI, código e testes do SmartSchool, ler [.agents/skills/smartschool-development/SKILL.md](.agents/skills/smartschool-development/SKILL.md). Carregar somente os guias relevantes à tarefa: UI, código e/ou testes. A skill pertence a este repositório; não requer copiar configuração para outros projetos.
 

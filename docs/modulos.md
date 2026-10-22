@@ -1,6 +1,6 @@
 # Organização dos módulos
 
-> Revisão parcial de 07/10/2026: adequação legal e simplificação do MVP sem Kafka. MD-02 implementada e em validação em 21/10/2026: users/audit e acesso básico; os demais módulos escolares permanecem planejamento.
+> Revisão parcial de 07/10/2026: adequação legal e simplificação do MVP sem Kafka. MD-04 está em andamento em 22/10/2026: pessoas e vínculos administrativos; matrícula e financeiro permanecem planejamento.
 
 ## Como ler este documento
 
@@ -25,6 +25,8 @@ Na [MD-02](microentregas/MD-02/README.md), o módulo de acesso coordena contas, 
 ## Responsabilidades e fronteiras
 
 Na [MD-03](microentregas/MD-03/README.md), o módulo `school` organiza ano/etapa/série/turma e ativação da oferta, reutilizando autenticação e auditoria da MD-02. Somente Diretor administra/consulta este módulo nesta etapa. Oferta disponível é derivada da ativação e da validade administrativa atual; referência cadastrada não certifica autorização real. Capacidade é protegida no banco, sem antecipar matrícula ou financeiro.
+
+Na [MD-04](microentregas/MD-04/README.md), o módulo `people` cadastra pessoas e perfis de aluno, separando filiação, representação legal, responsável financeiro preparatório e autorização de retirada. Direção e Secretaria administram o cadastro; TI não acessa dados pessoais. O módulo não cria matrícula, contrato, cobrança, desconto ou autoridade legal automática.
 
 Dados de saúde e restrições judiciais não devem aparecer em telas financeiras ou logs gerais. O financeiro não decide acesso pedagógico; produtos não condicionam matrícula. Suporte técnico não implica autorização irrestrita sobre documentos.
 

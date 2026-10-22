@@ -1,6 +1,6 @@
 # Documentação do SmartSchool
 
-**Etapa atual:** MD-03 concluída com aceite explícito em 22/10/2026. MD-00, MD-01 e MD-02 aprovadas. Adequação legal e simplificação sem Kafka preservadas. Nenhuma conformidade operacional está certificada.
+**Etapa atual:** MD-03 concluída com aceite explícito em 22/10/2026; MD-04 implementada e em validação. Adequação legal e simplificação sem Kafka preservadas. Nenhuma conformidade operacional está certificada.
 
 ## Documentos
 
@@ -19,7 +19,8 @@
 | [MD-01](microentregas/MD-01/README.md) | Fundação executável, setup e testes | Aprovada em 15/10/2026; TASK-0003 concluída |
 | [MD-02](microentregas/MD-02/README.md) | Acesso, perfis, sessões e auditoria básica | Aprovada em 21/10/2026; TASK-0005 |
 | [MD-03](microentregas/MD-03/README.md) | Estrutura escolar | Concluída em 22/10/2026; TASK-0006 |
-| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 a TASK-0006 concluídas |
+| [MD-04](microentregas/MD-04/README.md) | Pessoas e vínculos | Em validação; TASK-0007 |
+| [tasks/README.md](tasks/README.md) | Registro de tarefas, testes e ajustes | TASK-0001 a TASK-0006 concluídas; TASK-0007 em validação |
 | [CHANGELOG](../CHANGELOG.md) | Resumo das alterações e referências de versão | Atualização a cada entrega |
 | [licensing.md](licensing.md) | Decisão de licenciamento | AGPL 3.0 aprovada em 07/10/2026 |
 | [assets/README.md](assets/README.md) | Recursos visuais da documentação | Pasta reservada |

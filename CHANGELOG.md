@@ -2,6 +2,11 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-04 — pessoas e vínculos — 22/10/2026
+
+- Execução iniciada por solicitação do usuário; escopo e critérios registrados na [TASK-0007](docs/tasks/TASK-0007-md04-pessoas-e-vinculos.md) e no [guia da MD-04](docs/microentregas/MD-04/README.md).
+- Implementados modelos de pessoas e vínculos, API protegida, tela para Direção/Secretaria e auditoria; 14 unitários, 25 de integração e 13 E2E aprovados em execução serial. Estado **Em validação**, aceite pendente. MD-05 não iniciada.
+
 ## MD-03 — estrutura escolar — 22/10/2026
 
 - Implementados ano/período letivo, etapa Infantil/Fundamental, referência administrativa de autorização, série e turma com capacidade/ocupação protegidas no PostgreSQL. Cadastro e ativação da oferta separados, sem inferir autorização real.

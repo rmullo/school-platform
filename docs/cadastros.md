@@ -24,6 +24,10 @@ Antes de incluir um campo, registrar significado, finalidade, base legal, necess
 
 ## Campos e validações
 
+### Pessoas e vínculos — MD-04
+
+Implementados `Person` e `StudentProfile`, com vínculos separados para `StudentParentage`, `StudentRepresentation`, `StudentFinancialResponsible` e `PickupAuthorization`. Pessoas possuem nome, contato opcional, data civil de nascimento e versão; evidências e vigências são textuais e não substituem documentos ou autorização jurídica real. Direção/Secretaria acessam o módulo; TI não. A visão administrativa não retorna `createdAt` nem dados de auditoria desnecessários, e possíveis irmãos são apenas sugestões por filiação/responsável financeiro.
+
 ### Contas e sessões — MD-02
 
 Esquema técnico inicial implementado na [MD-02](microentregas/MD-02/README.md): conta com UUID, nome, e-mail normalizado único, hash Argon2id, perfil, situação e criação; sessão com usuário, hash do refresh, família, criação, expiração, consumo e revogação; evento de auditoria com responsável, ação, conta afetada, motivo e instante. Senha e refresh em texto não são persistidos. Listas públicas de contas não incluem hashes. Retenção operacional e políticas de recuperação continuam pendentes; não presumir guarda ilimitada.

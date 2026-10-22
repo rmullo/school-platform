@@ -101,3 +101,99 @@ model Classroom {
   version Int @default(1)
   @@unique([schoolYearId, gradeId, name])
 }
+
+enum ParentageRole {
+  MOTHER
+  FATHER
+  OTHER
+}
+
+enum RepresentationKind {
+  LEGAL_GUARDIAN
+  LEGAL_REPRESENTATIVE
+}
+
+model Person {
+  id                 String                       @id @default(uuid()) @db.Uuid
+  name               String
+  email              String?
+  phone              String?
+  birthDate          String?                      @db.VarChar(10)
+  version            Int                          @default(1)
+  createdAt          DateTime                     @default(now()) @db.Timestamptz(3)
+  student            StudentProfile?
+  parentageFor       StudentParentage[]           @relation("ParentagePerson")
+  representationsFor StudentRepresentation[]     @relation("RepresentationPerson")
+  financialFor       StudentFinancialResponsible[] @relation("FinancialPerson")
+  pickupFor          PickupAuthorization[]       @relation("PickupPerson")
+  @@index([name])
+}
+
+model StudentProfile {
+  id             String                        @id @default(uuid()) @db.Uuid
+  personId       String                        @unique @db.Uuid
+  person         Person                        @relation(fields: [personId], references: [id])
+  active         Boolean                       @default(true)
+  version        Int                           @default(1)
+  parentage      StudentParentage[]            @relation("ParentageStudent")
+  representations StudentRepresentation[]      @relation("RepresentationStudent")
+  financial      StudentFinancialResponsible?  @relation("FinancialStudent")
+  pickup         PickupAuthorization[]         @relation("PickupStudent")
+}
+
+model StudentParentage {
+  id         String       @id @default(uuid()) @db.Uuid
+  studentId  String       @db.Uuid
+  student    StudentProfile @relation("ParentageStudent", fields: [studentId], references: [id])
+  personId   String       @db.Uuid
+  person     Person       @relation("ParentagePerson", fields: [personId], references: [id])
+  role       ParentageRole
+  evidence   String
+  validFrom  String       @db.VarChar(10)
+  validUntil String       @db.VarChar(10)
+  version    Int          @default(1)
+  @@unique([studentId, personId, role])
+  @@index([personId])
+}
+
+model StudentRepresentation {
+  id           String             @id @default(uuid()) @db.Uuid
+  studentId    String             @db.Uuid
+  student      StudentProfile     @relation("RepresentationStudent", fields: [studentId], references: [id])
+  personId     String             @db.Uuid
+  person       Person             @relation("RepresentationPerson", fields: [personId], references: [id])
+  kind         RepresentationKind
+  evidence     String
+  restrictions String?
+  validFrom    String             @db.VarChar(10)
+  validUntil   String             @db.VarChar(10)
+  version      Int                @default(1)
+  @@unique([studentId, personId, kind])
+  @@index([personId])
+}
+
+model StudentFinancialResponsible {
+  id        String         @id @default(uuid()) @db.Uuid
+  studentId String         @unique @db.Uuid
+  student   StudentProfile @relation("FinancialStudent", fields: [studentId], references: [id])
+  personId  String         @db.Uuid
+  person    Person         @relation("FinancialPerson", fields: [personId], references: [id])
+  evidence  String
+  version   Int            @default(1)
+  @@index([personId])
+}
+
+model PickupAuthorization {
+  id           String         @id @default(uuid()) @db.Uuid
+  studentId    String         @db.Uuid
+  student      StudentProfile @relation("PickupStudent", fields: [studentId], references: [id])
+  personId     String         @db.Uuid
+  person       Person         @relation("PickupPerson", fields: [personId], references: [id])
+  evidence     String
+  restrictions String?
+  validFrom    String         @db.VarChar(10)
+  validUntil   String         @db.VarChar(10)
+  version      Int            @default(1)
+  @@unique([studentId, personId, validFrom])
+  @@index([personId])
+}
