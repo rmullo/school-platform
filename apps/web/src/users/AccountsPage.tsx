@@ -9,6 +9,7 @@ import { api } from '../auth/session.js';
 const labels: Record<Role, string> = { DIRECTOR: 'Direção', SECRETARY: 'Secretaria', IT: 'TI' };
 const auditSchema = z.array(z.object({ id: z.string(), actorId: z.string().nullable(), targetId: z.string(), action: z.string(), reason: z.string(), createdAt: z.string() }));
 const actions: Record<string, string> = { LOGIN: 'Entrada', LOGOUT: 'Saída', BOOTSTRAP: 'Primeiro Diretor', USER_CREATED: 'Conta criada', USER_UPDATED: 'Conta alterada', SESSIONS_REVOKED: 'Sessões revogadas', REFRESH_REPLAY: 'Reutilização de sessão bloqueada' };
+Object.assign(actions, { SCHOOL_YEARS_CREATED: 'Ano letivo cadastrado', SCHOOL_YEARS_UPDATED: 'Ano letivo alterado', SCHOOL_STAGES_CREATED: 'Etapa cadastrada', SCHOOL_STAGES_UPDATED: 'Etapa alterada', SCHOOL_GRADES_CREATED: 'Série cadastrada', SCHOOL_GRADES_UPDATED: 'Série alterada', SCHOOL_CLASSROOMS_CREATED: 'Turma cadastrada', SCHOOL_CLASSROOMS_UPDATED: 'Turma alterada', SCHOOL_OFFER_ACTIVATED: 'Oferta ativada', SCHOOL_OFFER_DEACTIVATED: 'Oferta desativada' });
 export default function AccountsPage() {
   const client = useQueryClient();
   const users = useQuery({ queryKey: ['users'], queryFn: async () => z.array(publicUserSchema).parse(await api('users')) });

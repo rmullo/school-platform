@@ -32,6 +32,10 @@ Campos exatos serão detalhados na etapa de cadastros. Dados de saúde, deficiê
 
 ## Relacionamentos
 
+### Estrutura escolar — MD-03
+
+Implementados SchoolYear (ano e período civil), SchoolStage (nome/segmento/referência administrativa), SchoolGrade (nome/etapa) e Classroom (nome/ano/série/capacidade/ocupação/oferta). Vínculos possuem chaves estrangeiras; nomes são únicos no respectivo contexto, inclusive sem diferenciar caixa. Ocupação não é editável pela API e tem restrição `0 <= ocupação <= capacidade`, com capacidade positiva. Edições usam versão esperada e motivo. Eventos de auditoria registram estados anterior/posterior sem senhas. Detalhes, limites técnicos e demonstração: [MD-03](microentregas/MD-03/README.md).
+
 Aluno tem matrículas ao longo dos anos; cada matrícula tem um contratante financeiro. Uma pessoa pode acumular papéis, mas cada vínculo precisa de fundamento próprio. Representação legal pode envolver mais de uma pessoa e não deve herdar a cardinalidade do contratante. Compartilhar pagador apenas sugere conferência de benefício comercial; não comprova irmandade.
 
 ## Ciclo de vida e histórico

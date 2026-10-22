@@ -4,7 +4,7 @@
 
 ## Etapa atual — MD-03: estrutura escolar
 
-Em 21/10/2026, o usuário aprovou a MD-02 e solicitou avançar para a MD-03. A MD-02 está concluída na [TASK-0005](tasks/TASK-0005-md02-acesso-e-auditoria.md); o escopo da MD-03 foi aberto na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md), com guia em [MD-03](microentregas/MD-03/README.md). A implementação da MD-03 ainda não iniciou.
+Em 21/10/2026, o usuário aprovou a MD-02 e solicitou avançar para a MD-03. A MD-02 está concluída na [TASK-0005](tasks/TASK-0005-md02-acesso-e-auditoria.md); o escopo da MD-03 foi aberto na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md), com guia em [MD-03](microentregas/MD-03/README.md). Em 22/10/2026, o usuário solicitou executar a implementação: MD-03 implementada e **Em validação**, aguardando aceite. MD-04 não autorizada.
 
 Em 06/10/2026, o usuário orientou priorizar a documentação e conduzir o trabalho passo a passo. A implementação permaneceu pausada até a autorização da MD-01 em 13/10/2026.
 
@@ -81,7 +81,7 @@ Não é necessário criar todos os arquivos de tarefas futuras agora. O roteiro 
 
 ## Situação das microentregas
 
-A [MD-00](microentregas/MD-00/README.md) está **concluída documentalmente**, com aceite do usuário em 13/10/2026: “tudo ok no md-00”, registrado na [TASK-0002](tasks/TASK-0002-md00-regras-e-exemplos.md). As pendências P-01 a P-07 continuam abertas para resolução antes dos fluxos afetados. A [MD-01](microentregas/MD-01/README.md) está concluída com aceite em 15/10/2026 na [TASK-0003](tasks/TASK-0003-md01-fundacao.md), autorizada em 13/10/2026. A [MD-02](microentregas/MD-02/README.md) foi aprovada em 21/10/2026 na [TASK-0005](tasks/TASK-0005-md02-acesso-e-auditoria.md). A MD-03 foi autorizada para planejamento e está registrada na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md); sua implementação ainda não iniciou. MD-04 a MD-15 seguem planejadas, sem início automático. O roteiro geral e o fluxo documental estão registrados na [TASK-0001](tasks/TASK-0001-plano-de-microentregas.md).
+A [MD-00](microentregas/MD-00/README.md) está **concluída documentalmente**, com aceite do usuário em 13/10/2026: “tudo ok no md-00”, registrado na [TASK-0002](tasks/TASK-0002-md00-regras-e-exemplos.md). As pendências P-01 a P-07 continuam abertas para resolução antes dos fluxos afetados. A [MD-01](microentregas/MD-01/README.md) está concluída com aceite em 15/10/2026 na [TASK-0003](tasks/TASK-0003-md01-fundacao.md), autorizada em 13/10/2026. A [MD-02](microentregas/MD-02/README.md) foi aprovada em 21/10/2026 na [TASK-0005](tasks/TASK-0005-md02-acesso-e-auditoria.md). A MD-03 foi implementada em 22/10/2026 e está **Em validação**, com aceite pendente na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md). MD-04 a MD-15 seguem planejadas, sem início automático. O roteiro geral e o fluxo documental estão registrados na [TASK-0001](tasks/TASK-0001-plano-de-microentregas.md).
 
 ## Sequência técnica vigente
 

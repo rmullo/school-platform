@@ -50,6 +50,54 @@ model AuditEvent {
   action String
   targetId String @db.Uuid
   reason String
+  changes Json?
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   @@index([createdAt, id])
+}
+
+model SchoolYear {
+  id String @id @default(uuid()) @db.Uuid
+  year Int @unique
+  startDate String @db.VarChar(10)
+  endDate String @db.VarChar(10)
+  version Int @default(1)
+  classrooms Classroom[]
+}
+
+enum SchoolSegment {
+  INFANTIL
+  FUNDAMENTAL
+}
+
+model SchoolStage {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  segment SchoolSegment
+  authorization Json?
+  version Int @default(1)
+  grades SchoolGrade[]
+}
+
+model SchoolGrade {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  stageId String @db.Uuid
+  stage SchoolStage @relation(fields: [stageId], references: [id])
+  version Int @default(1)
+  classrooms Classroom[]
+  @@unique([stageId, name])
+}
+
+model Classroom {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  schoolYearId String @db.Uuid
+  schoolYear SchoolYear @relation(fields: [schoolYearId], references: [id])
+  gradeId String @db.Uuid
+  grade SchoolGrade @relation(fields: [gradeId], references: [id])
+  capacity Int
+  occupied Int @default(0)
+  active Boolean @default(false)
+  version Int @default(1)
+  @@unique([schoolYearId, gradeId, name])
 }

@@ -2,6 +2,15 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-03 — estrutura escolar — 22/10/2026
+
+- Implementados ano/período letivo, etapa Infantil/Fundamental, referência administrativa de autorização, série e turma com capacidade/ocupação protegidas no PostgreSQL. Cadastro e ativação da oferta separados, sem inferir autorização real.
+- API restrita ao Diretor, validação compartilhada, edição com versão/motivo, concorrência e auditoria transacional com estados anterior/posterior. Sem alunos, matrículas ou financeiro.
+- Incluída exclusão confirmada em anos, etapas, séries e turmas, com motivo, controle de versão, auditoria e bloqueio de dependências, ocupação e ofertas ativas.
+- Página Estrutura escolar com formulários, estados recuperáveis, layout desktop/móvel e integração com auditoria. Sem novas dependências.
+- Build/tipos aprovados; 14 unitários, 20 de integração, 11 E2E e smoke aprovados; imagens Docker e migração verificadas. CI remota/Dev Container não executados nesta tarefa.
+- [TASK-0006](docs/tasks/TASK-0006-md03-estrutura-escolar.md) e [guia MD-03](docs/microentregas/MD-03/README.md) atualizados. Em validação, sem aceite, commit, publicação ou avanço para MD-04.
+
 ## Transição para MD-03 — estrutura escolar — 21/10/2026
 
 - Registrado o aceite explícito da MD-02 pelo usuário e encerrada a [TASK-0005](docs/tasks/TASK-0005-md02-acesso-e-auditoria.md).

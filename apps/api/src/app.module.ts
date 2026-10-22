@@ -7,6 +7,8 @@ import { LoggerModule } from 'nestjs-pino';
 import { randomUUID } from 'node:crypto';
 import { APP_CONFIG, readConfig } from './config.js';
 import { FoundationService } from './foundation.service.js';
+import { SchoolController } from './school/school.controller.js';
+import { SchoolService } from './school/school.service.js';
 const config = readConfig(process.env);
 @ApiTags('Ambiente')
 @Controller()
@@ -48,7 +50,7 @@ class HealthController {
       },
     },
   })],
-  controllers: [HealthController, AuthController, UsersController],
-  providers: [{ provide: APP_CONFIG, useValue: config }, FoundationService, AccessService, AccessGuard],
+  controllers: [HealthController, AuthController, UsersController, SchoolController],
+  providers: [{ provide: APP_CONFIG, useValue: config }, FoundationService, AccessService, AccessGuard, SchoolService],
 })
 export class AppModule {}

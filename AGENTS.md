@@ -20,6 +20,8 @@
 
 ## Skill de desenvolvimento do projeto
 
+Em 22/10/2026, o usuário solicitou executar a MD-03, cujo planejamento está na TASK-0006. Autorizados estrutura escolar, referência administrativa de autorização, capacidade, oferta, auditoria e testes correspondentes. Não avançar para MD-04, publicar ou usar dados reais sem nova orientação.
+
 Para implementar ou revisar UI, código e testes do SmartSchool, ler [.agents/skills/smartschool-development/SKILL.md](.agents/skills/smartschool-development/SKILL.md). Carregar somente os guias relevantes à tarefa: UI, código e/ou testes. A skill pertence a este repositório; não requer copiar configuração para outros projetos.
 
 Este AGENTS.md é o ponto de entrada das instruções para agentes. Não criar um agent.md paralelo com regras duplicadas. Instruções e autorização explícitas do usuário prevalecem; a skill não autoriza avançar de microentrega, publicar ou usar dados reais.

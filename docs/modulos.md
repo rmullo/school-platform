@@ -24,6 +24,8 @@ Na [MD-02](microentregas/MD-02/README.md), o módulo de acesso coordena contas, 
 
 ## Responsabilidades e fronteiras
 
+Na [MD-03](microentregas/MD-03/README.md), o módulo `school` organiza ano/etapa/série/turma e ativação da oferta, reutilizando autenticação e auditoria da MD-02. Somente Diretor administra/consulta este módulo nesta etapa. Oferta disponível é derivada da ativação e da validade administrativa atual; referência cadastrada não certifica autorização real. Capacidade é protegida no banco, sem antecipar matrícula ou financeiro.
+
 Dados de saúde e restrições judiciais não devem aparecer em telas financeiras ou logs gerais. O financeiro não decide acesso pedagógico; produtos não condicionam matrícula. Suporte técnico não implica autorização irrestrita sobre documentos.
 
 ## Dependências e integrações

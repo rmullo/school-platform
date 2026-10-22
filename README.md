@@ -2,7 +2,7 @@
 
 Sistema interno de gestão escolar, com foco em matrículas e organização administrativa e financeira.
 
-**Momento atual: MD-00 e MD-01 aprovadas; MD-02 implementada e em validação, com aceite pendente.**
+**Momento atual: MD-00 a MD-02 aprovadas; MD-03 implementada e em validação, com aceite pendente.**
 
 ## Executar a fundação local
 
@@ -18,6 +18,8 @@ Abra http://localhost:5173. A primeira compilação do MinIO pode demorar alguns
 A MD-02 acrescenta login e exige criar o primeiro Diretor pelo procedimento interativo do [guia de acesso](docs/microentregas/MD-02/README.md). Não há senha padrão. Execute novamente o setup para acrescentar a configuração de autenticação a ambientes anteriores.
 
 ## Objetivo do projeto
+
+A [MD-03](docs/microentregas/MD-03/README.md) acrescenta a área **Estrutura escolar** para o Diretor: anos, etapas, séries, turmas, capacidade e ativação controlada da oferta. Os dados de demonstração não representam autorização escolar real.
 
 A [visão](docs/vision.md) registra contexto, princípios e limites iniciais. A [especificação vigente](docs/SPECIFICATION.md) incorpora as adequações legais autorizadas em 07/10/2026 para a escola privada de Assaré/CE, com infantil e fundamental; médio permanece futuro.
 

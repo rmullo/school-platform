@@ -1,4 +1,5 @@
 import { z } from 'zod';
+export * from './school.js';
 export const dependencySchema = z.enum(['available', 'unavailable']);
 export const environmentStatusSchema = z.object({
   status: z.enum(['ready', 'degraded']),

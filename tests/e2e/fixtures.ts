@@ -33,9 +33,15 @@ export const test = base.extend<{}, { accounts: Accounts }>({
 });
 export { expect };
 export async function signIn(page: Page, email: string, password: string) {
+  // Prepare authenticated state without consuming the shared proxy's login limit.
+  // The dedicated login journey still submits the real form (invalid + valid).
+  const { AccessService } = await import('../../apps/api/dist/access/access.service.js');
+  const access = new AccessService();
+  try {
+    const session = await access.login(email, password);
+    const origin = new URL(process.env.E2E_BASE_URL ?? 'http://localhost:5173');
+    await page.context().addCookies([{ name: 'ss_refresh', value: session.refresh, domain: origin.hostname, path: '/api/v1/auth', httpOnly: true, secure: origin.protocol === 'https:', sameSite: 'Strict' }]);
+  } finally { await access.onModuleDestroy(); }
   await page.goto('/');
-  await page.getByRole('textbox', { name: 'E-mail', exact: true }).fill(email);
-  await page.getByLabel('Senha', { exact: true }).fill(password);
-  await page.getByRole('button', { name: 'Entrar', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Bom ter você por aqui.' })).toBeVisible();
 }

@@ -7,7 +7,7 @@
 ## Autoridade e referências
 > Contexto confirmado: escola privada em Assaré/CE, educação infantil e fundamental; ensino médio como expansão futura. As adequações documentais estão registradas na [decisão 0001](decisions/0001-adequacao-legal.md), com fundamentos no [mapa normativo](compliance.md). Elas não certificam a operação escolar; contratos, listas, atos locais e controles ainda precisam das evidências da [matriz](conformidade.md).
 
-A solicitação de 29/09/2026 e as decisões posteriores do usuário são a fonte do planejamento. A autorização de 07/10/2026 para adequar a documentação substitui as regras incompatíveis identificadas na decisão 0001. A [decisão 0002](decisions/0002-mvp-sem-kafka.md) também substitui a obrigatoriedade de Kafka e processamento assíncrono no MVP. Referências históricas não prevalecem sobre esta revisão. O detalhamento continua por etapas; a autorização atual abrange a MD-02, após aceite da MD-01.
+A solicitação de 29/09/2026 e as decisões posteriores do usuário são a fonte do planejamento. A autorização de 07/10/2026 para adequar a documentação substitui as regras incompatíveis identificadas na decisão 0001. A [decisão 0002](decisions/0002-mvp-sem-kafka.md) também substitui a obrigatoriedade de Kafka e processamento assíncrono no MVP. Referências históricas não prevalecem sobre esta revisão. O detalhamento continua por etapas; a autorização atual abrange a MD-03, solicitada em 22/10/2026 após aceite da MD-02.
 Conversa: chatgpt-conversation://6952a525-7750-8327-9051-ca4a6ad2da84.
 O retorno integral disponível está em reference-conversation.json: cinco turnos, sem cursor para trechos anteriores, sem anexos. Não foi possível recuperar os tópicos 3.1–3.5 ou validar os documentos originais. A pasta sources do projeto estava vazia. Nenhum arquivo sincronizado foi alterado.
 
@@ -60,6 +60,8 @@ Definir tabela de retenção por categoria e destino ao final do prazo, incluind
 Formalizar papéis da escola e dos fornecedores, procedimento de incidentes e avaliação de transferências internacionais antes de nuvem externa. Prazos e referências estão em [SECURITY.md](../SECURITY.md) e no mapa normativo. Encarregado/canal, bases por campo e prazos específicos continuam pendentes de definição operacional.
 
 ## Estrutura escolar e campanhas
+
+MD-03 implementada por solicitação de 22/10/2026, com escopo na [TASK-0006](tasks/TASK-0006-md03-estrutura-escolar.md) e [guia de validação](microentregas/MD-03/README.md). O incremento cobre somente estrutura/referência administrativa/oferta, não campanhas ou validação de atos reais.
 Ano letivo, série, turma e capacidade máxima por turma.
 Ativar oferta apenas para etapas autorizadas, registrando órgão, ato, validade e evidência. Conferir capacidade, critérios etários e escrituração conforme a etapa e o sistema de ensino competente; não adotar limites locais presumidos. Ensino médio permanece futuro, condicionado a revisão regulatória e autorização própria.
 Diretor cria campanhas; pode liberar todas as turmas de um ano de uma vez.
