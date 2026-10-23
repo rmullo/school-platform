@@ -42,6 +42,8 @@ Implementados `Enrollment`, `InitialSettlement` e `FinancialObligation`. A confi
 
 Na MD-09, `EnrollmentDraft` pode registrar `lateEntryMonth`, a quantidade de competências futuras e o total calculado da entrada tardia. `FinancialNegotiation` preserva obrigação, valor/vencimento originais, valor/vencimento negociados, motivo, autor, data e chave da operação. A alteração da obrigação ocorre somente com autorização da Direção e em transação; meses anteriores não são criados.
 
+Na MD-10, `Enrollment` pode assumir `CANCELLED`, e obrigações futuras podem assumir `CANCELLED` sem apagar recebimentos. `EnrollmentCancellation` registra matrícula, chave de operação, data efetiva, motivo, autor, créditos disponíveis e valor apurado. `FinancialRefund` registra restituição efetiva manual, valor, motivo, autor, data, cancelamento de origem e chave própria; não representa reversão de recebimento.
+
 ### Contas e sessões — MD-02
 
 Esquema técnico inicial implementado na [MD-02](microentregas/MD-02/README.md): conta com UUID, nome, e-mail normalizado único, hash Argon2id, perfil, situação e criação; sessão com usuário, hash do refresh, família, criação, expiração, consumo e revogação; evento de auditoria com responsável, ação, conta afetada, motivo e instante. Senha e refresh em texto não são persistidos. Listas públicas de contas não incluem hashes. Retenção operacional e políticas de recuperação continuam pendentes; não presumir guarda ilimitada.

@@ -19,6 +19,8 @@ export class EnrollmentController {
   @Post(':id/confirm') confirm(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.confirm(req.principal, parse(z.uuid(), id), body); }
   @Post(':id/payments') receive(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.receive(req.principal, parse(z.uuid(), id), body); }
   @Post(':id/negotiate') negotiate(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.negotiate(req.principal, parse(z.uuid(), id), body); }
+  @Post(':id/cancel') cancel(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.cancel(req.principal, parse(z.uuid(), id), body); }
+  @Post(':id/refund') refund(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.refund(req.principal, parse(z.uuid(), id), body); }
   @Post('/payments/:id/reverse') reverse(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.reversePayment(req.principal, parse(z.uuid(), id), body); }
   @Post('/credits/:id/allocate') allocateCredit(@Param('id') id: string, @Body() body: unknown, @Req() req: AuthRequest): Promise<unknown> { this.staff(req, true); return this.enrollment.allocateCredit(req.principal, parse(z.uuid(), id), body); }
 }

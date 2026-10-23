@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { enrollmentConfirmationSchema, enrollmentInputSchema, negotiationInputSchema, paymentInputSchema, paymentReversalSchema } from '@smartschool/contracts';
+import { cancellationInputSchema, enrollmentConfirmationSchema, enrollmentInputSchema, negotiationInputSchema, paymentInputSchema, paymentReversalSchema, refundInputSchema } from '@smartschool/contracts';
 
 const base = { studentId: '00000000-0000-4000-8000-000000000001', classroomId: '00000000-0000-4000-8000-000000000002', campaignId: '00000000-0000-4000-8000-000000000003', contractId: '00000000-0000-4000-8000-000000000004', financialResponsibleId: '00000000-0000-4000-8000-000000000005', pendingItems: ['Documento de identidade'] };
 
@@ -33,5 +33,13 @@ describe('recebimentos da MD-08', () => {
   it('exige motivo e data civil na negociação', () => {
     expect(negotiationInputSchema.safeParse({ operationKey: basePayment.operationKey, obligationId, negotiatedAmountCents: 90000, negotiatedDueDate: '2097-08-10', reason: 'Acordo autorizado' }).success).toBe(true);
     expect(negotiationInputSchema.safeParse({ operationKey: basePayment.operationKey, obligationId, negotiatedAmountCents: 90000, negotiatedDueDate: '10/08/2097', reason: 'Acordo autorizado' }).success).toBe(false);
+  });
+  it('exige data efetiva e motivo para cancelamento', () => {
+    expect(cancellationInputSchema.safeParse({ operationKey: basePayment.operationKey, effectiveDate: '2097-08-10', reason: 'Desistência fictícia' }).success).toBe(true);
+    expect(cancellationInputSchema.safeParse({ operationKey: basePayment.operationKey, effectiveDate: '10/08/2097', reason: 'Desistência fictícia' }).success).toBe(false);
+  });
+  it('separa restituição efetiva de reversão e exige valor positivo', () => {
+    expect(refundInputSchema.safeParse({ operationKey: basePayment.operationKey, amountCents: 90000, method: 'MANUAL', reason: 'Devolução fictícia' }).success).toBe(true);
+    expect(refundInputSchema.safeParse({ operationKey: basePayment.operationKey, amountCents: 0, method: 'MANUAL', reason: 'Devolução fictícia' }).success).toBe(false);
   });
 });

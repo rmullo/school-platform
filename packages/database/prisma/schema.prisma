@@ -307,6 +307,7 @@ enum SettlementKind {
 
 enum EnrollmentConfirmationStatus {
   CONFIRMED
+  CANCELLED
 }
 
 enum ObligationStatus {
@@ -314,6 +315,7 @@ enum ObligationStatus {
   PARTIAL
   OPEN
   WAIVED
+  CANCELLED
 }
 
 enum PaymentStatus {
@@ -325,6 +327,10 @@ enum CreditStatus {
   AVAILABLE
   CONSUMED
   REVERSED
+}
+
+enum RefundStatus {
+  EXECUTED
 }
 
 model Enrollment {
@@ -349,6 +355,8 @@ model Enrollment {
   negotiations           FinancialNegotiation[]
   payments               PaymentReceipt[]
   credits                FinancialCredit[]
+  cancellation           EnrollmentCancellation?
+  refunds                FinancialRefund[]
   @@unique([studentId, classroomId, campaignId])
   @@index([studentId])
   @@index([classroomId])
@@ -460,4 +468,36 @@ model FinancialNegotiation {
   createdAt              DateTime           @default(now()) @db.Timestamptz(3)
   @@index([enrollmentId, createdAt])
   @@index([actorId, createdAt])
+}
+
+model EnrollmentCancellation {
+  id                       String             @id @default(uuid()) @db.Uuid
+  enrollmentId             String             @unique @db.Uuid
+  enrollment               Enrollment         @relation(fields: [enrollmentId], references: [id])
+  operationKey             String             @unique @db.Uuid
+  effectiveDate            String             @db.VarChar(10)
+  reason                   String
+  actorId                  String             @db.Uuid
+  refundableAmountCents    Int                @default(0)
+  availableCreditCents     Int                @default(0)
+  createdAt                DateTime           @default(now()) @db.Timestamptz(3)
+  refund                   FinancialRefund?
+  @@index([actorId, createdAt])
+}
+
+model FinancialRefund {
+  id             String                @id @default(uuid()) @db.Uuid
+  enrollmentId   String                @db.Uuid
+  enrollment     Enrollment            @relation(fields: [enrollmentId], references: [id])
+  cancellationId String                @unique @db.Uuid
+  cancellation   EnrollmentCancellation @relation(fields: [cancellationId], references: [id])
+  operationKey   String                @unique @db.Uuid
+  amountCents    Int
+  method         String
+  status         RefundStatus          @default(EXECUTED)
+  reason         String
+  actorId        String                @db.Uuid
+  executedAt     DateTime              @default(now()) @db.Timestamptz(3)
+  @@index([enrollmentId, executedAt])
+  @@index([actorId, executedAt])
 }

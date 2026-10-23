@@ -27,4 +27,4 @@ Resultado esperado: a entrada tardia não cria cobrança anterior, a negociaçã
 
 ## Limitações
 
-O ingresso após o dia 10 e proporcionalidade por dias continuam pendentes. Descontos automáticos, cancelamento, restituição efetiva, gateway, nota fiscal, rematrícula, transferência e dados reais permanecem fora. A MD-10 continua não autorizada.
+O ingresso após o dia 10 e proporcionalidade por dias continuam pendentes. Descontos automáticos, cancelamento, restituição efetiva, gateway, nota fiscal, rematrícula, transferência e dados reais permanecem fora do escopo da MD-09. A MD-10 foi autorizada e concluída em tarefa própria.

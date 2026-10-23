@@ -2,6 +2,12 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-10 — cancelamento e restituição — 22/10/2026
+
+- Execução autorizada pelo usuário e registrada na [TASK-0013](docs/tasks/TASK-0013-md10-cancelamento-e-restituicao.md) e no [guia da MD-10](docs/microentregas/MD-10/README.md). Aceite explícito registrado em 22/10/2026: “validada”; TASK-0013 concluída.
+- Implementados cancelamento com data efetiva, liberação idempotente da vaga, cancelamento de obrigações futuras, apuração de valores pagos/créditos e restituição efetiva separada da reversão.
+- `pnpm generate`, `pnpm typecheck`, `pnpm build`, 28 unitários, 1 teste de integração PostgreSQL/Testcontainers e 1 E2E específico passaram. Migração 008 aplicada e Compose reconstruído preservando volumes.
+
 ## MD-09 — negociação e entrada tardia — 22/10/2026
 
 - Execução autorizada pelo usuário e registrada na [TASK-0012](docs/tasks/TASK-0012-md09-negociacao-entrada-tardia.md) e no [guia da MD-09](docs/microentregas/MD-09/README.md). Aceite explícito registrado em 22/10/2026: “validada”; TASK-0012 concluída.
