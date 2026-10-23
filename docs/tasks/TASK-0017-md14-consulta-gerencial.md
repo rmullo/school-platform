@@ -42,4 +42,3 @@ Criados contrato e endpoint de relatório gerencial com filtro por período/cont
 
 - Aceite do usuário: pendente; entrega ficará em validação.
 - Publicação e dados reais: não realizados.
-

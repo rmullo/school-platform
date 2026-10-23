@@ -30,4 +30,3 @@ export type ReportFilter = z.infer<typeof reportFilterSchema>;
 
 export const reportSchema = z.object({ filter: reportFilterSchema, receipts: z.object({ count: z.number().int().nonnegative(), postedCents: z.number().int().nonnegative(), reversedCents: z.number().int().nonnegative() }), obligations: z.object({ openCents: z.number().int().nonnegative(), settledCents: z.number().int().nonnegative(), overdueCount: z.number().int().nonnegative() }), credits: z.object({ availableCents: z.number().int().nonnegative() }), refunds: z.object({ count: z.number().int().nonnegative(), executedCents: z.number().int().nonnegative() }), generatedAt: z.iso.datetime() });
 export type Report = z.infer<typeof reportSchema>;
-

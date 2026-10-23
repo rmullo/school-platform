@@ -42,4 +42,3 @@ Incluído painel de prontidão local para Direção/TI, com status do banco/stor
 
 - Aceite do usuário: pendente; entrega ficará em validação.
 - Publicação, piloto real e dados reais: não realizados.
-

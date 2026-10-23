@@ -43,4 +43,3 @@ Criados `DocumentRequirement`, `StudentDocument` e `EnrollmentCompletion`, endpo
 
 - Aceite do usuário: pendente; entrega ficará em validação.
 - Publicação e dados reais: não realizados.
-

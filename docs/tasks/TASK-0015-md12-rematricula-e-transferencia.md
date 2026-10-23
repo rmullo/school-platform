@@ -43,4 +43,3 @@ Criado `EnrollmentTransition` com renovação/transferência, chave idempotente,
 
 - Aceite do usuário: pendente; entrega ficará em validação.
 - Publicação e dados reais: não realizados.
-
