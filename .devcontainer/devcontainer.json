@@ -1,5 +1,5 @@
 {
-  "name": "SmartSchool MD-01",
+  "name": "SmartSchool Development",
   "dockerComposeFile": [
     "../compose.yaml",
     "compose.dev.yaml"
@@ -23,8 +23,8 @@
     }
   },
   "runServices": [
-    "postgres",
-    "minio",
+    "database",
+    "file-storage",
     "dev"
   ]
 }

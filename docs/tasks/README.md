@@ -47,6 +47,7 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0017 | MD-14 | [Consulta gerencial](TASK-0017-md14-consulta-gerencial.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
 | TASK-0018 | MD-15 | [Preparação e piloto](TASK-0018-md15-preparacao-e-piloto.md) | Em validação | Checklist implementado; piloto real bloqueado |
 | TASK-0019 | Dados de teste | [Massa fictícia de 200 matrículas em 2026](TASK-0019-massa-ficticia-200-matriculas.md) | Em validação | Carga criada e reconciliada; aguarda validação do usuário |
+| TASK-0020 | Infraestrutura local | [Nomes funcionais da stack e dos containers](TASK-0020-nomes-funcionais-stack-containers.md) | Em validação | Configuração ajustada; verificações registradas; aguarda validação do usuário |
 
 ## Procedimento de encerramento
 

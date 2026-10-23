@@ -30,16 +30,16 @@ A configuração local é criada com senhas aleatórias, sem sobrescrever um .en
 | http://localhost:59001 | Console local MinIO; credenciais no .env |
 | localhost:55432 | PostgreSQL local |
 
-Portas publicadas somente em 127.0.0.1. Projeto Compose smartschool-md01 e volumes próprios: não reutiliza volumes da implementação antiga ou de outros projetos. As credenciais locais são administrativas para desenvolvimento; antes de produção, provisionar credencial S3 restrita, autenticação e os demais controles previstos.
+Portas publicadas somente em 127.0.0.1. O projeto Compose se chama `smartschool` e usa containers com nomes funcionais (`smartschool-database`, `smartschool-file-storage`, `smartschool-school-api` e `smartschool-school-web`). Os volumes locais existentes foram preservados por nome explícito. As credenciais locais são administrativas para desenvolvimento; antes de produção, provisionar credencial S3 restrita, autenticação e os demais controles previstos.
 
 ## Testar manualmente
 
 1. Abra o painel e aguarde “Ambiente pronto” com três serviços disponíveis.
 2. Copie o identificador do ambiente e clique em “Atualizar estado”; o identificador deve continuar igual.
-3. Execute `docker compose restart postgres minio api web`. Aguarde os serviços se recuperarem e confira o mesmo identificador.
+3. Execute `docker compose restart database file-storage school-api school-web`. Aguarde os serviços se recuperarem e confira o mesmo identificador.
 4. Para verificar também o conteúdo do arquivo privado, execute a conferência automática abaixo. O arquivo é fictício e não contém dados pessoais.
-5. Execute `docker compose stop minio`. Atualize o painel: Arquivos deve aparecer indisponível, e /ready deve retornar 503. /health continua respondendo.
-6. Execute `docker compose start minio`. Atualize: o ambiente deve voltar a pronto sem recriar dados.
+5. Execute `docker compose stop file-storage`. Atualize o painel: Arquivos deve aparecer indisponível, e /ready deve retornar 503. /health continua respondendo.
+6. Execute `docker compose start file-storage`. Atualize: o ambiente deve voltar a pronto sem recriar dados.
 7. Para parar: `docker compose down`. Para voltar: `docker compose up -d --wait`. O identificador e arquivo devem permanecer.
 
 Não usar `down -v`: apaga volumes. Não inserir dados reais. Uma indisponibilidade temporária durante reinício é esperada.
@@ -50,7 +50,7 @@ Não usar `down -v`: apaga volumes. Não inserir dados reais. Uma indisponibilid
 pnpm install --frozen-lockfile
 pnpm run setup
 pnpm build
-docker compose up -d --build --wait postgres minio
+docker compose up -d --build --wait database file-storage
 pnpm db:migrate
 pnpm infra:init
 pnpm dev
@@ -66,7 +66,7 @@ Se API e web já estiverem no Compose, pare-as com `docker compose stop api web`
 4. No terminal do container, execute `pnpm dev`.
 5. Abra a porta 5173 encaminhada pelo VS Code.
 
-O container usa Node/pnpm fixados e volumes separados para dependências Linux. Configuração do Compose aponta para postgres/minio pelo nome do serviço. O .env do computador não substitui essas variáveis. O mount não inclui socket Docker; testes Testcontainers devem ser executados no host ou CI.
+O container usa Node/pnpm fixados e volumes separados para dependências Linux. A configuração do Compose aponta para `database` e `file-storage` pelo nome funcional do serviço. O `.env` do computador não substitui essas variáveis. O mount não inclui socket Docker; testes Testcontainers devem ser executados no host ou CI.
 
 ## Conferências automatizadas
 

@@ -1,7 +1,7 @@
-name: smartschool-md01
+name: smartschool
 x-app-environment: &app-environment
-  DATABASE_URL: postgresql://${POSTGRES_USER:?Run pnpm setup}:${POSTGRES_PASSWORD:?Run pnpm setup}@postgres:5432/${POSTGRES_DB:?Run pnpm setup}
-  S3_ENDPOINT: http://minio:9000
+  DATABASE_URL: postgresql://${POSTGRES_USER:?Run pnpm setup}:${POSTGRES_PASSWORD:?Run pnpm setup}@database:5432/${POSTGRES_DB:?Run pnpm setup}
+  S3_ENDPOINT: http://file-storage:9000
   S3_REGION: ${S3_REGION}
   S3_BUCKET: ${S3_BUCKET}
   S3_ACCESS_KEY: ${S3_ACCESS_KEY}
@@ -12,7 +12,8 @@ x-app-environment: &app-environment
   AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:?Run setup for MD-02}
   AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
 services:
-  postgres:
+  database:
+    container_name: smartschool-database
     image: postgres:17.9-bookworm
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -25,7 +26,8 @@ services:
       interval: 5s
       timeout: 3s
       retries: 20
-  minio:
+  file-storage:
+    container_name: smartschool-file-storage
     build:
       context: .
       dockerfile: infrastructure/docker/minio.Dockerfile
@@ -39,7 +41,8 @@ services:
       interval: 5s
       timeout: 3s
       retries: 30
-  init:
+  environment-initializer:
+    container_name: smartschool-environment-initializer
     build:
       context: .
       dockerfile: infrastructure/docker/Dockerfile
@@ -47,10 +50,11 @@ services:
     environment: *app-environment
     command: ["sh", "-c", "pnpm db:migrate && node scripts/init.mjs"]
     depends_on:
-      postgres: { condition: service_healthy }
-      minio: { condition: service_healthy }
+      database: { condition: service_healthy }
+      file-storage: { condition: service_healthy }
     restart: "no"
-  api:
+  school-api:
+    container_name: smartschool-school-api
     build:
       context: .
       dockerfile: infrastructure/docker/Dockerfile
@@ -58,7 +62,7 @@ services:
     environment: *app-environment
     ports: ["127.0.0.1:3333:3333"]
     depends_on:
-      init: { condition: service_completed_successfully }
+      environment-initializer: { condition: service_completed_successfully }
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3333/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 10s
@@ -66,14 +70,15 @@ services:
       retries: 12
     init: true
     stop_grace_period: 15s
-  web:
+  school-web:
+    container_name: smartschool-school-web
     build:
       context: .
       dockerfile: infrastructure/docker/Dockerfile
       target: web
     ports: ["127.0.0.1:5173:8080"]
     depends_on:
-      api: { condition: service_healthy }
+      school-api: { condition: service_healthy }
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:8080/"]
       interval: 10s
@@ -81,4 +86,6 @@ services:
       retries: 10
 volumes:
   postgres-data:
+    name: smartschool-md01_postgres-data
   minio-data:
+    name: smartschool-md01_minio-data

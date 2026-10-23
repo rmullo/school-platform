@@ -2,6 +2,12 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## Nomes funcionais da infraestrutura local — 22/10/2026
+
+- A stack Compose passou a se chamar `smartschool`, com serviços `database`, `file-storage`, `environment-initializer`, `school-api` e `school-web`.
+- Os containers receberam nomes funcionais sem números: `smartschool-database`, `smartschool-file-storage`, `smartschool-environment-initializer`, `smartschool-school-api`, `smartschool-school-web` e `smartschool-development`.
+- O proxy, o Dev Container e o guia da MD-01 foram atualizados. Os volumes locais existentes foram preservados por nomes explícitos; nenhum volume foi removido ou recriado nesta alteração. Ver [TASK-0020](docs/tasks/TASK-0020-nomes-funcionais-stack-containers.md).
+
 ## Fixture de teste — 200 matrículas fictícias em 2026 — 22/10/2026
 
 - Criada diretamente no PostgreSQL local a fixture `SMARTSCHOOL-FIXTURE-200-2026`, registrada na [TASK-0019](docs/tasks/TASK-0019-massa-ficticia-200-matriculas.md), com 200 alunos/matrículas confirmadas, 8 turmas, 2.225 obrigações, 50 recebimentos, 25 créditos, 18 negociações e 137 conclusões administrativas completas.

@@ -1,5 +1,6 @@
 services:
   dev:
+    container_name: smartschool-development
     build:
       context: .
       dockerfile: infrastructure/docker/Dockerfile
@@ -13,8 +14,8 @@ services:
       - dev-database-modules:/workspace/packages/database/node_modules
       - dev-storage-modules:/workspace/packages/storage/node_modules
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      S3_ENDPOINT: http://minio:9000
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:5432/${POSTGRES_DB}
+      S3_ENDPOINT: http://file-storage:9000
       S3_REGION: ${S3_REGION}
       S3_BUCKET: ${S3_BUCKET}
       S3_ACCESS_KEY: ${S3_ACCESS_KEY}
@@ -26,13 +27,13 @@ services:
       AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:?Run setup for MD-02}
       AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
     depends_on:
-      postgres: { condition: service_healthy }
-      minio: { condition: service_healthy }
-  api:
+      database: { condition: service_healthy }
+      file-storage: { condition: service_healthy }
+  school-api:
     profiles: [full-stack]
-  web:
+  school-web:
     profiles: [full-stack]
-  init:
+  environment-initializer:
     profiles: [full-stack]
 volumes:
   dev-node-modules:

@@ -20,7 +20,7 @@
 
 Registro aberto antes da implementação. Docker inicialmente parado, iniciado para os testes. Implementados monorepo e lockfile; apps/api e apps/web; packages/contracts, database e storage; migração técnica FoundationState; inicializador idempotente com arquivo fictício privado; Compose, Dev Container, testes e workflow de CI.
 
-API com /health, /ready, /api/v1/status, OpenAPI, correlationId, logs JSON e erros padronizados. Interface com disponibilidade, atualização manual/automática, falha/recuperação e identificador persistente. Banco e MinIO têm volumes próprios do projeto smartschool-md01. Portas publicadas apenas em 127.0.0.1. As aplicações não dependem de arquivos ou imagens da implementação removida.
+API com /health, /ready, /api/v1/status, OpenAPI, correlationId, logs JSON e erros padronizados. Interface com disponibilidade, atualização manual/automática, falha/recuperação e identificador persistente. Banco e MinIO têm volumes próprios do ambiente local, preservados pela configuração atual da stack. Portas publicadas apenas em 127.0.0.1. As aplicações não dependem de arquivos ou imagens da implementação removida.
 
 README, especificação, roadmap, índices, colaboração e CHANGELOG atualizados. Guia de instalação e roteiro manual: [MD-01](../microentregas/MD-01/README.md).
 
