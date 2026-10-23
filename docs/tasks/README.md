@@ -46,6 +46,7 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0016 | MD-13 | [Livros, materiais e uniformes](TASK-0016-md13-materiais-e-uniformes.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
 | TASK-0017 | MD-14 | [Consulta gerencial](TASK-0017-md14-consulta-gerencial.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
 | TASK-0018 | MD-15 | [Preparação e piloto](TASK-0018-md15-preparacao-e-piloto.md) | Em validação | Checklist implementado; piloto real bloqueado |
+| TASK-0019 | Dados de teste | [Massa fictícia de 200 matrículas em 2026](TASK-0019-massa-ficticia-200-matriculas.md) | Em validação | Carga criada e reconciliada; aguarda validação do usuário |
 
 ## Procedimento de encerramento
 

@@ -2,6 +2,11 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## Fixture de teste — 200 matrículas fictícias em 2026 — 22/10/2026
+
+- Criada diretamente no PostgreSQL local a fixture `SMARTSCHOOL-FIXTURE-200-2026`, registrada na [TASK-0019](docs/tasks/TASK-0019-massa-ficticia-200-matriculas.md), com 200 alunos/matrículas confirmadas, 8 turmas, 2.225 obrigações, 50 recebimentos, 25 créditos, 18 negociações e 137 conclusões administrativas completas.
+- Incluídos dados fictícios variados de Infantil/Fundamental, irmãos, representantes, pagadores não parentais, pendências documentais e entradas tardias. O script idempotente está em [seed-200-students-2026.mjs](scripts/seed-200-students-2026.mjs); nenhum dado real foi usado.
+
 ## MD-11 a MD-15 — operações e preparação — 22/10/2026
 
 - Implementados documentos privados e conclusão administrativa, transições de rematrícula/transferência, kits e pedidos opcionais, consulta gerencial e checklist de prontidão local; tarefas [TASK-0014](docs/tasks/TASK-0014-md11-documentos-e-conclusao.md) a [TASK-0018](docs/tasks/TASK-0018-md15-preparacao-e-piloto.md) em validação.
