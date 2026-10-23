@@ -41,6 +41,11 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0011 | MD-08 | [Recebimentos e correções](TASK-0011-md08-recebimentos-e-correcoes.md) | Concluída | Aceite explícito do usuário em 22/10/2026: “md 08 validado” |
 | TASK-0012 | MD-09 | [Negociação e entrada tardia](TASK-0012-md09-negociacao-entrada-tardia.md) | Concluída | Aceite explícito do usuário em 22/10/2026: “validada” |
 | TASK-0013 | MD-10 | [Cancelamento e restituição](TASK-0013-md10-cancelamento-e-restituicao.md) | Concluída | Aceite explícito do usuário em 22/10/2026: “validada” |
+| TASK-0014 | MD-11 | [Documentos e conclusão](TASK-0014-md11-documentos-e-conclusao.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
+| TASK-0015 | MD-12 | [Rematrícula e transferência](TASK-0015-md12-rematricula-e-transferencia.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
+| TASK-0016 | MD-13 | [Livros, materiais e uniformes](TASK-0016-md13-materiais-e-uniformes.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
+| TASK-0017 | MD-14 | [Consulta gerencial](TASK-0017-md14-consulta-gerencial.md) | Em validação | Implementada; verificações registradas; aguarda validação do usuário |
+| TASK-0018 | MD-15 | [Preparação e piloto](TASK-0018-md15-preparacao-e-piloto.md) | Em validação | Checklist implementado; piloto real bloqueado |
 
 ## Procedimento de encerramento
 

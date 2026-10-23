@@ -2,7 +2,7 @@
 
 Sistema interno de gestão escolar, com foco em matrículas e organização administrativa e financeira.
 
-**Momento atual: MD-00 a MD-10 aprovadas. MD-11 permanece planejada e não autorizada.**
+**Momento atual: MD-00 a MD-10 aprovadas. MD-11 a MD-15 implementadas e em validação, com produção e dados reais bloqueados.**
 
 ## Executar a fundação local
 

@@ -2,6 +2,12 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-11 a MD-15 — operações e preparação — 22/10/2026
+
+- Implementados documentos privados e conclusão administrativa, transições de rematrícula/transferência, kits e pedidos opcionais, consulta gerencial e checklist de prontidão local; tarefas [TASK-0014](docs/tasks/TASK-0014-md11-documentos-e-conclusao.md) a [TASK-0018](docs/tasks/TASK-0018-md15-preparacao-e-piloto.md) em validação.
+- Criada a migração `20261023015240_documents_transitions_materials_reports`, contratos compartilhados, módulo de Operações na API, tela MUI e armazenamento privado. Mantida a arquitetura transacional PostgreSQL sem Kafka/Outbox/workers.
+- `pnpm generate`, `pnpm typecheck`, `pnpm build`, `pnpm test` (32 testes) e a integração `tests/integration/operations.test.ts` (1 teste) passaram. Não foram executados piloto, backup/restauração, validação visual manual completa, CI, publicação ou dados reais.
+
 ## MD-10 — cancelamento e restituição — 22/10/2026
 
 - Execução autorizada pelo usuário e registrada na [TASK-0013](docs/tasks/TASK-0013-md10-cancelamento-e-restituicao.md) e no [guia da MD-10](docs/microentregas/MD-10/README.md). Aceite explícito registrado em 22/10/2026: “validada”; TASK-0013 concluída.

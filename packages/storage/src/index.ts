@@ -33,6 +33,12 @@ export class FileStorage {
     const result = await this.client.send(new GetObjectCommand({ Bucket: this.config.bucket, Key: 'foundation/example.txt' }));
     return result.Body?.transformToString();
   }
+  async putPrivate(key: string, body: Uint8Array, contentType: string) {
+    await this.client.send(new PutObjectCommand({ Bucket: this.config.bucket, Key: key, Body: body, ContentType: contentType, Metadata: { visibility: 'private' } }));
+  }
+  async readPrivate(key: string) {
+    return this.client.send(new GetObjectCommand({ Bucket: this.config.bucket, Key: key }));
+  }
   close() { this.client.destroy(); }
 }
 export function storageConfigFromEnv(env: NodeJS.ProcessEnv): StorageConfig {

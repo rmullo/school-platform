@@ -15,7 +15,7 @@ async function bootstrap() {
   app.enableCors({ origin: config.WEB_ORIGIN, credentials: true });
   app.enableShutdownHooks();
   SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app,
-    new DocumentBuilder().setTitle('SmartSchool — MD-02').setDescription('Acesso e auditoria básica. Sem operações escolares.').addBearerAuth().setVersion('0.2.0').build()));
+    new DocumentBuilder().setTitle('SmartSchool API — MD-15').setDescription('Operações escolares, financeiro transacional, documentos privados e prontidão local. Sem Kafka, dados reais ou publicação.').addBearerAuth().setVersion('0.15.0').build()));
   await app.listen(config.API_PORT, '0.0.0.0');
 }
 bootstrap().catch(() => { console.error('API não iniciou. Verifique a configuração e os logs locais.'); process.exitCode = 1; });

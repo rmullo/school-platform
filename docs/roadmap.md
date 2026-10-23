@@ -2,9 +2,9 @@
 
 > Plano elaborado em 08/10/2026. Planejar não autoriza implementar todas as etapas. Cada microentrega passa por demonstração, teste do usuário e ajustes antes de avançar. Usar dados fictícios até cumprir as condições de uso real.
 
-## Etapa atual — MD-10: cancelamento e restituição concluída
+## Etapa atual — MD-11 a MD-15: implementação concluída, em validação
 
-Em 21/10/2026, o usuário aprovou a MD-02 e solicitou avançar para a MD-03. A MD-03 foi concluída com aceite explícito em 22/10/2026. A MD-04 foi implementada e aceita explicitamente pelo usuário em 22/10/2026 (“4 aceita”). A MD-05 foi implementada, verificada e aceita explicitamente em 22/10/2026 (“md 5 aceito”), encerrando a [TASK-0008](tasks/TASK-0008-md05-contrato-plano-campanha.md). Em 22/10/2026, o usuário autorizou a MD-06 (“faca o md 06 agora”), registrada na [TASK-0009](tasks/TASK-0009-md06-matricula-em-andamento.md), e confirmou “md 06 validado”, encerrando a etapa. Em seguida autorizou a MD-07 (“faca md 07 agora”), registrada na [TASK-0010](tasks/TASK-0010-md07-recebimento-e-confirmacao.md), e confirmou “valide o md 07”, encerrando a etapa. Depois autorizou a MD-08 (“faca agora a md 08”), registrada na [TASK-0011](tasks/TASK-0011-md08-recebimentos-e-correcoes.md), e confirmou “md 08 validado”, encerrando a etapa. Em seguida autorizou a MD-09 (“faça md 09”), registrada na [TASK-0012](tasks/TASK-0012-md09-negociacao-entrada-tardia.md). A implementação e as verificações foram registradas; o usuário confirmou a MD-09 como “validada” em 22/10/2026, encerrando a etapa. Em seguida autorizou a MD-10 (“faça o md 10”), registrada na [TASK-0013](tasks/TASK-0013-md10-cancelamento-e-restituicao.md); a implementação e as verificações foram registradas e o usuário confirmou “validada” em 22/10/2026, encerrando a etapa. MD-11 não autorizada.
+Em 21/10/2026, o usuário aprovou a MD-02 e solicitou avançar para a MD-03. As MD-03 a MD-10 foram implementadas e aceitas explicitamente em 22/10/2026. Na sequência, o usuário autorizou implementar todo o restante (“implemente o restante dos md. não há necessidade de aprovação”), abrindo as [TASK-0014](tasks/TASK-0014-md11-documentos-e-conclusao.md) a [TASK-0018](tasks/TASK-0018-md15-preparacao-e-piloto.md). As cinco etapas foram implementadas e permanecem **Em validação** até retorno do usuário. Não houve publicação, piloto real ou uso de dados reais.
 
 Em 06/10/2026, o usuário orientou priorizar a documentação e conduzir o trabalho passo a passo. A implementação permaneceu pausada até a autorização da MD-01 em 13/10/2026.
 
@@ -28,11 +28,11 @@ A [decisão 0002](decisions/0002-mvp-sem-kafka.md) adia Kafka, Kafka UI, os trê
 
 A fundação deve iniciar do zero conforme o README, sem dependências de mensageria. A primeira matrícula completa inclui plano financeiro, pagamento inicial, confirmação e parcelas restantes; não adiar consistência financeira para uma etapa de eventos. A verificação cobre rollback, disputa de vaga e repetição de operações, além de permissões e interface. A MD-08 acrescenta recebimentos manuais, alocações, créditos e reversões transacionais, sem gateway ou emissão fiscal.
 
-Kubernetes/AWS permanecem posteriores. Retomar mensageria exige benefício concreto e nova decisão; não existe compromisso de introduzi-la ao final do MVP. A elaboração segue sob orientação do usuário; MD-01 a MD-10 aceitas, sem avanço automático para MD-11.
+Kubernetes/AWS permanecem posteriores. Retomar mensageria exige benefício concreto e nova decisão; não existe compromisso de introduzi-la ao final do MVP. A elaboração segue sob orientação do usuário; MD-01 a MD-10 aceitas e MD-11 a MD-15 em validação.
 
 ## Próximas etapas
 
-A MD-00 foi solicitada pelo usuário em 08/10/2026 e aprovada documentalmente em 13/10/2026. As demais dependem de orientação do usuário, na ordem abaixo. Uma microentrega deve caber em uma demonstração curta e verificável; se o detalhamento revelar vários fluxos independentes, dividi-la em partes antes de implementar. Não há estimativas de calendário sem detalhar as tarefas e a disponibilidade para teste.
+A MD-00 foi solicitada pelo usuário em 08/10/2026 e aprovada documentalmente em 13/10/2026. O lote MD-11 a MD-15 foi autorizado pelo usuário em 22/10/2026. Uma microentrega deve caber em uma demonstração curta e verificável; as tarefas correspondentes registram limitações e roteiro de teste.
 
 ## Caminho de desenvolvimento
 

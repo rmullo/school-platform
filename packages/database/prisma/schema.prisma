@@ -63,6 +63,8 @@ model SchoolYear {
   version Int @default(1)
   classrooms Classroom[]
   campaigns Campaign[]
+  transitions EnrollmentTransition[]
+  materialKits MaterialKit[]
 }
 
 enum SchoolSegment {
@@ -77,6 +79,7 @@ model SchoolStage {
   authorization Json?
   version Int @default(1)
   grades SchoolGrade[]
+  documentRequirements DocumentRequirement[]
 }
 
 model SchoolGrade {
@@ -86,6 +89,7 @@ model SchoolGrade {
   stage SchoolStage @relation(fields: [stageId], references: [id])
   version Int @default(1)
   classrooms Classroom[]
+  materialKits MaterialKit[]
   @@unique([stageId, name])
 }
 
@@ -147,6 +151,9 @@ model StudentProfile {
   pickup         PickupAuthorization[]         @relation("PickupStudent")
   enrollmentDrafts EnrollmentDraft[]
   enrollments Enrollment[]
+  documents StudentDocument[]
+  transitions EnrollmentTransition[]
+  materialOrders MaterialOrder[]
 }
 
 model StudentParentage {
@@ -333,6 +340,53 @@ enum RefundStatus {
   EXECUTED
 }
 
+enum DocumentStatus {
+  UPLOADED
+  VALIDATED
+  EXCEPTION
+}
+
+enum TransitionKind {
+  RENEWAL
+  TRANSFER
+}
+
+enum TransitionStatus {
+  REQUESTED
+  COMPLETED
+  CANCELLED
+}
+
+enum MaterialItemKind {
+  BOOK
+  MATERIAL
+  UNIFORM
+}
+
+enum MaterialSource {
+  EXTERNAL
+  SCHOOL
+  COURTESY
+}
+
+enum MaterialOrderStatus {
+  DRAFT
+  ORDERED
+  CANCELLED
+}
+
+enum MaterialPaymentStatus {
+  NOT_APPLICABLE
+  PENDING
+  PAID
+}
+
+enum MaterialDeliveryStatus {
+  NOT_APPLICABLE
+  PENDING
+  DELIVERED
+}
+
 model Enrollment {
   id                     String                        @id @default(uuid()) @db.Uuid
   draftId                String                        @unique @db.Uuid
@@ -357,6 +411,10 @@ model Enrollment {
   credits                FinancialCredit[]
   cancellation           EnrollmentCancellation?
   refunds                FinancialRefund[]
+  documents              StudentDocument[]
+  completion             EnrollmentCompletion?
+  transitionsFrom        EnrollmentTransition[] @relation("TransitionFrom")
+  materialOrders         MaterialOrder[]
   @@unique([studentId, classroomId, campaignId])
   @@index([studentId])
   @@index([classroomId])
@@ -500,4 +558,118 @@ model FinancialRefund {
   executedAt     DateTime              @default(now()) @db.Timestamptz(3)
   @@index([enrollmentId, executedAt])
   @@index([actorId, executedAt])
+}
+
+model DocumentRequirement {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  stageId     String?  @db.Uuid
+  stage       SchoolStage? @relation(fields: [stageId], references: [id])
+  required    Boolean  @default(true)
+  active      Boolean  @default(true)
+  version     Int      @default(1)
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  documents   StudentDocument[]
+  @@index([stageId, active])
+}
+
+model StudentDocument {
+  id              String            @id @default(uuid()) @db.Uuid
+  studentId       String            @db.Uuid
+  student         StudentProfile   @relation(fields: [studentId], references: [id])
+  enrollmentId    String?           @db.Uuid
+  enrollment      Enrollment?       @relation(fields: [enrollmentId], references: [id])
+  requirementId   String            @db.Uuid
+  requirement     DocumentRequirement @relation(fields: [requirementId], references: [id])
+  objectKey       String            @unique
+  originalName    String
+  contentType     String
+  sizeBytes       Int
+  status          DocumentStatus    @default(UPLOADED)
+  exceptionReason String?
+  uploadedBy      String            @db.Uuid
+  validatedBy     String?           @db.Uuid
+  validatedAt     DateTime?         @db.Timestamptz(3)
+  createdAt       DateTime          @default(now()) @db.Timestamptz(3)
+  replacedAt      DateTime?         @db.Timestamptz(3)
+  @@index([studentId, status])
+  @@index([enrollmentId, requirementId])
+}
+
+model EnrollmentCompletion {
+  id           String     @id @default(uuid()) @db.Uuid
+  enrollmentId String     @unique @db.Uuid
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id])
+  complete     Boolean    @default(false)
+  reason       String?
+  actorId      String     @db.Uuid
+  updatedAt    DateTime   @updatedAt @db.Timestamptz(3)
+}
+
+model EnrollmentTransition {
+  id                    String           @id @default(uuid()) @db.Uuid
+  operationKey          String           @unique @db.Uuid
+  studentId             String           @db.Uuid
+  student               StudentProfile   @relation(fields: [studentId], references: [id])
+  fromEnrollmentId      String?          @db.Uuid
+  fromEnrollment        Enrollment?      @relation("TransitionFrom", fields: [fromEnrollmentId], references: [id])
+  targetSchoolYearId    String?          @db.Uuid
+  targetSchoolYear      SchoolYear?      @relation(fields: [targetSchoolYearId], references: [id])
+  kind                  TransitionKind
+  status                TransitionStatus @default(COMPLETED)
+  destination           String?
+  acknowledgementAt     DateTime?        @db.Timestamptz(3)
+  documentsReleased     Boolean          @default(false)
+  financialReview       String
+  actorId               String           @db.Uuid
+  createdAt             DateTime         @default(now()) @db.Timestamptz(3)
+  @@index([studentId, createdAt])
+}
+
+model MaterialKit {
+  id          String        @id @default(uuid()) @db.Uuid
+  schoolYearId String       @db.Uuid
+  schoolYear  SchoolYear    @relation(fields: [schoolYearId], references: [id])
+  gradeId     String        @db.Uuid
+  grade       SchoolGrade  @relation(fields: [gradeId], references: [id])
+  name        String
+  active      Boolean       @default(true)
+  version     Int           @default(1)
+  createdAt   DateTime      @default(now()) @db.Timestamptz(3)
+  items       MaterialItem[]
+  orders      MaterialOrder[]
+  @@unique([schoolYearId, gradeId, name])
+}
+
+model MaterialItem {
+  id          String           @id @default(uuid()) @db.Uuid
+  kitId       String           @db.Uuid
+  kit         MaterialKit      @relation(fields: [kitId], references: [id])
+  name        String
+  kind        MaterialItemKind
+  source      MaterialSource
+  optional    Boolean          @default(true)
+  priceCents  Int              @default(0)
+  version     Int              @default(1)
+  @@index([kitId, kind])
+}
+
+model MaterialOrder {
+  id              String                @id @default(uuid()) @db.Uuid
+  operationKey    String                @unique @db.Uuid
+  studentId       String                @db.Uuid
+  student         StudentProfile        @relation(fields: [studentId], references: [id])
+  enrollmentId    String?               @db.Uuid
+  enrollment      Enrollment?           @relation(fields: [enrollmentId], references: [id])
+  kitId           String?               @db.Uuid
+  kit             MaterialKit?          @relation(fields: [kitId], references: [id])
+  status          MaterialOrderStatus   @default(DRAFT)
+  paymentStatus   MaterialPaymentStatus @default(NOT_APPLICABLE)
+  deliveryStatus  MaterialDeliveryStatus @default(NOT_APPLICABLE)
+  notes           String?
+  actorId         String                @db.Uuid
+  createdAt       DateTime              @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime              @updatedAt @db.Timestamptz(3)
+  @@index([studentId, status])
 }

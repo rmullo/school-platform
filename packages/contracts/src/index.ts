@@ -3,6 +3,7 @@ export * from './school.js';
 export * from './people.js';
 export * from './commercial.js';
 export * from './enrollment.js';
+export * from './operations.js';
 export const dependencySchema = z.enum(['available', 'unavailable']);
 export const environmentStatusSchema = z.object({
   status: z.enum(['ready', 'degraded']),

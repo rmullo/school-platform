@@ -17,6 +17,7 @@
 
 - Em 13/10/2026, após aprovar a MD-00, o usuário solicitou a MD-01. Está autorizada a implementação da fundação descrita no roadmap e em docs/tasks/TASK-0003-md01-fundacao.md. A restrição documental anterior permanece como histórico; não impede esta etapa explicitamente solicitada. Não avançar para MD-02 ou regras escolares sem nova orientação.
 - Em 21/10/2026, o usuário solicitou executar a MD-02. Autorizados acesso, sessões, contas individuais, RBAC e auditoria básica conforme docs/tasks/TASK-0005-md02-acesso-e-auditoria.md. A autorização não abrange MD-03, publicação ou uso de dados reais.
+- Em 22/10/2026, o usuário autorizou implementar o restante das microentregas, sem aprovações intermediárias. Foram abertas as TASK-0014 a TASK-0018 para MD-11 a MD-15; a autorização abrange os fluxos locais descritos no roadmap, mas não publicação, piloto real, uso de dados reais ou declaração de conformidade.
 
 ## Skill de desenvolvimento do projeto
 
