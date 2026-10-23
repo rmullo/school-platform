@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { enrollmentConfirmationSchema, enrollmentInputSchema, paymentInputSchema, paymentReversalSchema } from '@smartschool/contracts';
+import { enrollmentConfirmationSchema, enrollmentInputSchema, negotiationInputSchema, paymentInputSchema, paymentReversalSchema } from '@smartschool/contracts';
 
 const base = { studentId: '00000000-0000-4000-8000-000000000001', classroomId: '00000000-0000-4000-8000-000000000002', campaignId: '00000000-0000-4000-8000-000000000003', contractId: '00000000-0000-4000-8000-000000000004', financialResponsibleId: '00000000-0000-4000-8000-000000000005', pendingItems: ['Documento de identidade'] };
 
@@ -25,5 +25,13 @@ describe('recebimentos da MD-08', () => {
   it('exige motivo suficiente para reversão', () => {
     expect(paymentReversalSchema.safeParse({ operationKey: basePayment.operationKey, reason: 'ok' }).success).toBe(false);
     expect(paymentReversalSchema.safeParse({ operationKey: basePayment.operationKey, reason: 'Lançamento incorreto' }).success).toBe(true);
+  });
+  it('aceita somente mês civil válido para entrada tardia', () => {
+    expect(enrollmentInputSchema.safeParse({ ...base, entryMonth: 8 }).success).toBe(true);
+    expect(enrollmentInputSchema.safeParse({ ...base, entryMonth: 13 }).success).toBe(false);
+  });
+  it('exige motivo e data civil na negociação', () => {
+    expect(negotiationInputSchema.safeParse({ operationKey: basePayment.operationKey, obligationId, negotiatedAmountCents: 90000, negotiatedDueDate: '2097-08-10', reason: 'Acordo autorizado' }).success).toBe(true);
+    expect(negotiationInputSchema.safeParse({ operationKey: basePayment.operationKey, obligationId, negotiatedAmountCents: 90000, negotiatedDueDate: '10/08/2097', reason: 'Acordo autorizado' }).success).toBe(false);
   });
 });

@@ -40,6 +40,8 @@ Implementado `EnrollmentDraft`, com aluno, turma, campanha, versão de plano, re
 
 Implementados `Enrollment`, `InitialSettlement` e `FinancialObligation`. A confirmação preserva o rascunho, registra pagamento manual integral ou dispensa/negociação formal, ocupa a turma com controle concorrente e cria a obrigação inicial liquidada/dispensada mais as parcelas restantes abertas. A MD-08 acrescenta `PaymentReceipt`, `PaymentAllocation`, `FinancialCredit` e `CreditAllocation`: valores em centavos, saldo liquidado/status parcial, recibo interno, crédito excedente, destinação idempotente e reversão preservando o histórico. Gateway, nota fiscal e restituição efetiva não são simulados.
 
+Na MD-09, `EnrollmentDraft` pode registrar `lateEntryMonth`, a quantidade de competências futuras e o total calculado da entrada tardia. `FinancialNegotiation` preserva obrigação, valor/vencimento originais, valor/vencimento negociados, motivo, autor, data e chave da operação. A alteração da obrigação ocorre somente com autorização da Direção e em transação; meses anteriores não são criados.
+
 ### Contas e sessões — MD-02
 
 Esquema técnico inicial implementado na [MD-02](microentregas/MD-02/README.md): conta com UUID, nome, e-mail normalizado único, hash Argon2id, perfil, situação e criação; sessão com usuário, hash do refresh, família, criação, expiração, consumo e revogação; evento de auditoria com responsável, ação, conta afetada, motivo e instante. Senha e refresh em texto não são persistidos. Listas públicas de contas não incluem hashes. Retenção operacional e políticas de recuperação continuam pendentes; não presumir guarda ilimitada.

@@ -10,6 +10,7 @@ export const enrollmentInputSchema = z.object({
   contractId: uuid,
   financialResponsibleId: uuid,
   pendingItems: z.array(z.string().trim().min(2).max(160)).max(20),
+  entryMonth: z.number().int().min(1).max(12).optional(),
 }).strict();
 
 export const enrollmentEditSchema = z.object({
@@ -38,6 +39,7 @@ export const paymentInputSchema = z.object({ operationKey: uuid, amountCents: ce
 });
 export const paymentReversalSchema = z.object({ operationKey: uuid, reason: z.string().trim().min(5).max(500) }).strict();
 export const creditAllocationInputSchema = z.object({ operationKey: uuid, obligationId: uuid, amountCents: cents }).strict();
+export const negotiationInputSchema = z.object({ operationKey: uuid, obligationId: uuid, negotiatedAmountCents: cents, negotiatedDueDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), reason: z.string().trim().min(5).max(500) }).strict();
 
 const studentOption = z.object({ id: uuid, person: z.object({ id: uuid, name }) });
 const classroomOption = z.object({ id: uuid, name, capacity: z.number().int().positive(), occupied: z.number().int().nonnegative(), active: z.boolean(), schoolYearId: uuid });
@@ -52,11 +54,14 @@ export const enrollmentSchema = enrollmentInputSchema.extend({
   campaign: z.object({ id: uuid, name, schoolYearId: uuid }),
   contract: z.object({ id: uuid, campaignId: uuid, title: name, version: z.number().int().positive(), initialInstallmentCents: z.number().int().nonnegative(), totalAnnualCents: z.number().int().nonnegative() }),
   financialResponsible: z.object({ id: uuid, name }),
+  entryMonth: z.number().int().min(1).max(12).nullable(),
+  entryInstallmentCount: z.number().int().positive().nullable(),
+  entryTotalCents: z.number().int().positive().nullable(),
 });
 
 export const enrollmentOverviewSchema = z.object({
   enrollments: z.array(enrollmentSchema),
-  confirmed: z.array(z.object({ id: uuid, student: studentOption, classroom: z.object({ id: uuid, name, schoolYearId: uuid }), initialSettlement: z.object({ settlement: z.enum(['PAYMENT', 'WAIVER', 'NEGOTIATION']), amountCents: z.number().int().nonnegative() }), remainingInstallments: z.number().int().nonnegative(), obligations: z.array(z.object({ id: uuid, installment: z.number().int().nonnegative(), dueDate: z.string(), amountCents: z.number().int().nonnegative(), settledAmountCents: z.number().int().nonnegative(), status: z.enum(['SETTLED', 'PARTIAL', 'OPEN', 'WAIVED']) })), payments: z.array(z.object({ id: uuid, receiptNumber: name, amountCents: z.number().int().positive(), status: z.enum(['POSTED', 'REVERSED']), receivedAt: z.iso.datetime(), credit: z.object({ id: uuid, balanceCents: z.number().int().nonnegative(), status: z.enum(['AVAILABLE', 'CONSUMED', 'REVERSED']) }).nullable() })), credits: z.array(z.object({ id: uuid, originalAmountCents: z.number().int().positive(), balanceCents: z.number().int().nonnegative(), status: z.enum(['AVAILABLE', 'CONSUMED', 'REVERSED']) })) })),
+  confirmed: z.array(z.object({ id: uuid, student: studentOption, classroom: z.object({ id: uuid, name, schoolYearId: uuid }), initialSettlement: z.object({ settlement: z.enum(['PAYMENT', 'WAIVER', 'NEGOTIATION']), amountCents: z.number().int().nonnegative() }), remainingInstallments: z.number().int().nonnegative(), obligations: z.array(z.object({ id: uuid, installment: z.number().int().nonnegative(), dueDate: z.string(), amountCents: z.number().int().nonnegative(), settledAmountCents: z.number().int().nonnegative(), status: z.enum(['SETTLED', 'PARTIAL', 'OPEN', 'WAIVED']), negotiation: z.object({ originalAmountCents: z.number().int().positive(), negotiatedAmountCents: z.number().int().positive(), originalDueDate: z.string(), negotiatedDueDate: z.string(), reason: name }).nullable() })), negotiations: z.array(z.object({ id: uuid, obligationId: uuid, originalAmountCents: z.number().int().positive(), negotiatedAmountCents: z.number().int().positive(), originalDueDate: z.string(), negotiatedDueDate: z.string(), reason: name, createdAt: z.iso.datetime() })), payments: z.array(z.object({ id: uuid, receiptNumber: name, amountCents: z.number().int().positive(), status: z.enum(['POSTED', 'REVERSED']), receivedAt: z.iso.datetime(), credit: z.object({ id: uuid, balanceCents: z.number().int().nonnegative(), status: z.enum(['AVAILABLE', 'CONSUMED', 'REVERSED']) }).nullable() })), credits: z.array(z.object({ id: uuid, originalAmountCents: z.number().int().positive(), balanceCents: z.number().int().nonnegative(), status: z.enum(['AVAILABLE', 'CONSUMED', 'REVERSED']) })) })),
   students: z.array(studentOption.extend({ financialResponsible: z.object({ id: uuid, name }).nullable() })),
   classrooms: z.array(classroomOption),
   campaigns: z.array(z.object({ id: uuid, name, schoolYearId: uuid })),

@@ -39,6 +39,7 @@ Silêncio não é aceite. Um commit ou teste automatizado bem-sucedido também n
 | TASK-0009 | MD-06 | [Matrícula em andamento](TASK-0009-md06-matricula-em-andamento.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
 | TASK-0010 | MD-07 | [Recebimento inicial e confirmação](TASK-0010-md07-recebimento-e-confirmacao.md) | Concluída | Aceite explícito do usuário em 22/10/2026 |
 | TASK-0011 | MD-08 | [Recebimentos e correções](TASK-0011-md08-recebimentos-e-correcoes.md) | Concluída | Aceite explícito do usuário em 22/10/2026: “md 08 validado” |
+| TASK-0012 | MD-09 | [Negociação e entrada tardia](TASK-0012-md09-negociacao-entrada-tardia.md) | Concluída | Aceite explícito do usuário em 22/10/2026: “validada” |
 
 ## Procedimento de encerramento
 

@@ -285,6 +285,9 @@ model EnrollmentDraft {
   financialResponsible   Person           @relation("EnrollmentFinancialResponsible", fields: [financialResponsibleId], references: [id])
   status                 EnrollmentStatus @default(DRAFT)
   initialAmountCents     Int
+  lateEntryMonth         Int?
+  lateEntryInstallmentCount Int?
+  lateEntryTotalCents    Int?
   pendingItems           String[]         @default([])
   version                Int              @default(1)
   createdAt              DateTime         @default(now()) @db.Timestamptz(3)
@@ -343,6 +346,7 @@ model Enrollment {
   version                Int                           @default(1)
   settlement             InitialSettlement?
   obligations            FinancialObligation[]
+  negotiations           FinancialNegotiation[]
   payments               PaymentReceipt[]
   credits                FinancialCredit[]
   @@unique([studentId, classroomId, campaignId])
@@ -437,4 +441,23 @@ model FinancialObligation {
   @@index([dueDate, status])
   allocations   PaymentAllocation[]
   creditAllocations CreditAllocation[]
+  negotiation   FinancialNegotiation?
+}
+
+model FinancialNegotiation {
+  id                    String             @id @default(uuid()) @db.Uuid
+  enrollmentId          String             @db.Uuid
+  enrollment             Enrollment         @relation(fields: [enrollmentId], references: [id])
+  obligationId          String             @unique @db.Uuid
+  obligation             FinancialObligation @relation(fields: [obligationId], references: [id])
+  operationKey          String             @unique @db.Uuid
+  originalAmountCents   Int
+  negotiatedAmountCents Int
+  originalDueDate       String             @db.VarChar(10)
+  negotiatedDueDate     String             @db.VarChar(10)
+  reason                String
+  actorId               String             @db.Uuid
+  createdAt              DateTime           @default(now()) @db.Timestamptz(3)
+  @@index([enrollmentId, createdAt])
+  @@index([actorId, createdAt])
 }

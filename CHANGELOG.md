@@ -2,6 +2,12 @@
 
 Registrar aqui o resumo das mudanças entregues, vinculando tarefas e decisões. Detalhes de execução e feedback ficam nas tarefas. Não atribuir versão, publicação ou aceite que ainda não ocorreram.
 
+## MD-09 — negociação e entrada tardia — 22/10/2026
+
+- Execução autorizada pelo usuário e registrada na [TASK-0012](docs/tasks/TASK-0012-md09-negociacao-entrada-tardia.md) e no [guia da MD-09](docs/microentregas/MD-09/README.md). Aceite explícito registrado em 22/10/2026: “validada”; TASK-0012 concluída.
+- Implementados mês de ingresso tardio no rascunho, composição das competências até dezembro sem meses anteriores, negociação da primeira obrigação restante exclusiva da Direção, preservação do original, idempotência e auditoria.
+- `pnpm generate`, `pnpm typecheck`, `pnpm build`, 26 unitários, 30 testes de integração PostgreSQL e 1 E2E específico passaram. A suíte E2E ampla teve falhas de ambiente/fixture durante a primeira execução; a jornada afetada foi repetida isoladamente com a pilha reconstruída e passou.
+
 ## MD-08 — recebimentos e correções — 22/10/2026
 
 - Execução autorizada pelo usuário e registrada na [TASK-0011](docs/tasks/TASK-0011-md08-recebimentos-e-correcoes.md) e no [guia da MD-08](docs/microentregas/MD-08/README.md). Aceite explícito registrado em 22/10/2026: “md 08 validado”; TASK-0011 concluída.
